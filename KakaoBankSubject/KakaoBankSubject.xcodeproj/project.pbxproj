@@ -217,7 +217,7 @@
 			children = (
 				9050102629C55EEC00F017FF /* Flow */,
 				9050102729C55F0700F017FF /* AppStoreMainFlowCoordinator.swift */,
-				9050102929C55F9600F017FF /* MainTabBar */,
+				9050102929C55F9600F017FF /* TabBar */,
 				9050103229C5616D00F017FF /* RecentSearch */,
 				9050102F29C560B700F017FF /* Empty */,
 			);
@@ -231,22 +231,14 @@
 			path = Flow;
 			sourceTree = "<group>";
 		};
-		9050102929C55F9600F017FF /* MainTabBar */ = {
+		9050102929C55F9600F017FF /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				9050102C29C55FCF00F017FF /* View */,
 				90500FD029C53E4200F017FF /* MainTabBarViewController.swift */,
 				9050104529C5989000F017FF /* TabBarModuleBuilder.swift */,
 				9050104729C598AF00F017FF /* TabBarRouter.swift */,
 			);
-			path = MainTabBar;
-			sourceTree = "<group>";
-		};
-		9050102C29C55FCF00F017FF /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		9050102F29C560B700F017FF /* Empty */ = {
