@@ -12,6 +12,18 @@
 		90500FD129C53E4200F017FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90500FD029C53E4200F017FF /* ViewController.swift */; };
 		90500FD629C53E4300F017FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90500FD529C53E4300F017FF /* Assets.xcassets */; };
 		90500FD929C53E4300F017FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90500FD729C53E4300F017FF /* LaunchScreen.storyboard */; };
+		90500FF129C5524300F017FF /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90500FEE29C551DD00F017FF /* HTTPMethod.swift */; };
+		9050100E29C555C800F017FF /* BodyEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050100929C555C800F017FF /* BodyEncoding.swift */; };
+		9050100F29C555C800F017FF /* ApiDataNetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050100A29C555C800F017FF /* ApiDataNetworkConfiguration.swift */; };
+		9050101029C555C800F017FF /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050100B29C555C800F017FF /* Requestable.swift */; };
+		9050101129C555C800F017FF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050100C29C555C800F017FF /* Endpoint.swift */; };
+		9050101229C555C800F017FF /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050100D29C555C800F017FF /* ResponseDecoder.swift */; };
+		9050101529C555D900F017FF /* DataTransferError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050101329C555D900F017FF /* DataTransferError.swift */; };
+		9050101629C555D900F017FF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050101429C555D900F017FF /* NetworkError.swift */; };
+		9050101B29C555E000F017FF /* AnyCancelTaskBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050101729C555E000F017FF /* AnyCancelTaskBag.swift */; };
+		9050101C29C555E000F017FF /* AnyCancellableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050101829C555E000F017FF /* AnyCancellableTask.swift */; };
+		9050101D29C555E000F017FF /* AlertControllerBulider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050101929C555E000F017FF /* AlertControllerBulider.swift */; };
+		9050101E29C555E000F017FF /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050101A29C555E000F017FF /* ConnectionError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +34,18 @@
 		90500FD529C53E4300F017FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90500FD829C53E4300F017FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90500FDA29C53E4300F017FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90500FEE29C551DD00F017FF /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		9050100929C555C800F017FF /* BodyEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyEncoding.swift; sourceTree = "<group>"; };
+		9050100A29C555C800F017FF /* ApiDataNetworkConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDataNetworkConfiguration.swift; sourceTree = "<group>"; };
+		9050100B29C555C800F017FF /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		9050100C29C555C800F017FF /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		9050100D29C555C800F017FF /* ResponseDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseDecoder.swift; sourceTree = "<group>"; };
+		9050101329C555D900F017FF /* DataTransferError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransferError.swift; sourceTree = "<group>"; };
+		9050101429C555D900F017FF /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9050101729C555E000F017FF /* AnyCancelTaskBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCancelTaskBag.swift; sourceTree = "<group>"; };
+		9050101829C555E000F017FF /* AnyCancellableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCancellableTask.swift; sourceTree = "<group>"; };
+		9050101929C555E000F017FF /* AlertControllerBulider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerBulider.swift; sourceTree = "<group>"; };
+		9050101A29C555E000F017FF /* ConnectionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +78,106 @@
 		90500FCB29C53E4200F017FF /* KakaoBankSubject */ = {
 			isa = PBXGroup;
 			children = (
+				90500FE129C54F5400F017FF /* Application */,
 				90500FCC29C53E4200F017FF /* AppDelegate.swift */,
 				90500FCE29C53E4200F017FF /* SceneDelegate.swift */,
+				90500FE229C54F5E00F017FF /* Presentation */,
 				90500FD029C53E4200F017FF /* ViewController.swift */,
+				90500FE429C54F7600F017FF /* Domain */,
+				90500FE329C54F6A00F017FF /* Data */,
+				90500FE529C54F9200F017FF /* Infrastructure */,
+				90500FFF29C553F200F017FF /* Common */,
+				90500FE029C54F2C00F017FF /* Resources */,
+			);
+			path = KakaoBankSubject;
+			sourceTree = "<group>";
+		};
+		90500FE029C54F2C00F017FF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				90500FD529C53E4300F017FF /* Assets.xcassets */,
 				90500FD729C53E4300F017FF /* LaunchScreen.storyboard */,
 				90500FDA29C53E4300F017FF /* Info.plist */,
 			);
-			path = KakaoBankSubject;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		90500FE129C54F5400F017FF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		90500FE229C54F5E00F017FF /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		90500FE329C54F6A00F017FF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		90500FE429C54F7600F017FF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		90500FE529C54F9200F017FF /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				90500FE829C5514D00F017FF /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		90500FE829C5514D00F017FF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				90500FED29C551D800F017FF /* Endpoint */,
+				90500FFA29C553A300F017FF /* Error */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		90500FED29C551D800F017FF /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				9050100C29C555C800F017FF /* Endpoint.swift */,
+				9050100A29C555C800F017FF /* ApiDataNetworkConfiguration.swift */,
+				9050100929C555C800F017FF /* BodyEncoding.swift */,
+				9050100B29C555C800F017FF /* Requestable.swift */,
+				9050100D29C555C800F017FF /* ResponseDecoder.swift */,
+				90500FEE29C551DD00F017FF /* HTTPMethod.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		90500FFA29C553A300F017FF /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				9050101329C555D900F017FF /* DataTransferError.swift */,
+				9050101429C555D900F017FF /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		90500FFF29C553F200F017FF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9050101929C555E000F017FF /* AlertControllerBulider.swift */,
+				9050101829C555E000F017FF /* AnyCancellableTask.swift */,
+				9050101729C555E000F017FF /* AnyCancelTaskBag.swift */,
+				9050101A29C555E000F017FF /* ConnectionError.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +250,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9050101629C555D900F017FF /* NetworkError.swift in Sources */,
 				90500FD129C53E4200F017FF /* ViewController.swift in Sources */,
+				9050101E29C555E000F017FF /* ConnectionError.swift in Sources */,
+				9050100E29C555C800F017FF /* BodyEncoding.swift in Sources */,
+				9050101029C555C800F017FF /* Requestable.swift in Sources */,
+				9050100F29C555C800F017FF /* ApiDataNetworkConfiguration.swift in Sources */,
 				90500FCD29C53E4200F017FF /* AppDelegate.swift in Sources */,
+				9050101D29C555E000F017FF /* AlertControllerBulider.swift in Sources */,
+				9050101129C555C800F017FF /* Endpoint.swift in Sources */,
+				9050101C29C555E000F017FF /* AnyCancellableTask.swift in Sources */,
+				90500FF129C5524300F017FF /* HTTPMethod.swift in Sources */,
+				9050101B29C555E000F017FF /* AnyCancelTaskBag.swift in Sources */,
+				9050101529C555D900F017FF /* DataTransferError.swift in Sources */,
 				90500FCF29C53E4200F017FF /* SceneDelegate.swift in Sources */,
+				9050101229C555C800F017FF /* ResponseDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +405,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GDKDK6KP5Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KakaoBankSubject/Info.plist;
+				INFOPLIST_FILE = KakaoBankSubject/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -305,7 +433,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GDKDK6KP5Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KakaoBankSubject/Info.plist;
+				INFOPLIST_FILE = KakaoBankSubject/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
