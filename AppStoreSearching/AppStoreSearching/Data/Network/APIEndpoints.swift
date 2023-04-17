@@ -18,4 +18,14 @@ struct APIEndpoints {
                                   "limit": limit,
                                   "entity": "software"])
         }
+
+    static func fetchAppInfo(
+        _ id: Int,
+        _ country: String) -> Endpoint<AppsInfoDTO> {
+            return Endpoint(
+                path: HTTPPath.lookup.value,
+                method: .get,
+                queryParameters: ["id": id,
+                                  "country": country])
+        }
 }
