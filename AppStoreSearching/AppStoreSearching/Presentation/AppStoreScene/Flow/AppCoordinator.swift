@@ -13,22 +13,9 @@ protocol Coordinator: AnyObject {
 }
 
 final class AppCoordinator: Coordinator,
-                            EmptyCoordinatorDelegate,
                             SearchCoordinatorDelegate {
     var childCoordinators = [Coordinator]()
     private var window: UIWindow?
-
-    private lazy var appConfiguration = AppConfiguration()
-    private lazy var apiDataTransferService: DataTransferService = {
-        let configuration = APIDataNetworkConfiguration(
-            baseURL: URL(
-                string: appConfiguration.apiBaseURL)!)
-
-        let apiDataNetwork = DefaultNetworkService(
-            config: configuration)
-        return DefaultDataTransferService(
-            with: apiDataNetwork)
-    }()
 
     init(window: UIWindow?) {
         self.window = window
@@ -41,6 +28,15 @@ final class AppCoordinator: Coordinator,
         window?.makeKeyAndVisible()
 
         return UINavigationController()
+    }
+
+    func childDidFinish(_ child: Coordinator) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
     }
 
     private func tabBarController() -> UITabBarController {
@@ -58,21 +54,11 @@ final class AppCoordinator: Coordinator,
     }
 
     private func searchNavigationController() -> UINavigationController {
-        let coordinator = SearchCoordinator(
-            apiDataTransferService: apiDataTransferService)
+        let coordinator = SearchCoordinator()
 
         coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
         let searchNC = coordinator.start()
         return searchNC
-    }
-
-    func childDidFinish(_ child: Coordinator) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
     }
 }
