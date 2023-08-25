@@ -9,7 +9,9 @@ import UIKit
 
 struct AppSearchItemResponseDTO: Decodable {
     let screenshotUrls, ipadScreenshotUrls: [String]?
-    let artworkUrl60, artworkUrl512, artworkUrl100: String?
+    let artworkUrl60: String?
+    let artworkUrl512: String?
+    let artworkUrl100: String?
     let artistViewUrl: String?
     let minimumOsVersion: String?
     let languageCodesISO2A: [String]?
@@ -70,9 +72,6 @@ extension AppSearchItemResponseDTO {
         )
     }
 
-    // KO가 있다면 가장 첫번째 인덱스로 이동
-    // KO가 없고 EN이 있다면 가장 첫번째 인덱스로 이동
-    // 둘다 없다면 그냥 리턴
     func toAppStoreLanguageCodeEntity() -> [AppLanguageCodeEntity]? {
         guard var languageCodes = languageCodesISO2A else {
             return nil

@@ -7,7 +7,7 @@
 
 protocol RecentKeywordRepositoryInterface {
     func getRecentKeywordList() -> [String]
-    func addRecentKeyword(
-        keyword: String
+    func add(
+        recentKeyword: String
     )
 }

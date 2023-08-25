@@ -8,8 +8,8 @@
 import Foundation
 
 protocol AppSearchUseCaseInterface {
-    func searchAppByKeyword(
-        keyword : String,
+    func searchApp(
+        by keyword: String,
         page : Int,
         size : Int
     ) async throws -> AppSearchEntity
@@ -28,8 +28,8 @@ final class AppSearchUseCase : AppSearchUseCaseInterface {
         self.recentKeywordRepository = recentKeywordRepository
     }
 
-    func searchAppByKeyword(
-        keyword : String,
+    func searchApp(
+        by keyword: String,
         page : Int,
         size : Int
     ) async throws -> AppSearchEntity {
@@ -37,8 +37,8 @@ final class AppSearchUseCase : AppSearchUseCaseInterface {
             throw AppSearchError.invalidKeyword
         }
 
-        recentKeywordRepository.addRecentKeyword(
-            keyword: keyword
+        recentKeywordRepository.add(
+            recentKeyword: keyword
         )
 
         let offset = getOffset(
@@ -47,15 +47,14 @@ final class AppSearchUseCase : AppSearchUseCaseInterface {
         )
 
         do {
-            let data = try await searchRepository.searchAppByKeyword(
-                keyword: keyword,
+            let data = try await searchRepository.searchApp(
+                by: keyword,
                 page: offset,
                 size: size
             )
             
             return data
         } catch {
-            // NetworkError -> AppSearchError로 맵핑
             throw AppSearchError.failToSearchApp
         }
     }

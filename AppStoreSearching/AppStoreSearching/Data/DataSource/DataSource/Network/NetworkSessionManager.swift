@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol NetworkSessionManager {
+protocol NetworkSessionManagerInterfase {
     func request(
         _ request: URLRequest
     ) async throws -> Data
 }
 
-final class DefaultNetworkSessionManager: NetworkSessionManager {
-    static let shared = DefaultNetworkSessionManager()
+final class NetworkSessionManager: NetworkSessionManagerInterfase {
+    static let shared = NetworkSessionManager()
 
     private let session = URLSession.shared
     private init() {}

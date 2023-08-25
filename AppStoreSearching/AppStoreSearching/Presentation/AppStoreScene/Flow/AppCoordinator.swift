@@ -33,7 +33,9 @@ final class AppCoordinator: Coordinator,
     func childDidFinish(_ child: Coordinator) {
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
-                childCoordinators.remove(at: index)
+                childCoordinators.remove(
+                    at: index
+                )
                 break
             }
         }
@@ -43,16 +45,19 @@ final class AppCoordinator: Coordinator,
         let tabBarController = UITabBarController()
 
         let searchNC = searchNavigationController()
+        
         searchNC.tabBarItem = UITabBarItem(
             title: "Search",
-            image: UIImage(named: "tabbar_search"),
+            image: UIImage(
+                named: "tabbar_search"
+            ),
             tag: 1)
 
         tabBarController.viewControllers = [searchNC]
         tabBarController.tabBar.backgroundColor = .clear
         return tabBarController
     }
-
+    
     private func searchNavigationController() -> UINavigationController {
         let coordinator = SearchCoordinator()
 

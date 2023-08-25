@@ -7,17 +7,19 @@
 
 import Foundation
 
-protocol NetworkService {
+protocol NetworkServiceInterface {
     @discardableResult
     func request<N: Networkable, T: Decodable>(
         endpoint: N
     ) async throws -> T where N.Response == T
 }
 
-final class DefaultNetworkService: NetworkService {
-    private let sessionManager: NetworkSessionManager
+final class NetworkService: NetworkServiceInterface {
+    private let sessionManager: NetworkSessionManagerInterfase
 
-    init(sessionManager: NetworkSessionManager = DefaultNetworkSessionManager.shared) {
+    init(
+        sessionManager: NetworkSessionManagerInterfase = NetworkSessionManager.shared
+    ) {
         self.sessionManager = sessionManager
     }
 
@@ -55,7 +57,7 @@ final class DefaultNetworkService: NetworkService {
             } else if let networkError = error as? NetworkError {
                 throw networkError
             }
-
+            
             throw NetworkError.unknownError
         }
     }

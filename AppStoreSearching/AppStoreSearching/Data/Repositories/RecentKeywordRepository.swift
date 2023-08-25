@@ -9,8 +9,10 @@ import Foundation
 
 final class RecentKeywordRepository: RecentKeywordRepositoryInterface {
     private let recentKeywordStorage: RecentKeywordStorageInterface
-
-    init(recentKeywordStorage : RecentKeywordStorageInterface) {
+    
+    init(
+        recentKeywordStorage : RecentKeywordStorageInterface
+    ) {
         self.recentKeywordStorage = recentKeywordStorage
     }
 
@@ -18,7 +20,7 @@ final class RecentKeywordRepository: RecentKeywordRepositoryInterface {
         return recentKeywordStorage.getRecentKeywordList()
     }
 
-    func addRecentKeyword(keyword: String) {
-        recentKeywordStorage.addRecentKeyword(keyword: keyword)
+    func add(recentKeyword: String) {
+        recentKeywordStorage.addRecentKeyword(keyword: recentKeyword)
     }
 }

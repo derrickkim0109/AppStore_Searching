@@ -8,12 +8,14 @@
 final class AppSearchRepository : AppSearchRepositoryInterface {
     private let dataSource: AppSearchDataSourceInterface
 
-    init(dataSource : AppSearchDataSourceInterface) {
+    init(
+        dataSource : AppSearchDataSourceInterface
+    ) {
         self.dataSource = dataSource
     }
 
-    func searchAppByKeyword(
-        keyword: String,
+    func searchApp(
+        by keyword: String,
         page: Int,
         size: Int
     ) async throws -> AppSearchEntity {
@@ -23,7 +25,8 @@ final class AppSearchRepository : AppSearchRepositoryInterface {
                 media: "software",
                 country: "kr",
                 page: page,
-                size: size)
+                size: size
+            )
 
             return try await dataSource.searchAppByKeyword(requestDTO).toEntity()
         } catch {

@@ -6,8 +6,8 @@
 //
 
 protocol AppSearchRepositoryInterface {
-    func searchAppByKeyword(
-        keyword: String,
+    func searchApp(
+        by keyword: String,
         page: Int,
         size: Int
     ) async throws -> AppSearchEntity

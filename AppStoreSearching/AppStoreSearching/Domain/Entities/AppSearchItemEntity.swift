@@ -10,7 +10,9 @@ import Foundation
 struct AppSearchItemEntity {
     let screenshotUrls : [String]
     let ipadScreenshotUrls: [String]
-    let artworkUrl60, artworkUrl512, artworkUrl100: String
+    let artworkUrl60: String
+    let artworkUrl512: String
+    let artworkUrl100: String
     let artistViewUrl: String
     let minimumOsVersion: String
     let languages: [AppLanguageCodeEntity]

@@ -46,29 +46,13 @@ final class AppDetailScreenshotCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    private func setupImageCaching(
-        _ imageView: UIImageView,
-        from imageURL: String) async {
-            do {
-                try await imageView.setImageUrl(imageURL)
-            } catch (let error) {
-                await AlertControllerBulider.Builder()
-                    .setMessag(error.localizedDescription)
-                    .setConfrimText(Const.confirm)
-                    .build()
-                    .present()
-            }
-        }
-
     func configure(_ screenUrl: String) {
         Task { [weak self] in
             guard let `self` = self else {
                 return
             }
 
-            await self.setupImageCaching(
-                self.screenshotImageView,
-                from: screenUrl)
+
         }.store(in: bag)
     }
 
