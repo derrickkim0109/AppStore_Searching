@@ -44,7 +44,8 @@ final class AppSearchView: BaseView {
             tableView.bottomAnchor.constraint(
                 equalTo: bottomAnchor),
             tableView.leadingAnchor.constraint(
-                equalTo: leadingAnchor),
+                equalTo: leadingAnchor,
+                constant: 3),
             tableView.trailingAnchor.constraint(
                 equalTo: trailingAnchor)
         ])
