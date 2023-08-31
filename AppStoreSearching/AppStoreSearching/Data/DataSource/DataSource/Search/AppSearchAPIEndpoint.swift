@@ -12,6 +12,7 @@ struct AppSearchAPIEndpoint {
         return Endpoint(
             path: "/search",
             httpMethod: .get,
+            headerParameters: ["Content-Type" : "application/json"],
             queryParameters: requestDTO
         )
     }

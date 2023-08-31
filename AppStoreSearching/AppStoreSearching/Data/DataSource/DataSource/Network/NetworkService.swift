@@ -8,7 +8,6 @@
 import Foundation
 
 protocol NetworkServiceInterface {
-    @discardableResult
     func request<N: Networkable, T: Decodable>(
         endpoint: N
     ) async throws -> T where N.Response == T

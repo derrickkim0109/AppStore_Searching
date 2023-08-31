@@ -43,11 +43,7 @@ extension Requestable {
             urlRequest.httpBody = httpBody
         }
 
-        urlRequest.setValue(
-            "application/json",
-            forHTTPHeaderField: "Content-Type"
-        )
-
+        urlRequest.allHTTPHeaderFields = headerParameters
         urlRequest.httpMethod = httpMethod.rawValue
 
         return urlRequest
