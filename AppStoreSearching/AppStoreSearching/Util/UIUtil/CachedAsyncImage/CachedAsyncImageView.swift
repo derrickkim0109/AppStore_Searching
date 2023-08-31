@@ -118,6 +118,10 @@ final class CachedAsyncImageView: BaseView {
         rectangleView.layer.borderWidth = width
     }
 
+    func remove() {
+        imageView.image = nil
+    }
+
     private func getCacheImage(by url: String) {
         guard let url = URL(string: url) else {
             return

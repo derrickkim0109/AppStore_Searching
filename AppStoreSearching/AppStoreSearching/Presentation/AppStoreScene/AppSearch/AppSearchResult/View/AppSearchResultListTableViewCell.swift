@@ -100,6 +100,7 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
+        iconImageView.remove()
         appNameLabel.text = nil
         starRatingView.rating = 0.0
         userCountLabel.text = nil
