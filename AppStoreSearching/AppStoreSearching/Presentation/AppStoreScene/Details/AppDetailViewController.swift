@@ -9,9 +9,7 @@ import UIKit
 
 protocol AppDetailViewControllerDelegate: AnyObject {}
 
-final class AppDetailViewController: UIViewController {
-    private let viewModel: AppDetailViewModel
-    private let bag = AnyCancelTaskBag()
+final class AppDetailViewController: BaseViewController<AppDetailViewModel> {
     weak var coordinator: AppDetailViewControllerDelegate?
 
     private var appDescription: String = ""
@@ -30,11 +28,7 @@ final class AppDetailViewController: UIViewController {
         return scrollView
     }()
 
-    private let iconImageView: IconImageView = {
-        let imageView = IconImageView()
-        imageView.layer.cornerRadius = 20
-        return imageView
-    }()
+    private let iconImageView = CachedAsyncImageView()
 
     private lazy var infoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [appNameLabel,
@@ -114,31 +108,14 @@ final class AppDetailViewController: UIViewController {
         }
     }()
 
-    init(viewModel: AppDetailViewModel) {
-        self.viewModel = viewModel
-
-        super.init(
-            nibName: nil,
-            bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bind()
-        didSearch()
-    }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
-    private func bind() {
+    override func bind() {
+        super.bind()
+
         view.backgroundColor = .systemBackground
         screenshotCollectionView.dataSource = self
         screenshotCollectionView.delegate = self
@@ -155,89 +132,92 @@ final class AppDetailViewController: UIViewController {
          infoStackView,
          fetchButton,
          settingButtonImageView,
-         screenshotCollectionView].forEach{ rootScrollView.addSubview($0) }
+         screenshotCollectionView]
+            .forEach{ rootScrollView.addSubview($0) }
     }
 
-    private func configureLayouts() {
-        NSLayoutConstraint.activate([
-            rootScrollView.topAnchor.constraint(
-                equalTo: view.topAnchor),
-            rootScrollView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor),
-            rootScrollView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor),
-            rootScrollView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor)
-        ])
+    override func configureLayouts() {
+        super.configureLayouts()
 
-        NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(
-                equalTo: rootScrollView.topAnchor,
-                constant: 20),
-            iconImageView.leadingAnchor.constraint(
-                equalTo: rootScrollView.leadingAnchor,
-                constant: 20),
-            iconImageView.widthAnchor.constraint(
-                equalToConstant: 100)
-        ])
-
-        NSLayoutConstraint.activate([
-            infoStackView.topAnchor.constraint(
-                equalTo: iconImageView.topAnchor),
-            infoStackView.bottomAnchor.constraint(
-                equalTo: iconImageView.bottomAnchor),
-            infoStackView.leadingAnchor.constraint(
-                equalTo: iconImageView.trailingAnchor,
-                constant: 10),
-            infoStackView.trailingAnchor.constraint(
-                equalTo: rootScrollView.trailingAnchor,
-                constant: -20)
-        ])
-
-        NSLayoutConstraint.activate([
-            fetchButton.topAnchor.constraint(
-                equalTo: fetchButtonContainer.topAnchor),
-            fetchButton.bottomAnchor.constraint(
-                equalTo: fetchButtonContainer.bottomAnchor),
-            fetchButton.leadingAnchor.constraint(
-                equalTo: fetchButtonContainer.leadingAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            settingButtonImageView.trailingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                constant: -20),
-            settingButtonImageView.centerYAnchor.constraint(
-                equalTo: fetchButtonContainer.centerYAnchor),
-            settingButtonImageView.widthAnchor.constraint(
-                equalTo: settingButtonImageView.heightAnchor),
-            settingButtonImageView.widthAnchor.constraint(
-                equalToConstant: 30)
-        ])
-
-        NSLayoutConstraint.activate([
-            screenshotCollectionView.topAnchor.constraint(
-                equalTo: iconImageView.bottomAnchor,
-                constant: 18),
-            screenshotCollectionView.bottomAnchor.constraint(
-                equalTo: rootScrollView.bottomAnchor),
-            screenshotCollectionView.leadingAnchor.constraint(
-                equalTo: rootScrollView.leadingAnchor,
-                constant: 18),
-            screenshotCollectionView.trailingAnchor.constraint(
-                equalTo: rootScrollView.trailingAnchor,
-                constant: -18),
-            screenshotCollectionView.heightAnchor.constraint(
-                equalToConstant: 550),
-            screenshotCollectionView.centerXAnchor.constraint(
-                equalTo: rootScrollView.centerXAnchor)
-        ])
-
-//        appNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-//        appNameLabel.setContentHuggingPriority(.required, for: .vertical)
+//        NSLayoutConstraint.activate([
+//            rootScrollView.topAnchor.constraint(
+//                equalTo: view.topAnchor),
+//            rootScrollView.bottomAnchor.constraint(
+//                equalTo: view.bottomAnchor),
+//            rootScrollView.leadingAnchor.constraint(
+//                equalTo: view.leadingAnchor),
+//            rootScrollView.trailingAnchor.constraint(
+//                equalTo: view.trailingAnchor)
+//        ])
 //
-//        appArtistNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        appArtistNameLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+//        NSLayoutConstraint.activate([
+//            iconImageView.topAnchor.constraint(
+//                equalTo: rootScrollView.topAnchor,
+//                constant: 20),
+//            iconImageView.leadingAnchor.constraint(
+//                equalTo: rootScrollView.leadingAnchor,
+//                constant: 20),
+//            iconImageView.widthAnchor.constraint(
+//                equalToConstant: 100)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            infoStackView.topAnchor.constraint(
+//                equalTo: iconImageView.topAnchor),
+//            infoStackView.bottomAnchor.constraint(
+//                equalTo: iconImageView.bottomAnchor),
+//            infoStackView.leadingAnchor.constraint(
+//                equalTo: iconImageView.trailingAnchor,
+//                constant: 10),
+//            infoStackView.trailingAnchor.constraint(
+//                equalTo: rootScrollView.trailingAnchor,
+//                constant: -20)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            fetchButton.topAnchor.constraint(
+//                equalTo: fetchButtonContainer.topAnchor),
+//            fetchButton.bottomAnchor.constraint(
+//                equalTo: fetchButtonContainer.bottomAnchor),
+//            fetchButton.leadingAnchor.constraint(
+//                equalTo: fetchButtonContainer.leadingAnchor)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            settingButtonImageView.trailingAnchor.constraint(
+//                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+//                constant: -20),
+//            settingButtonImageView.centerYAnchor.constraint(
+//                equalTo: fetchButtonContainer.centerYAnchor),
+//            settingButtonImageView.widthAnchor.constraint(
+//                equalTo: settingButtonImageView.heightAnchor),
+//            settingButtonImageView.widthAnchor.constraint(
+//                equalToConstant: 30)
+//        ])
+//
+//        NSLayoutConstraint.activate([
+//            screenshotCollectionView.topAnchor.constraint(
+//                equalTo: iconImageView.bottomAnchor,
+//                constant: 18),
+//            screenshotCollectionView.bottomAnchor.constraint(
+//                equalTo: rootScrollView.bottomAnchor),
+//            screenshotCollectionView.leadingAnchor.constraint(
+//                equalTo: rootScrollView.leadingAnchor,
+//                constant: 18),
+//            screenshotCollectionView.trailingAnchor.constraint(
+//                equalTo: rootScrollView.trailingAnchor,
+//                constant: -18),
+//            screenshotCollectionView.heightAnchor.constraint(
+//                equalToConstant: 550),
+//            screenshotCollectionView.centerXAnchor.constraint(
+//                equalTo: rootScrollView.centerXAnchor)
+//        ])
+
+        //        appNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        //        appNameLabel.setContentHuggingPriority(.required, for: .vertical)
+        //
+        //        appArtistNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+//        appArtistNameLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
     }
 
     private func createScreenShotItemSection() -> NSCollectionLayoutSection {
@@ -275,35 +255,21 @@ final class AppDetailViewController: UIViewController {
         return section
     }
 
-    private func setupImageCaching(
-        _ imageView: UIImageView,
-        from imageURL: String) async {
-            do {
-                try await imageView.setImageUrl(imageURL)
-            } catch (let error) {
-                await AlertControllerBulider.Builder()
-                    .setMessag(error.localizedDescription)
-                    .setConfrimText("확인")
-                    .build()
-                    .present()
-            }
-        }
-
-    private func updateUI(_ appInfo: AppInfoEntity) {
-        Task { [weak self] in
-            guard let `self` = self else {
-                return
-            }
-
-            await self.setupImageCaching(
-                self.iconImageView,
-                from: appInfo.icon)
-        }.store(in: bag)
-
-        DispatchQueue.main.async { [weak self] in
-            self?.appNameLabel.wrap(appInfo.name)
-            self?.appArtistNameLabel.text = appInfo.artistName
-        }
+    private func updateUI() {
+        //        Task { [weak self] in
+        //            guard let `self` = self else {
+        //                return
+        //            }
+        //
+        //            await self.setupImageCaching(
+        //                self.iconImageView,
+        //                from: appInfo.icon)
+        //        }.store(in: bag)
+        //
+        //        DispatchQueue.main.async { [weak self] in
+        //            self?.appNameLabel.wrap(appInfo.name)
+        //            self?.appArtistNameLabel.text = appInfo.artistName
+        //        }
     }
 
     private func setupSettingButtonAction() {
@@ -317,32 +283,32 @@ final class AppDetailViewController: UIViewController {
 
     private func didSearch() {
         Task {
-            await viewModel.load()
+            //            await viewModel.load()
+            //
+            //            guard let state = viewModel.state else {
+            //                return
+            //            }
 
-            guard let state = viewModel.state else {
-                return
-            }
-
-            switch state {
-            case .success(let data):
-                guard let entity = data.first else {
-                    return
-                }
-
-                updateUI(entity)
-
-                let screenshots = entity.screenshots
-                screentshotsURL = screenshots
-
-                appDescription = entity.description
-            case .failed(let errorMessage):
-                await AlertControllerBulider.Builder()
-                    .setTitle("알림")
-                    .setMessag(errorMessage)
-                    .setConfrimText("확인")
-                    .build()
-                    .present()
-            }
+            //            switch state {
+            //            case .success(let data):
+            //                guard let entity = data.first else {
+            //                    return
+            //                }
+            //
+            //                updateUI(entity)
+            //
+            //                let screenshots = entity.screenshots
+            //                screentshotsURL = screenshots
+            //
+            //                appDescription = entity.description
+            //            case .failed(let errorMessage):
+            //                await AlertControllerBulider.Builder()
+            //                    .setTitle("알림")
+            //                    .setMessag(errorMessage)
+            //                    .setConfrimText("확인")
+            //                    .build()
+            //                    .present()
+            //            }
         }.store(in: bag)
     }
 
@@ -366,19 +332,22 @@ extension AppDetailViewController: UICollectionViewDataSource {
 
     func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int) -> Int {
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return screentshotsURL.count
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell: AppDetailScreenshotCollectionViewCell = collectionView.dequeueReusableCell(
-            forIndexPath: indexPath)
+            forIndexPath: indexPath
+        )
 
-            cell.configure(screentshotsURL[indexPath.row])
+        cell.configure(screentshotsURL[indexPath.row])
 
-            return cell
+        return cell
     }
 }
 
@@ -386,9 +355,11 @@ extension AppDetailViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(
             width: 260,
-            height: collectionView.frame.height)
+            height: collectionView.frame.height
+        )
     }
 }

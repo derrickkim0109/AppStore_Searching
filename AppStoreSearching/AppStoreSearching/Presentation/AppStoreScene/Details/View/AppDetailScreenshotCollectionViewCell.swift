@@ -10,10 +10,10 @@ import UIKit
 final class AppDetailScreenshotCollectionViewCell: UICollectionViewCell {
     private let bag = AnyCancelTaskBag()
     
-    private lazy var screenshotImageView: ScreenshotImageView = {
-        var imageView = ScreenshotImageView()
-        return imageView
-    }()
+//    private lazy var screenshotImageView: ScreenshotImageView = {
+//        var imageView = ScreenshotImageView()
+//        return imageView
+//    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,25 +25,25 @@ final class AppDetailScreenshotCollectionViewCell: UICollectionViewCell {
     }
 
     private func bind() {
-        addSubview(screenshotImageView)
+//        addSubview(screenshotImageView)
         configureLayouts()
     }
 
     private func configureLayouts() {
-        NSLayoutConstraint.activate([
-            screenshotImageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor),
-            screenshotImageView.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor),
-            screenshotImageView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor),
-            screenshotImageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor),
-            screenshotImageView.heightAnchor.constraint(
-                equalToConstant: Const.fiveHundredFifty),
-            screenshotImageView.widthAnchor.constraint(
-                equalToConstant: Const.twoHundredFifty),
-        ])
+//        NSLayoutConstraint.activate([
+//            screenshotImageView.topAnchor.constraint(
+//                equalTo: contentView.topAnchor),
+//            screenshotImageView.bottomAnchor.constraint(
+//                equalTo: contentView.bottomAnchor),
+//            screenshotImageView.leadingAnchor.constraint(
+//                equalTo: contentView.leadingAnchor),
+//            screenshotImageView.trailingAnchor.constraint(
+//                equalTo: contentView.trailingAnchor),
+//            screenshotImageView.heightAnchor.constraint(
+//                equalToConstant: Const.fiveHundredFifty),
+//            screenshotImageView.widthAnchor.constraint(
+//                equalToConstant: Const.twoHundredFifty),
+//        ])
     }
 
     func configure(_ screenUrl: String) {
