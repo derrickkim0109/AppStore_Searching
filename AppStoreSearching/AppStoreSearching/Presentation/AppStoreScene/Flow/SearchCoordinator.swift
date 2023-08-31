@@ -10,87 +10,113 @@ import UIKit
 protocol SearchCoordinatorDelegate: AnyObject { }
 
 class SearchCoordinator: Coordinator,
-                         AppsInfoListViewControllerDelegate,
+                         AppSearchResultListViewControllerDelegate,
                          AppDetailViewControllerDelegate {
     weak var parentCoordinator: SearchCoordinatorDelegate?
-    
+
     var childCoordinators = [Coordinator]()
     private var navigationController = UINavigationController()
-    private let apiDataTransferService: DataTransferService
-
-    init(apiDataTransferService: DataTransferService) {
-        self.apiDataTransferService = apiDataTransferService
-    }
 
     func start() -> UINavigationController {
         let searchViewController = setViewController()
-        return setNavigationController(with: searchViewController)
-    }
-
-    private func setViewController() -> UIViewController {
-        let viewModel = DefaultSearchViewModel()
-        let viewController = SearchViewController(
-            viewModel: viewModel,
-            searchResultContainerViewController: searchResultContainerViewController())
-        return viewController
-    }
-
-    private func setNavigationController(
-        with viewController: UIViewController) -> UINavigationController {
-            navigationController.setViewControllers(
-                [viewController],
-                animated: false)
-
-            navigationController.navigationBar.prefersLargeTitles = true
-            navigationController.navigationBar.topItem?.title = "검색"
-            navigationController.navigationBar.setShadow(hidden: true)
-
-            return navigationController
-        }
-
-    private func searchResultContainerViewController() -> SearchResultContainerViewController {
-        let viewController = SearchResultContainerViewController(
-            suggestedTermsTableViewController: suggestedTermsTableViewController(),
-            appsInfoListViewController: appsInfoListViewController())
-        return viewController
-    }
-
-    private func suggestedTermsTableViewController() -> SuggestedTermsTableViewController {
-        let viewModel: SuggestedTermsTableViewModel = DefaultSuggestedTermsTableViewModel()
-        let viewController = SuggestedTermsTableViewController(viewModel: viewModel)
-        return viewController
-    }
-
-    private func appsInfoListViewController() -> AppsInfoListViewController {
-        let appsInfoRepository: AppsInfoRepository = DefaultAppsInfoRepository(
-            dataTransferService: apiDataTransferService)
-        let searchAppsInfoUseCase: SearchAppsInfoUseCase = DefaultSearchAppsInfoUseCase(
-            appsInfoRepository: appsInfoRepository)
-        let viewModel: AppsInfoListViewModel = DefaultAppsInfoLisViewModel(
-            searchAppsInfoUseCase: searchAppsInfoUseCase)
-        let viewController = AppsInfoListViewController(viewModel: viewModel)
-        viewController.coordinator = self
-        return viewController
+        return setNavigationController(
+            with: searchViewController
+        )
     }
 
     func showDetailViewController(
         at viewController: UIViewController,
-        of id: Int) {
-            let appInfoRepository: AppInfoRepository = DefaultAppInfoRepository(
-                dataTransferService: apiDataTransferService)
+        of item: AppSearchItemModel) {
+            let viewModel = AppDetailViewModel(appItem: item)
+            let viewController = AppDetailViewController(viewModel: viewModel)
 
-            let fetchAppInfoUseCase: FetchAppInfoUseCase = DefaultFetchAppInfoUseCase(
-                appInfoRepository: appInfoRepository)
-
-            let viewModel = DefaultAppDetailViewModel(
-                appId: id,
-                fetchAppInfoUseCase: fetchAppInfoUseCase)
-
-            let detailViewController = AppDetailViewController(viewModel: viewModel)
-            detailViewController.coordinator = self
-            navigationController.navigationBar.prefersLargeTitles = false
             navigationController.pushViewController(
-                detailViewController,
-                animated: true)
+                viewController,
+                animated: true
+            )
         }
+
+    private func setViewController() -> UIViewController {
+        let viewModel: AppSearchViewModel = appSearchDependencies()
+        let viewController = AppSearchViewController(
+            viewModel: viewModel,
+            searchResultContainerViewController: searchResultContainerViewController(
+                viewModel: viewModel
+            )
+        )
+
+        return viewController
+    }
+
+    private func setNavigationController(
+        with viewController: UIViewController
+    ) -> UINavigationController {
+
+        navigationController.pushViewController(
+            viewController,
+            animated: false
+        )
+
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.topItem?.title = "검색"
+
+        return navigationController
+    }
+
+    private func getRecentKeywordDependencies() -> RecentKeywordRepositoryInterface {
+        let recentKeywordStorage: RecentKeywordStorageInterface = RecentKeywordStorage()
+        let recentKeywordRepository: RecentKeywordRepositoryInterface = RecentKeywordRepository(
+            recentKeywordStorage: recentKeywordStorage
+        )
+
+        return recentKeywordRepository
+    }
+
+    func appSearchDependencies() -> AppSearchViewModel {
+        let networkService: NetworkService = NetworkService()
+        let dataSource : AppSearchDataSourceInterface = AppSearchDataSource(
+            networkService: networkService)
+        let repository : AppSearchRepositoryInterface = AppSearchRepository(
+            dataSource: dataSource)
+        let useCase : AppSearchUseCaseInterface = AppSearchUseCase(
+            searchRepository: repository,
+            recentKeywordRepository: getRecentKeywordDependencies())
+        let viewModel : AppSearchViewModel = AppSearchViewModel(
+            appSearchUseCase: useCase)
+
+        return viewModel
+    }
+
+    private func searchResultContainerViewController(
+        viewModel: AppSearchViewModel
+    ) -> SearchResultContainerViewController {
+        let viewController = SearchResultContainerViewController(
+            recentKeywordListViewController: suggestedTermsTableViewController(
+                viewModel: viewModel
+            ),
+            appsInfoListViewController: appsInfoListViewController(
+                viewModel: viewModel
+            )
+        )
+        return viewController
+    }
+    
+    private func suggestedTermsTableViewController(
+        viewModel: AppSearchViewModel
+    ) -> RecentKeywordListViewController {
+        let viewController = RecentKeywordListViewController(
+            viewModel: viewModel
+        )
+        return viewController
+    }
+
+    private func appsInfoListViewController(
+        viewModel: AppSearchViewModel
+    ) -> AppSearchResultListViewController {
+        let viewController = AppSearchResultListViewController(
+            viewModel: viewModel
+        )
+        viewController.coordinator = self
+        return viewController
+    }
 }
