@@ -8,7 +8,7 @@
 import UIKit
 
 final class RoundedButtonView: BaseView {
-    private let roundedButton: UIButton = {
+    let button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -21,21 +21,21 @@ final class RoundedButtonView: BaseView {
     override func addUIComponents() {
         super.addUIComponents()
 
-        addSubview(roundedButton)
+        addSubview(button)
     }
 
     override func configureLayouts() {
         super.configureLayouts()
 
         NSLayoutConstraint.activate([
-            roundedButton.centerXAnchor.constraint(
+            button.centerXAnchor.constraint(
                 equalTo: centerXAnchor),
-            roundedButton.centerYAnchor.constraint(
+            button.centerYAnchor.constraint(
                 equalTo: centerYAnchor),
 
-            roundedButton.widthAnchor.constraint(
+            button.widthAnchor.constraint(
                 equalToConstant: 70),
-            roundedButton.heightAnchor.constraint(
+            button.heightAnchor.constraint(
                 equalToConstant: 30)
         ])
     }
@@ -46,22 +46,22 @@ final class RoundedButtonView: BaseView {
         fontSize: CGFloat,
         cornerRadius: CGFloat
     ) {
-        roundedButton.setTitle(
+        button.setTitle(
             title,
             for: .normal
         )
 
-        roundedButton.backgroundColor = backgroundColor
+        button.backgroundColor = backgroundColor
 
-        roundedButton.titleLabel?.font = UIFont.systemFont(
+        button.titleLabel?.font = UIFont.systemFont(
             ofSize: fontSize,
             weight: .bold
         )
 
-        roundedButton.setTitleColor(
+        button.setTitleColor(
             UIColor.systemBlue,
             for: .normal
         )
-        roundedButton.layer.cornerRadius = cornerRadius
+        button.layer.cornerRadius = cornerRadius
     }
 }
