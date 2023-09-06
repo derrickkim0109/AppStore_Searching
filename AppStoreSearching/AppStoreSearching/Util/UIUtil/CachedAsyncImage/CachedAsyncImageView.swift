@@ -108,7 +108,28 @@ final class CachedAsyncImageView: BaseView {
         } else if error != nil {
             imageView.image = UIImage(systemName: "x.circle")
         } else {
-            getCacheImage(by: cachedImageInfo?.urlStr ?? "")
+            Task { [weak self] in
+                do {
+                    guard let urlStr = cachedImageInfo?.urlStr,
+                          let cachedImage = try await self?.getCacheImage(by: urlStr) else {
+                        return
+                    }
+
+                    await MainActor.run() {
+                        self?.imageView.image = cachedImage
+                        self?.activityIndicator.stopAnimating()
+                    }
+                } catch (let error) {
+                    if let networkError = error as? NetworkError {
+                        // NetworkError 타입인 경우에 대한 처리
+                        self?.error = networkError
+                    } else {
+                        // 다른 에러 타입인 경우에 대한 처리
+                        // 예: 기본 에러 메시지 표시 등
+                        self?.error = .unknownError
+                    }
+                }
+            }.store(in: bag)
             activityIndicator.startAnimating()
         }
     }
@@ -122,16 +143,18 @@ final class CachedAsyncImageView: BaseView {
         imageView.image = nil
     }
 
-    private func getCacheImage(by url: String) {
+    private func getCacheImage(
+        by url: String
+    ) async throws -> UIImage {
         guard let url = URL(string: url) else {
-            return
+            throw NetworkError.makeURLError
         }
 
-        ImageCacheManager.shared.requestImageURL(url) { [weak self] image in
-            self?.activityIndicator.stopAnimating()
-            self?.imageView.image = image
-        } failure: { error in
-            self.error = error
+        do {
+            let image = try await ImageCacheManager.shared.request(url)
+            return image
+        } catch (let error) {
+            throw error
         }
     }
 }

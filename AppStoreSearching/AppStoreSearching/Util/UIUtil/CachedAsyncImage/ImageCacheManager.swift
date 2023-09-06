@@ -8,9 +8,6 @@
 import UIKit
 
 final class ImageCacheManager {
-    typealias SuccessHandler = (_ image: UIImage) -> Void
-    typealias FailureHandler = (_ error: NetworkError) -> Void
-
     static let shared = ImageCacheManager()
 
     private var imageRequestSession: URLSession?
@@ -19,11 +16,9 @@ final class ImageCacheManager {
         diskCapacity: 100 * 1024 * 1024,
         diskPath: "ImageDownloadCache")
 
-    func requestImageURL(
-        _ url: URL,
-        success: @escaping SuccessHandler,
-        failure: @escaping FailureHandler
-    ) {
+    func request(
+        _ url: URL
+    ) async throws -> UIImage {
         let urlRequest = URLRequest(
             url: url,
             cachePolicy: .returnCacheDataElseLoad,
@@ -31,48 +26,33 @@ final class ImageCacheManager {
         )
 
         if let cacheResponse = urlCache.cachedResponse(for: urlRequest),
-           let cachedImage = UIImage.init(data: cacheResponse.data)  {
-            DispatchQueue.main.async {
-                success(cachedImage)
-            }
-            return
+           let cachedImage = UIImage(data: cacheResponse.data) {
+            return cachedImage
         }
 
-        let task = imageRequestSession?.dataTask(with: url) {
-            [weak self]
-            (data,
-             response,
-             error) in
-            guard error == nil else {
-                failure(.invalidResponseError)
-                return
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200 ..< 300).contains(httpResponse.statusCode) else {
+                throw NetworkError.invalidResponseError
             }
 
-            guard let response = response as? HTTPURLResponse,
-                  case 200 ..< 300 = response.statusCode else {
-                failure(.unknownError)
-                return
+            guard let image = UIImage(data: data) else {
+                throw NetworkError.unknownError
             }
 
-            guard let data = data else {
-                return
+            let cacheResponse = CachedURLResponse(response: httpResponse, data: data)
+
+            DispatchQueue.main.async { [weak self] in
+                self?.urlCache.storeCachedResponse(cacheResponse, for: urlRequest)
             }
 
-            let cacheResponse = CachedURLResponse(
-                response: response,
-                data: data)
-
-            self?.urlCache.storeCachedResponse(
-                cacheResponse,
-                for: urlRequest)
-
-            DispatchQueue.main.async {
-                if let image = UIImage(data: data) {
-                    success(image)
-                }
-            }
+            return image
+        } catch {
+            throw error
         }
-        task?.resume()
+
     }
 
     private init() {
