@@ -23,7 +23,7 @@ final class AppInfoSummaryView: BaseView {
         stackView.spacing = 18
         return stackView
     }()
-
+    
     private lazy var starRatingInfoStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -38,17 +38,19 @@ final class AppInfoSummaryView: BaseView {
         stackView.spacing = 6
         return stackView
     }()
-
+    
     private let starRatingView: StarRatingView = StarRatingView()
-
+    
     private let userCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .lightGray
+        label.font = UIFont.systemFont(
+            ofSize: 13
+        )
         return label
     }()
-
+    
     private lazy var developerInfoStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -63,7 +65,7 @@ final class AppInfoSummaryView: BaseView {
         stackView.spacing = 6
         return stackView
     }()
-
+    
     private let developerIconImageView: UIImageView = {
         let imageView = UIImageView(
             frame:
@@ -74,37 +76,37 @@ final class AppInfoSummaryView: BaseView {
                     height: 20
                 )
         )
-
+        
+        imageView.tintColor = .lightGray
         imageView.image = UIImage(
             systemName: "person.crop.square"
         )
-        imageView.tintColor = .lightGray
         imageView.setContentCompressionResistancePriority(
             .required,
             for: .horizontal
         )
-
+        
         imageView.setContentHuggingPriority(
             .defaultHigh,
             for: .horizontal
         )
         return imageView
     }()
-
+    
     private let developerNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(
             ofSize: 12,
             weight: .bold
         )
-
+        
         label.setContentHuggingPriority(
             .defaultLow,
             for: .horizontal
         )
         return label
     }()
-
+    
     private lazy var genreInfoStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -119,7 +121,7 @@ final class AppInfoSummaryView: BaseView {
         stackView.spacing = 6
         return stackView
     }()
-
+    
     private let genreIconImageView: UIImageView = {
         let imageView = UIImageView(
             frame: CGRect(
@@ -129,20 +131,20 @@ final class AppInfoSummaryView: BaseView {
                 height: 20
             )
         )
-
+        
         imageView.tintColor = .lightGray
         imageView.setContentCompressionResistancePriority(
             .required,
             for: .horizontal
         )
-
+        
         imageView.setContentHuggingPriority(
             .defaultHigh,
             for: .horizontal
         )
         return imageView
     }()
-
+    
     private let genreNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(
@@ -155,22 +157,22 @@ final class AppInfoSummaryView: BaseView {
         )
         return label
     }()
-
+    
     override func setupDefault() {
         super.setupDefault()
-
+        
         backgroundColor = .clear
     }
-
+    
     override func addUIComponents() {
         super.addUIComponents()
-
+        
         addSubview(rootStackView)
     }
-
+    
     override func configureLayouts() {
         super.configureLayouts()
-
+        
         NSLayoutConstraint.activate([
             rootStackView.topAnchor.constraint(
                 equalTo: topAnchor),
@@ -181,7 +183,7 @@ final class AppInfoSummaryView: BaseView {
             rootStackView.trailingAnchor.constraint(
                 equalTo: trailingAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             starRatingInfoStackView.widthAnchor.constraint(
                 equalTo: widthAnchor,
@@ -189,32 +191,32 @@ final class AppInfoSummaryView: BaseView {
             developerInfoStackView.widthAnchor.constraint(
                 equalTo: widthAnchor,
                 multiplier: 0.3),
-
+            
             userCountLabel.centerYAnchor.constraint(
                 equalTo: starRatingView.centerYAnchor)
         ])
     }
-
+    
     func configure(_ appItem: AppSearchItemModel) {
         starRatingView.updatingViews(round(
             appItem.averageUserRating * 100) / 100)
-
+        
         userCountLabel.text = appItem.userRatingCount.formattedNumber
-
+        
         if userCountLabel.text == "0"
             || starRatingView.isHidden {
             starRatingInfoStackView.isHidden = true
         }
-
+        
         developerNameLabel.text = appItem.artistName
-
+        
         genreNameLabel.text = appItem.genres.first
-
+        
         genreIconImageView.image = UIImage(
             systemName: appItem.getGenreImageName()
         )
     }
-
+    
     func remove() {
         starRatingInfoStackView.isHidden = false
         userCountLabel.text = nil

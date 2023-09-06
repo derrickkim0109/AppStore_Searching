@@ -69,14 +69,7 @@ final class AppDetailViewController: BaseViewController<AppDetailViewModel> {
         return view
     }()
 
-    private let fetchButton: FetchButton = {
-        let button = FetchButton()
-        button.setTitleColor(
-            UIColor.white,
-            for: .normal)
-        button.backgroundColor = UIColor.systemBlue
-        return button
-    }()
+    private let fetchButton = RoundedButtonView()
 
     private let settingButtonImageView: UIImageView = {
         let imageView = UIImageView()

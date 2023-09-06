@@ -98,7 +98,7 @@ final class AppSearchResultListView: BaseView {
     func hasWarningLabel(_ isHidden: Bool) {
         warningLabel.isHidden = isHidden
     }
-
+    
     private func configureDataSource() -> DataSource {
         return DataSource(
             tableView: tableView,

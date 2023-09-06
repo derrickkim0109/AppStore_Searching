@@ -25,18 +25,22 @@ final class RecentKeywordListViewController: BaseViewController<AppSearchViewMod
                 x: Const.zero,
                 y: Const.zero,
                 width: tableView.bounds.size.width,
-                height: CGFloat.leastNormalMagnitude))
+                height: CGFloat.leastNormalMagnitude
+            )
+        )
         return tableView
     }()
     
     private lazy var dataSource = configureDataSource()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        applyDataSource(data: viewModel.filteredRecentKeywords)
+        
+        applyDataSource(
+            data: viewModel.filteredRecentKeywords
+        )
     }
-
+    
     override func setupDefault() {
         super.setupDefault()
         
@@ -64,7 +68,7 @@ final class RecentKeywordListViewController: BaseViewController<AppSearchViewMod
                 equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-
+    
     func applyDataSource(
         data: [String]
     ) {
@@ -92,7 +96,8 @@ final class RecentKeywordListViewController: BaseViewController<AppSearchViewMod
                 item
                 -> UITableViewCell? in
                 let cell: RecentAppSearchTableViewCell = tableView.dequeueReusableCell(
-                    forIndexPath: indexPath)
+                    forIndexPath: indexPath
+                )
                 cell.selectionStyle = .none
                 cell.configure(
                     keyword: item,
@@ -116,11 +121,12 @@ extension RecentKeywordListViewController: UITableViewDelegate {
             for: indexPath) else {
             return
         }
-
+        
         tableView.deselectRow(
             at: indexPath,
-            animated: false)
-
+            animated: false
+        )
+        
         viewModel.resultState = .hasResult
         viewModel.keyword = item
     }

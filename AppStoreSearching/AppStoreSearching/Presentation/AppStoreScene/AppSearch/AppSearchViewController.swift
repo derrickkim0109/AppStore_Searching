@@ -10,77 +10,77 @@ import Combine
 
 final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
     private let appSearchView = AppSearchView()
-
+    
     private var searchController: UISearchController?
     private let searchResultContainerViewController: SearchResultContainerViewController
-
+    
     init(
         viewModel: AppSearchViewModel,
         searchResultContainerViewController: SearchResultContainerViewController
     ) {
         self.searchResultContainerViewController = searchResultContainerViewController
-
+        
         super.init(viewModel: viewModel)
     }
-
+    
     required init(viewModel: T) {
         fatalError()
     }
     
     override func setupDefault() {
         super.setupDefault()
-
+        
         view.backgroundColor = .systemBackground
         appSearchView.tableView.delegate = self
         setSearchController()
     }
-
+    
     override func addUIComponents() {
         super.addUIComponents()
-
+        
         view.addSubview(appSearchView)
     }
-
+    
     override func bind() {
         super.bind()
-
+        
         viewModel.$keyword
             .subscribe(on: DispatchQueue.main)
             .sink { [weak self] keyword in
                 guard let `self` = self else {
                     return
                 }
-
+                
                 viewModel.getRecentKeywordList()
-
+                
                 switch viewModel.resultState {
                 case .hasResult:
                     viewModel.resetProperties()
                     viewModel.searchApp(by: keyword)
-
+                    
                     setupPostSearchBar(text: keyword)
-
+                    
                     searchResultContainerViewController.handle(
                         keyword: keyword,
                         resultState: .hasResult
                     )
-
+                    
                 case .searching:
                     viewModel.filteredRecentKeywords = viewModel.filterRecentKeywords(
                         by: keyword
                     )
-
+                    
                     searchResultContainerViewController.handle(
                         keyword: keyword,
                         resultState: .searching
                     )
-
+                    
                 case .none, .noResult:
                     break
                 }
             }
             .store(in: &cancellable)
-
+        
         viewModel.$recentKeywordList
             .subscribe(on: DispatchQueue.main)
             .sink { [weak self] recentKeywordList in
@@ -90,10 +90,10 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
             }
             .store(in: &cancellable)
     }
-
+    
     override func configureLayouts() {
         super.configureLayouts()
-
+        
         NSLayoutConstraint.activate([
             appSearchView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -105,7 +105,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
                 equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-
+    
     private func setSearchController() {
         searchController = UISearchController(
             searchResultsController: searchResultContainerViewController)
@@ -120,7 +120,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
     }
-
+    
     private func setupPostSearchBar(
         text: String
     ) {
@@ -128,7 +128,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
         searchController?.isActive = true
         searchController?.searchBar.resignFirstResponder()
     }
-
+    
     private func search(
         _ keyword: String,
         _ state: ResultState
@@ -136,7 +136,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
         viewModel.resultState = state
         viewModel.keyword = keyword
     }
-
+    
     private enum Const {
         static let zero: CGFloat = 0
         static let fifteen = 15.0
@@ -158,20 +158,20 @@ extension AppSearchViewController: UISearchBarDelegate {
             .searching
         )
     }
-
+    
     func searchBarCancelButtonClicked(
         _ searchBar: UISearchBar
     ) {
         viewModel.getRecentKeywordList()
     }
-
+    
     func searchBarSearchButtonClicked(
         _ searchBar: UISearchBar
     ) {
         guard let searchText = searchBar.text else {
             return
         }
-
+        
         search(
             searchText,
             .hasResult
@@ -185,16 +185,16 @@ extension AppSearchViewController: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         let keyword = viewModel.recentKeywordList[indexPath.row]
-
+        
         tableView.deselectRow(
             at: indexPath,
             animated: false
         )
-
+        
         viewModel.resultState = .hasResult
         viewModel.keyword = keyword
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
@@ -204,7 +204,7 @@ extension AppSearchViewController: UITableViewDelegate {
             height: 60.0
         )
     }
-
+    
     private func makeTableViewHeaderView(
         width: CGFloat,
         height: CGFloat
@@ -216,7 +216,7 @@ extension AppSearchViewController: UITableViewDelegate {
                 width: width,
                 height: height))
         headerView.backgroundColor = .systemBackground
-
+        
         let label = UILabel(
             frame: CGRect(
                 x: Const.fifteen,
@@ -225,7 +225,7 @@ extension AppSearchViewController: UITableViewDelegate {
                 height: headerView.frame.height
             )
         )
-
+        
         label.text = Const.recentTerm
         label.textColor = UIColor.baseTextColor
         label.textAlignment = .left
@@ -233,9 +233,9 @@ extension AppSearchViewController: UITableViewDelegate {
         label.font = UIFont.boldSystemFont(
             ofSize: Const.twentythree
         )
-
+        
         headerView.addSubview(label)
-
+        
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(
                 equalTo: headerView.centerYAnchor)

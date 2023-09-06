@@ -13,29 +13,34 @@ class SearchCoordinator: Coordinator,
                          AppSearchResultListViewControllerDelegate,
                          AppDetailViewControllerDelegate {
     weak var parentCoordinator: SearchCoordinatorDelegate?
-
+    
     var childCoordinators = [Coordinator]()
     private var navigationController = UINavigationController()
-
+    
     func start() -> UINavigationController {
         let searchViewController = setViewController()
         return setNavigationController(
             with: searchViewController
         )
     }
-
+    
     func showDetailViewController(
         at viewController: UIViewController,
-        of item: AppSearchItemModel) {
-            let viewModel = AppDetailViewModel(appItem: item)
-            let viewController = AppDetailViewController(viewModel: viewModel)
-
-            navigationController.pushViewController(
-                viewController,
-                animated: true
-            )
-        }
-
+        of item: AppSearchItemModel
+    ) {
+        let viewModel = AppDetailViewModel(
+            appItem: item
+        )
+        let viewController = AppDetailViewController(
+            viewModel: viewModel
+        )
+        
+        navigationController.pushViewController(
+            viewController,
+            animated: true
+        )
+    }
+    
     private func setViewController() -> UIViewController {
         let viewModel: AppSearchViewModel = appSearchDependencies()
         let viewController = AppSearchViewController(
@@ -44,49 +49,53 @@ class SearchCoordinator: Coordinator,
                 viewModel: viewModel
             )
         )
-
+        
         return viewController
     }
-
+    
     private func setNavigationController(
         with viewController: UIViewController
     ) -> UINavigationController {
-
+        
         navigationController.pushViewController(
             viewController,
             animated: false
         )
-
+        
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.topItem?.title = "검색"
-
+        
         return navigationController
     }
-
+    
     private func getRecentKeywordDependencies() -> RecentKeywordRepositoryInterface {
         let recentKeywordStorage: RecentKeywordStorageInterface = RecentKeywordStorage()
         let recentKeywordRepository: RecentKeywordRepositoryInterface = RecentKeywordRepository(
             recentKeywordStorage: recentKeywordStorage
         )
-
+        
         return recentKeywordRepository
     }
-
+    
     func appSearchDependencies() -> AppSearchViewModel {
         let networkService: NetworkService = NetworkService()
         let dataSource : AppSearchDataSourceInterface = AppSearchDataSource(
-            networkService: networkService)
+            networkService: networkService
+        )
         let repository : AppSearchRepositoryInterface = AppSearchRepository(
-            dataSource: dataSource)
+            dataSource: dataSource
+        )
         let useCase : AppSearchUseCaseInterface = AppSearchUseCase(
             searchRepository: repository,
-            recentKeywordRepository: getRecentKeywordDependencies())
+            recentKeywordRepository: getRecentKeywordDependencies()
+        )
         let viewModel : AppSearchViewModel = AppSearchViewModel(
-            appSearchUseCase: useCase)
-
+            appSearchUseCase: useCase
+        )
+        
         return viewModel
     }
-
+    
     private func searchResultContainerViewController(
         viewModel: AppSearchViewModel
     ) -> SearchResultContainerViewController {
@@ -109,7 +118,7 @@ class SearchCoordinator: Coordinator,
         )
         return viewController
     }
-
+    
     private func appsInfoListViewController(
         viewModel: AppSearchViewModel
     ) -> AppSearchResultListViewController {

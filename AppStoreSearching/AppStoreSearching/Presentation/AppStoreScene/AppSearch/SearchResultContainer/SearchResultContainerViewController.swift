@@ -20,7 +20,8 @@ final class SearchResultContainerViewController: ContentStateViewController {
 
         super.init(
             nibName: nil,
-            bundle: nil)
+            bundle: nil
+        )
     }
 
     @available(*, unavailable)
@@ -33,23 +34,18 @@ final class SearchResultContainerViewController: ContentStateViewController {
         bind()
     }
 
-    private func bind() {
-        view.backgroundColor = .systemBackground
-    }
-
     func handle(
         keyword: String,
         resultState: ResultState
     ) {
         switch resultState {
-        case .searching:
-            transition(to: .render(recentKeywordListViewController))
-
-        case .hasResult:
-            transition(to: .render(appsInfoListViewController))
-
-        case .noResult, .none:
-            break
+        case .searching:        transition(to: .render(recentKeywordListViewController))
+        case .hasResult:        transition(to: .render(appsInfoListViewController))
+        case .noResult, .none:  break
         }
+    }
+
+    private func bind() {
+        view.backgroundColor = .systemBackground
     }
 }

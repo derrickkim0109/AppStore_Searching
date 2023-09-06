@@ -13,7 +13,6 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
             arrangedSubviews: [
                 iconImageView,
                 infoStackView,
-                emptyStackView,
                 fetchButtonView
             ]
         )
@@ -63,13 +62,10 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
 
     private let fetchButtonView = RoundedButtonView()
 
-    private let emptyStackView = UIStackView()
-
     private let appInfoSummaryView = AppInfoSummaryView()
 
     private let appScreenshotView = AppScreenshotView()
-
-    private let bag = AnyCancelTaskBag()
+    private var urlString: String?
 
     override init(
         style: UITableViewCell.CellStyle,
@@ -98,13 +94,39 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
         appNameLabel.text = nil
         genreTextLabel.text = nil
     }
-    
+
+    func configure(appItem: AppSearchItemModel) {
+        let cachedIconImageInfo = CachedImageInfo(
+            urlStr: appItem.artworkUrl512,
+            cornerRadius: 10
+        )
+
+        iconImageView.configure(
+            cachedIconImageInfo
+        )
+
+        appScreenshotView.configure(
+            by: appItem.screenshotUrls
+        )
+
+        appNameLabel.text = appItem.trackName
+        genreTextLabel.text = appItem.genres.first
+        appInfoSummaryView.configure(appItem)
+        urlString = appItem.trackViewUrl
+    }
+
     private func setupDefault() {
         fetchButtonView.configure(
             title: "받기",
             backgroundColor: UIColor.fetchButtonBackgroundColor,
             fontSize: 15.0,
             cornerRadius: 15.0
+        )
+
+        fetchButtonView.button.addTarget(
+            self,
+            action: #selector(didTapFetchButton(_:)),
+            for: .touchUpInside
         )
     }
 
@@ -168,23 +190,17 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
         ])
     }
 
-    func configure(appItem: AppSearchItemModel) {
-        let cachedIconImageInfo = CachedImageInfo(
-            urlStr: appItem.artworkUrl512,
-            cornerRadius: 10
-        )
+    @objc private func didTapFetchButton(_ sender: UIButton) {
+        guard let urlStr = urlString,
+              let url = URL(string: urlStr) else {
+            return
+        }
         
-        iconImageView.configure(
-            cachedIconImageInfo
+        UIApplication.shared.open(
+            url,
+            options: [:],
+            completionHandler: nil
         )
-
-        appScreenshotView.configure(
-            by: appItem.screenshotUrls
-        )
-
-        appNameLabel.text = appItem.trackName
-        genreTextLabel.text = appItem.genres.first
-        appInfoSummaryView.configure(appItem)
     }
 }
 

@@ -10,11 +10,11 @@ import UIKit
 final class AppSearchView: BaseView {
     typealias DataSource = UITableViewDiffableDataSource<Section, String>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, String>
-
+    
     enum Section {
         case main
     }
-
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -22,22 +22,22 @@ final class AppSearchView: BaseView {
         tableView.register(RecentAppSearchTableViewCell.self)
         return tableView
     }()
-
+    
     private lazy var dataSource = configureDataSource()
-
+    
     override func setupDefault() {
         super.setupDefault()
     }
-
+    
     override func addUIComponents() {
         super.addUIComponents()
-
+        
         addSubview(tableView)
     }
-
+    
     override func configureLayouts() {
         super.configureLayouts()
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(
                 equalTo: topAnchor),
@@ -50,14 +50,14 @@ final class AppSearchView: BaseView {
                 equalTo: trailingAnchor)
         ])
     }
-
+    
     func applyDataSource(
         data: [String]
     ) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(data)
-
+        
         Task { [weak self] in
             await MainActor.run() {
                 self?.dataSource.apply(
@@ -68,7 +68,7 @@ final class AppSearchView: BaseView {
             }
         }.store(in: bag)
     }
-
+    
     private func configureDataSource() -> DataSource {
         return DataSource(
             tableView: tableView,
@@ -80,7 +80,7 @@ final class AppSearchView: BaseView {
                 let cell: RecentAppSearchTableViewCell = tableView.dequeueReusableCell(
                     forIndexPath: indexPath)
                 cell.selectionStyle = .none
-
+                
                 cell.configure(
                     keyword: item,
                     isHiddenImage: true

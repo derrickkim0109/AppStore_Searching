@@ -47,7 +47,7 @@ enum AppGenreModel: String {
     case foodDrink = "음식 및 음료"
     case shopping = "쇼핑"
     case stickers = "스티커"
-    case developerTools = "개발 툴"
+    case developerTools = "개발자 도구"
 }
 
 extension AppGenreModel {

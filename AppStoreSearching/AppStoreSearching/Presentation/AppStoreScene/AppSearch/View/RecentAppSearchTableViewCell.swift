@@ -20,7 +20,7 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         stackView.spacing = 8
         return stackView
     }()
-
+    
     private lazy var iconContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,14 +28,16 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         view.addSubview(searchingIconImageView)
         return view
     }()
-
+    
     private let searchingIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: Const.searchIcon)
+        imageView.image = UIImage(
+            named: Const.searchIcon
+        )
         return imageView
     }()
-
+    
     private let recentKeywordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -45,41 +47,43 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         )
         return label
     }()
-
+    
     override init(
         style: UITableViewCell.CellStyle,
-        reuseIdentifier: String?) {
-            super.init(
-                style: style,
-                reuseIdentifier: reuseIdentifier)
-            
-            setupDefault()
-            addUIComponents()
-            configureLayouts()
-        }
-
+        reuseIdentifier: String?
+    ) {
+        super.init(
+            style: style,
+            reuseIdentifier: reuseIdentifier
+        )
+        
+        setupDefault()
+        addUIComponents()
+        configureLayouts()
+    }
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError()
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-
+        
         recentKeywordLabel.text = nil
     }
-
+    
     private func setupDefault() {
         contentView.autoresizingMask = [
             .flexibleWidth,
             .flexibleHeight
         ]
     }
-
+    
     private func addUIComponents() {
         contentView.addSubview(rootStackView)
     }
-
+    
     private func configureLayouts() {
         NSLayoutConstraint.activate([
             rootStackView.topAnchor.constraint(
@@ -91,11 +95,11 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
                 constant: 15),
             rootStackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
-
+            
             rootStackView.heightAnchor.constraint(
                 equalToConstant: 35)
         ])
-
+        
         NSLayoutConstraint.activate([
             iconContainerView.widthAnchor.constraint(
                 equalTo: rootStackView.widthAnchor,
@@ -104,14 +108,14 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
                 equalTo: iconContainerView.centerXAnchor),
             searchingIconImageView.centerYAnchor.constraint(
                 equalTo: iconContainerView.centerYAnchor),
-
+            
             searchingIconImageView.widthAnchor.constraint(
                 equalTo: searchingIconImageView.heightAnchor),
             searchingIconImageView.heightAnchor.constraint(
                 equalToConstant: 15)
         ])
     }
-
+    
     func configure(
         keyword: String,
         isHiddenImage: Bool
@@ -121,20 +125,20 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
                 ofSize: Const.sixteen
             )
         ]
-
+        
         let attributedString = NSAttributedString(
             string: keyword.lowercased(),
             attributes: attributes
         )
-
+        
         let mutableAttributedString = NSMutableAttributedString(
             attributedString: attributedString
         )
-
+        
         recentKeywordLabel.attributedText = mutableAttributedString
         iconContainerView.isHidden = isHiddenImage
     }
-
+    
     private enum Const {
         static let ten = 10.0
         static let fifteen = 15.0
