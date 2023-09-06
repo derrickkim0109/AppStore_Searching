@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		903771892AA2A5590003AF55 /* AppInfoSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903771882AA2A5590003AF55 /* AppInfoSummaryView.swift */; };
 		904DACFB2A932A9C007BCC56 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DACFA2A932A9C007BCC56 /* Encodable.swift */; };
 		904DACFD2A932B3A007BCC56 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DACFC2A932B3A007BCC56 /* Dictionary.swift */; };
 		904DAD022A933023007BCC56 /* RecentKeywordStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD012A933023007BCC56 /* RecentKeywordStorage.swift */; };
@@ -83,7 +84,7 @@
 		90B279AB29DA5CED006FB775 /* SearchResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2795B29DA5CED006FB775 /* SearchResultContainerViewController.swift */; };
 		90B279AE29DA5CED006FB775 /* AppSearchResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796129DA5CED006FB775 /* AppSearchResultListViewController.swift */; };
 		90B279AF29DA5CED006FB775 /* AppSearchResultListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796329DA5CED006FB775 /* AppSearchResultListTableViewCell.swift */; };
-		90B279B229DA5CED006FB775 /* FetchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796729DA5CED006FB775 /* FetchButton.swift */; };
+		90B279B229DA5CED006FB775 /* RoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796729DA5CED006FB775 /* RoundedButtonView.swift */; };
 		90B279B329DA5CED006FB775 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796829DA5CED006FB775 /* StarRatingView.swift */; };
 		90B279B629DA5CED006FB775 /* RecentKeywordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796E29DA5CED006FB775 /* RecentKeywordListViewController.swift */; };
 		90B279B729DA5CED006FB775 /* RecentAppSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797029DA5CED006FB775 /* RecentAppSearchTableViewCell.swift */; };
@@ -92,6 +93,8 @@
 		90B279BB29DA5CED006FB775 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797629DA5CED006FB775 /* SearchCoordinator.swift */; };
 		90B279BC29DA5CED006FB775 /* ReusableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797829DA5CED006FB775 /* ReusableCells.swift */; };
 		90B279BD29DA5CED006FB775 /* ContentStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797929DA5CED006FB775 /* ContentStateViewController.swift */; };
+		90E65DA82AA842B60061FA6F /* AppGenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DA72AA842B60061FA6F /* AppGenreModel.swift */; };
+		90E65DAA2AA8BD660061FA6F /* StarRatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DA92AA8BD660061FA6F /* StarRatingImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		903771882AA2A5590003AF55 /* AppInfoSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoSummaryView.swift; sourceTree = "<group>"; };
 		904DACFA2A932A9C007BCC56 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		904DACFC2A932B3A007BCC56 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		904DAD012A933023007BCC56 /* RecentKeywordStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordStorage.swift; sourceTree = "<group>"; };
@@ -178,7 +182,7 @@
 		90B2795B29DA5CED006FB775 /* SearchResultContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultContainerViewController.swift; sourceTree = "<group>"; };
 		90B2796129DA5CED006FB775 /* AppSearchResultListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchResultListViewController.swift; sourceTree = "<group>"; };
 		90B2796329DA5CED006FB775 /* AppSearchResultListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchResultListTableViewCell.swift; sourceTree = "<group>"; };
-		90B2796729DA5CED006FB775 /* FetchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchButton.swift; sourceTree = "<group>"; };
+		90B2796729DA5CED006FB775 /* RoundedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButtonView.swift; sourceTree = "<group>"; };
 		90B2796829DA5CED006FB775 /* StarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		90B2796E29DA5CED006FB775 /* RecentKeywordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentKeywordListViewController.swift; sourceTree = "<group>"; };
 		90B2797029DA5CED006FB775 /* RecentAppSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentAppSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 		90B2797629DA5CED006FB775 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		90B2797829DA5CED006FB775 /* ReusableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCells.swift; sourceTree = "<group>"; };
 		90B2797929DA5CED006FB775 /* ContentStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentStateViewController.swift; sourceTree = "<group>"; };
+		90E65DA72AA842B60061FA6F /* AppGenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGenreModel.swift; sourceTree = "<group>"; };
+		90E65DA92AA8BD660061FA6F /* StarRatingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +324,7 @@
 				904DAD322A945356007BCC56 /* CoverType.swift */,
 				904DAD342A945371007BCC56 /* AppSearchModel.swift */,
 				904DAD362A945385007BCC56 /* AppLanguageModel.swift */,
+				90E65DA72AA842B60061FA6F /* AppGenreModel.swift */,
 				904DAD382A9453A2007BCC56 /* AppSearchItemModel.swift */,
 			);
 			path = Model;
@@ -706,6 +713,7 @@
 				904DAD6A2A94B270007BCC56 /* AppSearchResultListView.swift */,
 				90661A022AA0463100547FFC /* AppScreenshotView.swift */,
 				90B2796329DA5CED006FB775 /* AppSearchResultListTableViewCell.swift */,
+				903771882AA2A5590003AF55 /* AppInfoSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -713,8 +721,9 @@
 		90B2796429DA5CED006FB775 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				90B2796729DA5CED006FB775 /* FetchButton.swift */,
+				90B2796729DA5CED006FB775 /* RoundedButtonView.swift */,
 				90B2796829DA5CED006FB775 /* StarRatingView.swift */,
+				90E65DA92AA8BD660061FA6F /* StarRatingImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -895,6 +904,7 @@
 				904DAD152A93318A007BCC56 /* Double.swift in Sources */,
 				90B279BD29DA5CED006FB775 /* ContentStateViewController.swift in Sources */,
 				90B279B329DA5CED006FB775 /* StarRatingView.swift in Sources */,
+				90E65DA82AA842B60061FA6F /* AppGenreModel.swift in Sources */,
 				904DAD662A9489CD007BCC56 /* AppSearchResponseDTOMock.swift in Sources */,
 				904DAD1E2A933660007BCC56 /* AppSearchAPIEndpoint.swift in Sources */,
 				90B279B829DA5CED006FB775 /* AppDescriptionViewController.swift in Sources */,
@@ -911,6 +921,7 @@
 				904DAD2B2A945300007BCC56 /* AppSearchViewModel.swift in Sources */,
 				904DAD222A934887007BCC56 /* RecentKeywordRepository.swift in Sources */,
 				90B2798729DA5CED006FB775 /* AnyCancellableTask.swift in Sources */,
+				90E65DAA2AA8BD660061FA6F /* StarRatingImageView.swift in Sources */,
 				904DAD492A9481EE007BCC56 /* AppSearchView.swift in Sources */,
 				90B2798C29DA5CED006FB775 /* AppDelegate.swift in Sources */,
 				90B2798429DA5CED006FB775 /* ImageCacheManager.swift in Sources */,
@@ -918,6 +929,7 @@
 				90B279AF29DA5CED006FB775 /* AppSearchResultListTableViewCell.swift in Sources */,
 				90B2797C29DA5CED006FB775 /* UIViewController.swift in Sources */,
 				904DAD292A934A3C007BCC56 /* AppSearchError.swift in Sources */,
+				903771892AA2A5590003AF55 /* AppInfoSummaryView.swift in Sources */,
 				90B2799229DA5CED006FB775 /* HTTPMethod.swift in Sources */,
 				904DAD472A946648007BCC56 /* CachedImageInfo.swift in Sources */,
 				90B2797D29DA5CED006FB775 /* UIView.swift in Sources */,
@@ -940,7 +952,7 @@
 				904DAD632A948987007BCC56 /* AppSearchItemEntityMock.swift in Sources */,
 				904DAD172A933195007BCC56 /* String.swift in Sources */,
 				90B2797A29DA5CED006FB775 /* Int+Extensions.swift in Sources */,
-				90B279B229DA5CED006FB775 /* FetchButton.swift in Sources */,
+				90B279B229DA5CED006FB775 /* RoundedButtonView.swift in Sources */,
 				904DAD3C2A94547B007BCC56 /* BaseProtocol.swift in Sources */,
 				904DAD042A933045007BCC56 /* Array.swift in Sources */,
 				904DAD602A948955007BCC56 /* AppSearchEntityMock.swift in Sources */,

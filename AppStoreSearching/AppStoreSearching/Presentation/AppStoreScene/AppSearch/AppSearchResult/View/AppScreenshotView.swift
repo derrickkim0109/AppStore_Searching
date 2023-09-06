@@ -50,7 +50,6 @@ final class AppScreenshotView: BaseView {
 
         makeCachedImageViews(by: previewImageList)
             .forEach { screenshotStackView.addArrangedSubview($0) }
-
     }
 
     func removeAll() {
@@ -78,12 +77,7 @@ final class AppScreenshotView: BaseView {
         let imageView = CachedAsyncImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.configure(cachedInfo)
-        imageView.setupBoarderWidth(0.2)
-
-        NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(
-                equalToConstant: 250)
-        ])
+        imageView.setupBoarder(0.2)
 
         return imageView
     }

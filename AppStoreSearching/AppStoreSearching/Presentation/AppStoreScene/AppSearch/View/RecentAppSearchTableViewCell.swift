@@ -9,14 +9,24 @@ import UIKit
 
 final class RecentAppSearchTableViewCell: UITableViewCell {
     private lazy var rootStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [searchingIconImageView,
-                                                      recentKeywordLabel])
+        let stackView = UIStackView(
+            arrangedSubviews: [iconContainerView,
+                               recentKeywordLabel]
+        )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fill
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.spacing = 8
         return stackView
+    }()
+
+    private lazy var iconContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        view.addSubview(searchingIconImageView)
+        return view
     }()
 
     private let searchingIconImageView: UIImageView = {
@@ -44,6 +54,7 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
                 reuseIdentifier: reuseIdentifier)
             
             setupDefault()
+            addUIComponents()
             configureLayouts()
         }
 
@@ -56,11 +67,17 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         recentKeywordLabel.text = nil
-        searchingIconImageView.isHidden = true
     }
 
     private func setupDefault() {
-        addSubview(rootStackView)
+        contentView.autoresizingMask = [
+            .flexibleWidth,
+            .flexibleHeight
+        ]
+    }
+
+    private func addUIComponents() {
+        contentView.addSubview(rootStackView)
     }
 
     private func configureLayouts() {
@@ -73,14 +90,25 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
                 equalTo: contentView.leadingAnchor,
                 constant: 15),
             rootStackView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor)
+                equalTo: contentView.trailingAnchor),
+
+            rootStackView.heightAnchor.constraint(
+                equalToConstant: 35)
         ])
 
         NSLayoutConstraint.activate([
+            iconContainerView.widthAnchor.constraint(
+                equalTo: rootStackView.widthAnchor,
+                multiplier: 0.05),
+            searchingIconImageView.centerXAnchor.constraint(
+                equalTo: iconContainerView.centerXAnchor),
+            searchingIconImageView.centerYAnchor.constraint(
+                equalTo: iconContainerView.centerYAnchor),
+
             searchingIconImageView.widthAnchor.constraint(
                 equalTo: searchingIconImageView.heightAnchor),
             searchingIconImageView.heightAnchor.constraint(
-                equalToConstant: Const.fifty)
+                equalToConstant: 15)
         ])
     }
 
@@ -90,7 +118,7 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
     ) {
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(
-                ofSize: Const.sixty
+                ofSize: Const.sixteen
             )
         ]
 
@@ -104,13 +132,13 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         )
 
         recentKeywordLabel.attributedText = mutableAttributedString
-        searchingIconImageView.isHidden = isHiddenImage
+        iconContainerView.isHidden = isHiddenImage
     }
 
     private enum Const {
         static let ten = 10.0
-        static let fifty = 15.0
-        static let sixty = 16.0
+        static let fifteen = 15.0
+        static let sixteen = 16.0
         static let searchIcon = "magnifyingGlass"
     }
 }

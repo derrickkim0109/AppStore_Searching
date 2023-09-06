@@ -11,7 +11,9 @@ struct AppSearchItemModel : Hashable {
     let id = UUID()
     let screenshotUrls : [String]
     let ipadScreenshotUrls: [String]
-    let artworkUrl60, artworkUrl512, artworkUrl100: String
+    let artworkUrl60: String
+    let artworkUrl512: String
+    let artworkUrl100: String
     let artistViewUrl: String
     let minimumOsVersion: String
     let languages: [AppLanguageModel]
@@ -38,8 +40,13 @@ struct AppSearchItemModel : Hashable {
 }
 
 extension AppSearchItemModel {
-    // 스크린샷이 3개이상일 경우에만 캐러셀에 노출
-    func showScreenShot() -> Bool {
+    func showScreenShots() -> Bool {
         return screenshotUrls.count >= 3
+    }
+
+    func getGenreImageName() -> String {
+        return AppGenreModel(
+            rawValue: genres.first ?? ""
+        )?.imageName ?? ""
     }
 }
