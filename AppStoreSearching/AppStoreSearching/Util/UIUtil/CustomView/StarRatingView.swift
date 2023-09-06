@@ -8,102 +8,77 @@
 import UIKit
 
 final class StarRatingView: BaseView {
-    private let maxRating: Double = Const.five
-    private var starViews: [UIImageView] = []
-
-    private var ratingColor: UIColor = UIColor.gray {
-        didSet {
-            setNeedsLayout()
-        }
-    }
-
-    var rating: Double = Const.zero {
-        didSet {
-            setNeedsLayout()
-        }
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        removeAll()
-        updateStars()
-    }
-
+    private let starImageViewStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 3
+        return stackView
+    }()
+    
+    private let maxRating: Int = 5
+    
     override func setupDefault() {
         super.setupDefault()
-
-        backgroundColor = .clear
     }
-
+    
+    override func addUIComponents() {
+        super.addUIComponents()
+        
+        addSubview(starImageViewStackView)
+        
+        for _ in 0..<maxRating {
+            starImageViewStackView.addArrangedSubview(makeStarRatingImageView(0.0))
+        }
+    }
+    
     override func configureLayouts() {
         super.configureLayouts()
-
+        
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(
-                equalToConstant: Const.seventy),
+            starImageViewStackView.topAnchor.constraint(
+                equalTo: topAnchor),
+            starImageViewStackView.bottomAnchor.constraint(
+                equalTo: bottomAnchor),
+            starImageViewStackView.leadingAnchor.constraint(
+                equalTo: leadingAnchor),
+            starImageViewStackView.trailingAnchor.constraint(
+                equalTo: trailingAnchor)
         ])
     }
-
-    private func updateStars() {
-        let starWidth = frame.size.width / CGFloat(maxRating)
-        var spacing: CGFloat = Const.zero
-
-        for i in 0..<Int(maxRating) {
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: Const.star)
-
-            imageView.frame = CGRect(
-                x: (CGFloat(i) * starWidth) + spacing,
-                y: (frame.size.height - Const.thirteen) / Const.two,
-                width: Const.thirteen,
-                height: Const.thirteen)
-
-            imageView.tintColor = UIColor.gray
-            addSubview(imageView)
-            starViews.append(imageView)
-            spacing += 0.2
-        }
-
-        let fullStarCount = Int(rating)
-        let remainder = rating - Double(fullStarCount)
-
-        for i in 0..<fullStarCount {
-            starViews[i].image = UIImage(systemName: Const.starFill)
-            starViews[i].tintColor = ratingColor
-        }
-
-        if remainder >= 0.1 && remainder <= 0.4 {
-            starViews[fullStarCount].image = UIImage(systemName: Const.starLeadingHalf)
-            starViews[fullStarCount].tintColor = ratingColor
-        } else if remainder >= 0.5 && remainder <= 0.9 {
-            starViews[fullStarCount].image = UIImage(systemName: Const.starFill)
-            starViews[fullStarCount].tintColor = ratingColor
-        } else if remainder >= 0.6 && remainder <= 0.9 {
-            starViews[fullStarCount].image = UIImage(systemName: Const.starLeadingHalf)
-            starViews[fullStarCount].tintColor = ratingColor
-        } else {
-            starViews[fullStarCount].image = UIImage(systemName: Const.star)
-            starViews[fullStarCount].tintColor = UIColor.gray
+    
+    func updatingViews(_ rating: Double) {
+        let filledStarsCount = Int(rating)
+        let remainder = rating - Double(filledStarsCount)
+        
+        for (index, view) in starImageViewStackView.subviews.enumerated() {
+            guard let ratingView = view as? StarRatingImageView else {
+                return
+            }
+            
+            if index < filledStarsCount {
+                ratingView.update(1.0)
+            } else if index == filledStarsCount && remainder > 0 {
+                ratingView.update(remainder)
+            } else {
+                ratingView.update(0.0)
+            }
         }
     }
-
-    private func removeAll() {
-        for view in starViews {
-            view.removeFromSuperview()
-        }
-
-        starViews.removeAll()
-    }
-
-    private enum Const {
-        static let zero = 0.0
-        static let two = 2.0
-        static let five = 5.0
-        static let thirteen = 13.0
-        static let seventy = 70.0
-        static let star = "star"
-        static let starFill = "star.fill"
-        static let starLeadingHalf = "star.leadinghalf.fill"
+    
+    private func makeStarRatingImageView(
+        _ rating: Double
+    ) -> StarRatingImageView {
+        let ratingImageView = StarRatingImageView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 20,
+                height: 20
+            )
+        )
+        return ratingImageView
     }
 }
