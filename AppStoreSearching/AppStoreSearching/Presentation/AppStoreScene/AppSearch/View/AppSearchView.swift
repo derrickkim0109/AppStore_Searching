@@ -58,11 +58,15 @@ final class AppSearchView: BaseView {
         snapshot.appendSections([.main])
         snapshot.appendItems(data)
 
-        dataSource.apply(
-            snapshot,
-            animatingDifferences: false,
-            completion: nil
-        )
+        Task { [weak self] in
+            await MainActor.run() {
+                self?.dataSource.apply(
+                    snapshot,
+                    animatingDifferences: false,
+                    completion: nil
+                )
+            }
+        }.store(in: bag)
     }
 
     private func configureDataSource() -> DataSource {
