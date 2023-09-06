@@ -113,7 +113,7 @@ final class CachedAsyncImageView: BaseView {
         }
     }
 
-    func setupBoarderWidth(_ width: Double) {
+    func setupBoarder(_ width: Double) {
         rectangleView.layer.borderColor = UIColor.lightGray.cgColor
         rectangleView.layer.borderWidth = width
     }

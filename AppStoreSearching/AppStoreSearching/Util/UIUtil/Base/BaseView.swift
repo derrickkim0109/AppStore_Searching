@@ -8,6 +8,8 @@
 import UIKit
 
 class BaseView: UIView, BaseViewProtocol {
+    let bag = AnyCancelTaskBag()
+
     required init() {
         super.init(frame: .zero)
 

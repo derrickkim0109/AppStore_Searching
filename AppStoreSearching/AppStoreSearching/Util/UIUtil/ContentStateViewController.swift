@@ -10,21 +10,26 @@ import UIKit
 class ContentStateViewController: UIViewController {
     private var state: State?
     private var presentingCurrentViewController: UIViewController?
-    
+    private let bag = AnyCancelTaskBag()
+
     func transition(to newState: State) {
-        presentingCurrentViewController?.remove()
-        
-        let viewController = presentViewController(by: newState)
-        add(childViewController: viewController)
-        
-        presentingCurrentViewController = viewController
-        state = newState
+        Task { [weak self] in
+            await MainActor.run() {
+                self?.presentingCurrentViewController?.remove()
+
+                let viewController = self?.presentViewController(by: newState) ?? UIViewController()
+                self?.add(childViewController: viewController)
+
+                self?.presentingCurrentViewController = viewController
+                self?.state = newState
+            }
+        }.store(in: bag)
     }
 }
 
 extension ContentStateViewController {
     enum State {
-        case render(UIViewController)
+        case render(UIViewController?)
     }
 }
 
@@ -33,7 +38,7 @@ private extension ContentStateViewController {
         by state: State) -> UIViewController {
             switch state {
             case .render(let viewController):
-                return viewController
+                return viewController ?? UIViewController()
             }
         }
 }
