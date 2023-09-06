@@ -26,7 +26,7 @@ enum AppGenreModel: String {
     case productivity = "생산성"
     case music = "음악", utilities = "유틸리티"
     case education = "교육"
-    case graphicsDesign = "그래픽 & 디자인"
+    case graphicsDesign = "그래픽 및 디자인"
     case photoVideo = "사진 및 비디오"
     case socailNetworking = "소셜 네트워킹"
     case puzzle = "퍼즐"
