@@ -31,12 +31,7 @@ final class RoundedButtonView: BaseView {
             button.centerXAnchor.constraint(
                 equalTo: centerXAnchor),
             button.centerYAnchor.constraint(
-                equalTo: centerYAnchor),
-
-            button.widthAnchor.constraint(
-                equalToConstant: 70),
-            button.heightAnchor.constraint(
-                equalToConstant: 30)
+                equalTo: centerYAnchor)
         ])
     }
 
