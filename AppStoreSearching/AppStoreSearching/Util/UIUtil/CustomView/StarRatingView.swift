@@ -14,7 +14,7 @@ final class StarRatingView: BaseView {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 3
+        stackView.spacing = 2
         return stackView
     }()
     
@@ -75,7 +75,7 @@ final class StarRatingView: BaseView {
             frame: CGRect(
                 x: 0,
                 y: 0,
-                width: 20,
+                width: 13,
                 height: 20
             )
         )

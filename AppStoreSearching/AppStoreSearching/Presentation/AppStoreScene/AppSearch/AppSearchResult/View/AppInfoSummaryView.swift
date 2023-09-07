@@ -20,7 +20,7 @@ final class AppInfoSummaryView: BaseView {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 18
+        stackView.spacing = 10
         return stackView
     }()
     
@@ -187,7 +187,10 @@ final class AppInfoSummaryView: BaseView {
         NSLayoutConstraint.activate([
             starRatingInfoStackView.widthAnchor.constraint(
                 equalTo: widthAnchor,
-                multiplier: 0.3),
+                multiplier: 0.33),
+            starRatingView.widthAnchor.constraint(
+                equalTo: starRatingInfoStackView.widthAnchor,
+                multiplier: 0.6),
             developerInfoStackView.widthAnchor.constraint(
                 equalTo: widthAnchor,
                 multiplier: 0.3),
