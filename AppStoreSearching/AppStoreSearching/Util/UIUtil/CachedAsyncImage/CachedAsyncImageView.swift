@@ -108,6 +108,8 @@ final class CachedAsyncImageView: BaseView {
         } else if error != nil {
             imageView.image = UIImage(systemName: "x.circle")
         } else {
+            activityIndicator.startAnimating()
+
             Task { [weak self] in
                 do {
                     guard let urlStr = cachedImageInfo?.urlStr,
@@ -130,7 +132,6 @@ final class CachedAsyncImageView: BaseView {
                     }
                 }
             }.store(in: bag)
-            activityIndicator.startAnimating()
         }
     }
 

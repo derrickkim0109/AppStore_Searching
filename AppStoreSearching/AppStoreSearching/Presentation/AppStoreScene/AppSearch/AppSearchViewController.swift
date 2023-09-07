@@ -26,6 +26,12 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
     required init(viewModel: T) {
         fatalError()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
     
     override func setupDefault() {
         super.setupDefault()

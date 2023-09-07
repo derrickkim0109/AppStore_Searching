@@ -8,16 +8,20 @@
 import UIKit
 
 extension UIApplication {
-    func getCurrentUIWindow() -> UIWindow? {
+    func getCurrentUIWindow() -> UIWindow {
         let connectedScenes = UIApplication.shared.connectedScenes
             .filter({
                 $0.activationState == .foregroundActive
             })
-            .compactMap({ $0 as? UIWindowScene })
+            .compactMap({
+                $0 as? UIWindowScene
+            })
 
         let window = connectedScenes.first?
             .windows
-            .first { $0.isKeyWindow }
+            .first {
+                $0.isKeyWindow
+            } ?? UIWindow()
 
         return window
     }

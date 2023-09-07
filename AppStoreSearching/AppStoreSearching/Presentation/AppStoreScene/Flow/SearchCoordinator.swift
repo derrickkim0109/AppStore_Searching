@@ -9,7 +9,7 @@ import UIKit
 
 protocol SearchCoordinatorDelegate: AnyObject { }
 
-class SearchCoordinator: Coordinator,
+final class SearchCoordinator: Coordinator,
                          AppSearchResultListViewControllerDelegate,
                          AppDetailViewControllerDelegate {
     weak var parentCoordinator: SearchCoordinatorDelegate?
@@ -34,7 +34,9 @@ class SearchCoordinator: Coordinator,
         let viewController = AppDetailViewController(
             viewModel: viewModel
         )
-        
+
+        navigationController.navigationBar.prefersLargeTitles = false
+
         navigationController.pushViewController(
             viewController,
             animated: true
@@ -77,7 +79,7 @@ class SearchCoordinator: Coordinator,
         return recentKeywordRepository
     }
     
-    func appSearchDependencies() -> AppSearchViewModel {
+    private func appSearchDependencies() -> AppSearchViewModel {
         let networkService: NetworkService = NetworkService()
         let dataSource : AppSearchDataSourceInterface = AppSearchDataSource(
             networkService: networkService

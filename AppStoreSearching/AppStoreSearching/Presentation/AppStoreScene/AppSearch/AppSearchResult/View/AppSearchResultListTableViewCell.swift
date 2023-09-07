@@ -144,7 +144,8 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
             fetchButtonView.centerYAnchor.constraint(
                 equalTo: iconImageView.centerYAnchor),
             infoStackView.widthAnchor.constraint(
-                equalTo: rootStackView.widthAnchor, multiplier: 0.55)
+                equalTo: rootStackView.widthAnchor,
+                multiplier: 0.55)
         ])
 
         NSLayoutConstraint.activate([
@@ -157,6 +158,7 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
             rootStackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
                 constant: -18),
+
             rootStackView.heightAnchor.constraint(
                 equalToConstant: 60)
         ])
@@ -187,6 +189,13 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
             appScreenshotView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
                 constant: -18)
+        ])
+
+        NSLayoutConstraint.activate([
+            fetchButtonView.button.widthAnchor.constraint(
+                equalToConstant: 70),
+            fetchButtonView.button.heightAnchor.constraint(
+                equalToConstant: 30)
         ])
     }
 
