@@ -13,16 +13,20 @@
 
 ## 📺 프로젝트 실행화면
 
-|GridView|Pagenation|DetailViewView|
+|메인화면|최근검색어|검색중|
 |--|--|--|
-|<img src="https://i.imgur.com/HXz7RaU.gif" width="250">|<img src="https://i.imgur.com/85oyqT7.gif" width="250">|<img src="https://user-images.githubusercontent.com/59466342/214778241-65207dd9-725f-4605-b262-5fe4c326a62c.gif" width="250">|
+|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/8e48d880-e85b-4ef0-92c5-a146e29c0f7d" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/5e3bfd4f-9568-401c-8f42-a04f552420b3" width="250">|<<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/f425db0f-ace4-4fed-8245-a8342352057d" width="250">|
+
+|검색결과|Pagenation|DetailViewView|
+|--|--|--|
+|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/963e98bc-7cf9-42fe-8347-73d5632b15fd" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/f425db0f-ace4-4fed-8245-a8342352057d" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/5e3bfd4f-9568-401c-8f42-a04f552420b3" width="250">|
+
+
+
 
 ---
 
 ## 🗂 App 구조
-
-<img src="https://i.imgur.com/dHG5nNH.gif" width="800">
-
 
 ### Layers
 
