@@ -49,12 +49,7 @@ final class ShareButtonView: BaseView {
             button.leadingAnchor.constraint(
                 equalTo: leadingAnchor),
             button.trailingAnchor.constraint(
-                equalTo: trailingAnchor),
-
-            button.widthAnchor.constraint(
-                equalToConstant: 20),
-            button.heightAnchor.constraint(
-                equalToConstant: 25),
+                equalTo: trailingAnchor)
         ])
     }
 

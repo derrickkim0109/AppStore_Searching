@@ -35,16 +35,15 @@ final class AppDetailHeaderView: BaseView {
             arrangedSubviews: [
                 appTrackNameLabel,
                 appSellerNameLabel,
-                appInfoEmptyStackView,
                 buttonStackView
             ]
         )
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = 10
+        stackView.spacing = 3
         return stackView
     }()
 
@@ -55,8 +54,12 @@ final class AppDetailHeaderView: BaseView {
             weight: .bold
         )
 
-        label.numberOfLines = 2
-        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.setContentHuggingPriority(
+            .defaultLow,
+            for: .horizontal
+        )
         return label
     }()
 
@@ -68,8 +71,6 @@ final class AppDetailHeaderView: BaseView {
         label.textColor = .gray
         return label
     }()
-
-    private let appInfoEmptyStackView = UIStackView()
 
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(
@@ -138,7 +139,7 @@ final class AppDetailHeaderView: BaseView {
 
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(
-                equalToConstant: 100),
+                equalToConstant: 120),
             iconImageView.heightAnchor.constraint(
                 equalTo: iconImageView.widthAnchor)
         ])
@@ -151,16 +152,11 @@ final class AppDetailHeaderView: BaseView {
         ])
 
         NSLayoutConstraint.activate([
-            fetchButtonView.widthAnchor.constraint(
-                equalToConstant: 70),
             buttonEmptyStackView.widthAnchor.constraint(
                 equalTo: buttonStackView.widthAnchor,
-                multiplier: 0.66),
-            shareButtonView.widthAnchor.constraint(
-                equalToConstant: 20)
+                multiplier: 0.66)
         ])
     }
-
 
     func configure(appItem: AppSearchItemModel) {
         let cachedIconImageInfo = CachedImageInfo(
