@@ -79,7 +79,6 @@
 		90B2799929DA5CED006FB775 /* AppSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2793529DA5CED006FB775 /* AppSearchRepository.swift */; };
 		90B2799D29DA5CED006FB775 /* AppSearchRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2793E29DA5CED006FB775 /* AppSearchRepositoryInterface.swift */; };
 		90B279A529DA5CED006FB775 /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2794E29DA5CED006FB775 /* AppDetailViewController.swift */; };
-		90B279A629DA5CED006FB775 /* AppDetailScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2795029DA5CED006FB775 /* AppDetailScreenshotCollectionViewCell.swift */; };
 		90B279A929DA5CED006FB775 /* AppSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2795729DA5CED006FB775 /* AppSearchViewController.swift */; };
 		90B279AB29DA5CED006FB775 /* SearchResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2795B29DA5CED006FB775 /* SearchResultContainerViewController.swift */; };
 		90B279AE29DA5CED006FB775 /* AppSearchResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796129DA5CED006FB775 /* AppSearchResultListViewController.swift */; };
@@ -186,7 +185,6 @@
 		90B2793529DA5CED006FB775 /* AppSearchRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchRepository.swift; sourceTree = "<group>"; };
 		90B2793E29DA5CED006FB775 /* AppSearchRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchRepositoryInterface.swift; sourceTree = "<group>"; };
 		90B2794E29DA5CED006FB775 /* AppDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
-		90B2795029DA5CED006FB775 /* AppDetailScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		90B2795729DA5CED006FB775 /* AppSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchViewController.swift; sourceTree = "<group>"; };
 		90B2795B29DA5CED006FB775 /* SearchResultContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultContainerViewController.swift; sourceTree = "<group>"; };
 		90B2796129DA5CED006FB775 /* AppSearchResultListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchResultListViewController.swift; sourceTree = "<group>"; };
@@ -674,7 +672,6 @@
 		90B2794F29DA5CED006FB775 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				90B2795029DA5CED006FB775 /* AppDetailScreenshotCollectionViewCell.swift */,
 				90E65DAB2AA982E90061FA6F /* AppDetailView.swift */,
 				90E65DBB2AA991B60061FA6F /* AppHeaderView */,
 				90E65DAF2AA983F00061FA6F /* AppDetailSummaryView.swift */,
@@ -987,7 +984,6 @@
 				90B279A529DA5CED006FB775 /* AppDetailViewController.swift in Sources */,
 				904DAD112A933171007BCC56 /* UIDevice.swift in Sources */,
 				904DAD242A93489E007BCC56 /* RecentKeywordRepositoryInterface.swift in Sources */,
-				90B279A629DA5CED006FB775 /* AppDetailScreenshotCollectionViewCell.swift in Sources */,
 				904DAD372A945385007BCC56 /* AppLanguageModel.swift in Sources */,
 				90B2799D29DA5CED006FB775 /* AppSearchRepositoryInterface.swift in Sources */,
 				904DAD6B2A94B270007BCC56 /* AppSearchResultListView.swift in Sources */,
