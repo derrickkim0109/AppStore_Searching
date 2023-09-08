@@ -18,11 +18,11 @@ final class AppSearchViewModel {
     @Published var isInitialLoading: Bool = false
     @Published var showErrorAlert: Bool = false
 
-    var resultState: ResultState = .none
+    @Published var resultState: ResultState = .none
     var filteredRecentKeywords: [String] = []
 
     private var currentPage: Int = 0
-    private var perPage: Int = 10
+    private let perPage: Int = 10
     private var hasNext: Bool = false
     private let appSearchUseCase: AppSearchUseCaseInterface
     private let bag = AnyCancelTaskBag()
@@ -51,8 +51,17 @@ final class AppSearchViewModel {
             self?.resetLoadingState()
 
             self?.resultState = .hasResult
-            self?.searchedAppList.append(contentsOf: appSearchModel.results)
-            self?.currentPage += 1
+
+            let filterData = appSearchModel.results
+                .filter{ [weak self] newItem in
+                    self?.searchedAppList.contains { $0.artistId == newItem.artistId } == false
+                }
+
+            self?.searchedAppList.append(
+                contentsOf: self?.searchedAppList.isEmpty == true ? appSearchModel.results : filterData
+            )
+
+            self?.currentPage += 10
             self?.hasNext = appSearchModel.hasNext(perPage: self?.perPage)
         }.store(in: bag)
     }
@@ -92,30 +101,6 @@ final class AppSearchViewModel {
     func loadMoreData() {
         searchApp(by: keyword)
     }
-
-    private func getFilteredRecentKeywords(
-        _ keyword: String
-    ) -> [String] {
-        guard !keyword.isEmpty else {
-            return []
-        }
-
-        let result = recentKeywordList
-            .filter {
-                $0.lowercased().contains(keyword.lowercased()) &&
-                !$0.contains(Const.recentKeywordEmpty)
-            }
-            .sorted()
-
-        if result.count > 10 {
-            return result
-                .prefix(10)
-                .map { $0 }
-        }
-
-        return []
-    }
-
 
     private func getAppSearchEntity(
         by keyword: String

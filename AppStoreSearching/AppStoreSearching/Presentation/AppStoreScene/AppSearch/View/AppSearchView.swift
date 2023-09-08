@@ -22,7 +22,7 @@ final class AppSearchView: BaseView {
         tableView.register(RecentAppSearchTableViewCell.self)
         return tableView
     }()
-    
+
     private lazy var dataSource = configureDataSource()
     
     override func setupDefault() {
@@ -31,7 +31,7 @@ final class AppSearchView: BaseView {
     
     override func addUIComponents() {
         super.addUIComponents()
-        
+
         addSubview(tableView)
     }
     

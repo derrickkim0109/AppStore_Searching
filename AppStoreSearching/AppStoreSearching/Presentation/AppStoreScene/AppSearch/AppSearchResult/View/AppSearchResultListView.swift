@@ -24,15 +24,44 @@ final class AppSearchResultListView: BaseView {
         return tableView
     }()
 
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.style = .medium
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+
+    private lazy var warningLabelStackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                warningLabel,
+                keywordLabel
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.isHidden = true
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        return stackView
+    }()
+
     private let warningLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.isHidden = true
         label.textColor = .white
-        label.font = UIFont.systemFont(
-            ofSize: 16,
-            weight: .medium
-        )
+        label.text = "결과 없음"
+        label.textAlignment = .center
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        return label
+    }()
+
+    private let keywordLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.textAlignment = .center
         return label
     }()
 
@@ -46,7 +75,8 @@ final class AppSearchResultListView: BaseView {
         super.addUIComponents()
 
         [tableView,
-         warningLabel]
+         activityIndicator,
+         warningLabelStackView]
             .forEach{ addSubview($0) }
     }
 
@@ -65,9 +95,16 @@ final class AppSearchResultListView: BaseView {
         ])
 
         NSLayoutConstraint.activate([
-            warningLabel.centerXAnchor.constraint(
+            warningLabelStackView.centerXAnchor.constraint(
                 equalTo: tableView.centerXAnchor),
-            warningLabel.centerYAnchor.constraint(
+            warningLabelStackView.centerYAnchor.constraint(
+                equalTo: tableView.centerYAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(
+                equalTo: tableView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(
                 equalTo: tableView.centerYAnchor)
         ])
     }
@@ -90,13 +127,21 @@ final class AppSearchResultListView: BaseView {
         }.store(in: bag)
     }
 
-    func setupErrorText(_ text: String) {
-        warningLabel.text = text
+    func setupError(_ keyword: String) {
+        keywordLabel.text = keyword
         hasWarningLabel(false)
     }
 
     func hasWarningLabel(_ isHidden: Bool) {
-        warningLabel.isHidden = isHidden
+        warningLabelStackView.isHidden = isHidden
+    }
+
+    func runLoadingIndicator(_ isLoading: Bool) {
+        if isLoading {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
     
     private func configureDataSource() -> DataSource {

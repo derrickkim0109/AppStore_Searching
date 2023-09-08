@@ -48,11 +48,49 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
         super.bind()
 
         viewModel.$searchedAppList
-            .subscribe(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] item in
                 self?.appSearchResultListView.applyDataSource(
                     data: item
                 )
+            }
+            .store(in: &cancellable)
+
+        viewModel.$showErrorAlert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] showErrorAlert in
+                if showErrorAlert {
+                    AlertControllerBulider.Builder()
+                        .setMessag(self?.viewModel.viewModelError?.rawValue ?? "")
+                        .setConfrimText("확인")
+                        .build()
+                        .present()
+                }
+            }
+            .store(in: &cancellable)
+
+        viewModel.$resultState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] resultState in
+                guard let state = self?.viewModel.resultState else {
+                    return
+                }
+
+                switch state {
+                case .noResult:
+                    self?.appSearchResultListView.setupError(
+                        self?.viewModel.keyword ?? ""
+                    )
+                default:
+                    self?.appSearchResultListView.hasWarningLabel(true)
+                }
+            }
+            .store(in: &cancellable)
+
+        viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.appSearchResultListView.runLoadingIndicator(isLoading)
             }
             .store(in: &cancellable)
     }

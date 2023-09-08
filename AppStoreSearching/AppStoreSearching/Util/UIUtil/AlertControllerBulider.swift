@@ -14,8 +14,7 @@ struct AlertControllerBulider {
         self.params = params
     }
 
-    @MainActor
-    func present() async {
+    func present() {
         let alertController = UIAlertController(
             title: params.title,
             message: params.message,
@@ -47,9 +46,6 @@ struct AlertControllerBulider {
     }
 
     struct BuilderParams {
-        private let firstScene =
-        UIApplication.shared.connectedScenes.compactMap{ $0 as? UIWindowScene }.first
-
         var context: UIViewController?
         var style: UIAlertController.Style = .alert
         var title: String?
@@ -63,8 +59,16 @@ struct AlertControllerBulider {
         var cancelStyleCancelAction: ((UIAlertAction) -> Void)?
 
         init() {
+            let firstScene = UIApplication.shared
+                .connectedScenes
+                .compactMap{ $0 as? UIWindowScene }.first
+
             var topController =
-            firstScene?.windows.filter{ $0.isKeyWindow }.first?.rootViewController
+            firstScene?
+                .windows
+                .filter{ $0.isKeyWindow }
+                .first?
+                .rootViewController
 
             while let presentedViewController = topController?.presentedViewController {
                 topController = presentedViewController
@@ -83,57 +87,57 @@ struct AlertControllerBulider {
 
         func setAlertStyle(
             _ style: UIAlertController.Style) -> Builder {
-            params.style = style
-            return self
-        }
+                params.style = style
+                return self
+            }
 
         func setTitle(
             _ title: String?) -> Builder {
-            params.title = title
-            return self
-        }
+                params.title = title
+                return self
+            }
 
         func setMessag(
             _ message: String) -> Builder {
-            params.message = message
-            return self
-        }
+                params.message = message
+                return self
+            }
 
         func setConfrimText(
             _ confirmText: String?) -> Builder {
-            params.confirmText = confirmText
-            return self
-        }
+                params.confirmText = confirmText
+                return self
+            }
 
         func setDestructiveStyleCancelText(
             _ cancelText: String?) -> Builder {
-            params.destructiveStyleCancelText = cancelText
-            return self
-        }
+                params.destructiveStyleCancelText = cancelText
+                return self
+            }
 
         func setCancelStyleCancelText(
             _ cancelText: String?) -> Builder {
-            params.cancelStyleCancelText = cancelText
-            return self
-        }
+                params.cancelStyleCancelText = cancelText
+                return self
+            }
 
         func setConfirmAction(
             _ confirmAction: @escaping ((UIAlertAction) -> Void)) -> Builder {
-            params.confirmAction = confirmAction
-            return self
-        }
+                params.confirmAction = confirmAction
+                return self
+            }
 
         func setDestructiveStyleCancelAction(
             _ destructiveStyleCancelAction: @escaping ((UIAlertAction) -> Void)) -> Builder {
-            params.destructiveStyleCancelAction = destructiveStyleCancelAction
-            return self
-        }
+                params.destructiveStyleCancelAction = destructiveStyleCancelAction
+                return self
+            }
 
         func setCancelStyleCancelAction(
             _ cancelStyleCancelAction: @escaping ((UIAlertAction) -> Void)) -> Builder {
-            params.cancelStyleCancelAction = cancelStyleCancelAction
-            return self
-        }
+                params.cancelStyleCancelAction = cancelStyleCancelAction
+                return self
+            }
 
         func build() -> AlertControllerBulider {
             return AlertControllerBulider(

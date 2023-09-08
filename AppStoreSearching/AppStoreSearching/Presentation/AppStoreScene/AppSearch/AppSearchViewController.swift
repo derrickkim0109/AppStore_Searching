@@ -51,17 +51,17 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
         super.bind()
         
         viewModel.$keyword
-            .subscribe(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] keyword in
                 guard let `self` = self else {
                     return
                 }
                 
                 viewModel.getRecentKeywordList()
-                
+                viewModel.resetProperties()
+
                 switch viewModel.resultState {
                 case .hasResult:
-                    viewModel.resetProperties()
                     viewModel.searchApp(by: keyword)
                     
                     setupPostSearchBar(text: keyword)
@@ -88,11 +88,22 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
             .store(in: &cancellable)
         
         viewModel.$recentKeywordList
-            .subscribe(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] recentKeywordList in
                 self?.appSearchView.applyDataSource(
                     data: recentKeywordList
                 )
+            }
+            .store(in: &cancellable)
+
+        viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    
+                } else {
+                    
+                }
             }
             .store(in: &cancellable)
     }
