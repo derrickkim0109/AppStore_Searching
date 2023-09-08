@@ -87,7 +87,6 @@
 		90B279B329DA5CED006FB775 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796829DA5CED006FB775 /* StarRatingView.swift */; };
 		90B279B629DA5CED006FB775 /* RecentKeywordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2796E29DA5CED006FB775 /* RecentKeywordListViewController.swift */; };
 		90B279B729DA5CED006FB775 /* RecentAppSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797029DA5CED006FB775 /* RecentAppSearchTableViewCell.swift */; };
-		90B279B829DA5CED006FB775 /* AppDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797229DA5CED006FB775 /* AppDescriptionViewController.swift */; };
 		90B279BA29DA5CED006FB775 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797529DA5CED006FB775 /* AppCoordinator.swift */; };
 		90B279BB29DA5CED006FB775 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797629DA5CED006FB775 /* SearchCoordinator.swift */; };
 		90B279BC29DA5CED006FB775 /* ReusableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2797829DA5CED006FB775 /* ReusableCells.swift */; };
@@ -193,7 +192,6 @@
 		90B2796829DA5CED006FB775 /* StarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		90B2796E29DA5CED006FB775 /* RecentKeywordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentKeywordListViewController.swift; sourceTree = "<group>"; };
 		90B2797029DA5CED006FB775 /* RecentAppSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentAppSearchTableViewCell.swift; sourceTree = "<group>"; };
-		90B2797229DA5CED006FB775 /* AppDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDescriptionViewController.swift; sourceTree = "<group>"; };
 		90B2797529DA5CED006FB775 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90B2797629DA5CED006FB775 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		90B2797829DA5CED006FB775 /* ReusableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCells.swift; sourceTree = "<group>"; };
@@ -654,7 +652,6 @@
 				90B2796429DA5CED006FB775 /* Common */,
 				90B2795229DA5CED006FB775 /* AppSearch */,
 				90B2794929DA5CED006FB775 /* Details */,
-				90B2797129DA5CED006FB775 /* AppDescription */,
 			);
 			path = AppStoreScene;
 			sourceTree = "<group>";
@@ -757,14 +754,6 @@
 				90B2796E29DA5CED006FB775 /* RecentKeywordListViewController.swift */,
 			);
 			path = RecentKeyword;
-			sourceTree = "<group>";
-		};
-		90B2797129DA5CED006FB775 /* AppDescription */ = {
-			isa = PBXGroup;
-			children = (
-				90B2797229DA5CED006FB775 /* AppDescriptionViewController.swift */,
-			);
-			path = AppDescription;
 			sourceTree = "<group>";
 		};
 		90B2797329DA5CED006FB775 /* Flow */ = {
@@ -941,7 +930,6 @@
 				90E65DA82AA842B60061FA6F /* AppGenreModel.swift in Sources */,
 				904DAD662A9489CD007BCC56 /* AppSearchResponseDTOMock.swift in Sources */,
 				904DAD1E2A933660007BCC56 /* AppSearchAPIEndpoint.swift in Sources */,
-				90B279B829DA5CED006FB775 /* AppDescriptionViewController.swift in Sources */,
 				90B279BC29DA5CED006FB775 /* ReusableCells.swift in Sources */,
 				904DAD352A945371007BCC56 /* AppSearchModel.swift in Sources */,
 				90E65DBA2AA991AC0061FA6F /* ShareButtonView.swift in Sources */,

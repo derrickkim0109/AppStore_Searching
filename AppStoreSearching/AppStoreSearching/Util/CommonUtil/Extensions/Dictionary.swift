@@ -9,10 +9,13 @@ import Foundation
 
 extension Dictionary {
     var queryString: String {
-        return self.map { "\($0.key)=\($0.value)" }
+        return self
+            .map { "\($0.key)=\($0.value)" }
             .joined(
-                separator: "&")
+                separator: "&"
+            )
             .addingPercentEncoding(
-                withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? ""
+                withAllowedCharacters: NSCharacterSet.urlQueryAllowed
+            ) ?? ""
     }
 }
