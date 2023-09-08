@@ -27,6 +27,13 @@
 
 ## 🗂 App 구조
 
+### 기술스택
+
+- UIKit
+- async/await
+- Combine
+- Unit Test
+
 ### Layers
 
 - **Domain Layer** = Entities + Use Cases + Repositories Interfaces
