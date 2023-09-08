@@ -16,7 +16,7 @@ extension AppLanguageModel {
         self
     }
 
-    func getLanguageValue() -> String {
+    func getKorean() -> String {
         switch self {
         case .EN: return "영어"
         case .ES: return "스페인어"
