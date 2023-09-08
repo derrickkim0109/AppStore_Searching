@@ -66,22 +66,6 @@ final class AppScreenshotView: BaseView {
     ) -> [CachedAsyncImageView] {
         return screenshotURLs
             .prefix(3)
-            .map { makeScreenshotImageView(by: $0) }
-    }
-    
-    private func makeScreenshotImageView(
-        by url: String
-    ) -> CachedAsyncImageView {
-        let cachedInfo = CachedImageInfo(
-            urlStr: url,
-            cornerRadius: 20
-        )
-        
-        let imageView = CachedAsyncImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.configure(cachedInfo)
-        imageView.setupBoarder(0.2)
-        
-        return imageView
+            .map { makeScreenshotImageView(by: $0, cornerRadius: 20) }
     }
 }

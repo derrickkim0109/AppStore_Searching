@@ -67,18 +67,4 @@ final class StarRatingView: BaseView {
             }
         }
     }
-    
-    private func makeStarRatingImageView(
-        _ rating: Double
-    ) -> StarRatingImageView {
-        let ratingImageView = StarRatingImageView(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: 13,
-                height: 20
-            )
-        )
-        return ratingImageView
-    }
 }

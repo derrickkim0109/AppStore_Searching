@@ -19,4 +19,35 @@ extension UIView {
             rightAnchor.constraint(equalTo: layoutGuide.rightAnchor)
         ])
     }
+
+    func makeScreenshotImageView(
+        by url: String,
+        cornerRadius: CGFloat
+    ) -> CachedAsyncImageView {
+        let cachedInfo = CachedImageInfo(
+            urlStr: url,
+            cornerRadius: cornerRadius
+        )
+
+        let imageView = CachedAsyncImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.configure(cachedInfo)
+        imageView.setupBoarder(0.2)
+
+        return imageView
+    }
+
+    func makeStarRatingImageView(
+       _ rating: Double
+   ) -> StarRatingImageView {
+       let ratingImageView = StarRatingImageView(
+           frame: CGRect(
+               x: 0,
+               y: 0,
+               width: 13,
+               height: 20
+           )
+       )
+       return ratingImageView
+   }
 }

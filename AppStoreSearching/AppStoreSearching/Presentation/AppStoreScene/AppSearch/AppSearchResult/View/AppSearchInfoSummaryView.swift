@@ -1,5 +1,5 @@
 //
-//  AppInfoSummaryView.swift
+//  AppSearchInfoSummaryView.swift
 //  AppStoreSearching
 //
 //  Created by Derrick kim on 2023/09/02.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppInfoSummaryView: BaseView {
+final class AppSearchInfoSummaryView: BaseView {
     private lazy var rootStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -39,7 +39,7 @@ final class AppInfoSummaryView: BaseView {
         return stackView
     }()
     
-    private let starRatingView: StarRatingView = StarRatingView()
+    private let starRatingView = StarRatingView()
     
     private let userCountLabel: UILabel = {
         let label = UILabel()

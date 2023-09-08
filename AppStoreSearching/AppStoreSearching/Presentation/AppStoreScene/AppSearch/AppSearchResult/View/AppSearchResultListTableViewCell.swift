@@ -61,10 +61,9 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
     }()
 
     private let fetchButtonView = RoundedButtonView()
-
-    private let appInfoSummaryView = AppInfoSummaryView()
-
+    private let appSearchInfoSummaryView = AppSearchInfoSummaryView()
     private let appScreenshotView = AppScreenshotView()
+
     private var urlString: String?
 
     override init(
@@ -90,7 +89,7 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         iconImageView.remove()
-        appInfoSummaryView.remove()
+        appSearchInfoSummaryView.remove()
         appNameLabel.text = nil
         genreTextLabel.text = nil
     }
@@ -111,7 +110,7 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
 
         appNameLabel.text = appItem.trackName
         genreTextLabel.text = appItem.genres.first
-        appInfoSummaryView.configure(appItem)
+        appSearchInfoSummaryView.configure(appItem)
         urlString = appItem.trackViewUrl
     }
 
@@ -132,7 +131,7 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
 
     private func addUIComponents() {
         [rootStackView,
-         appInfoSummaryView,
+         appSearchInfoSummaryView,
          appScreenshotView]
             .forEach{ contentView.addSubview($0) }
     }
@@ -164,22 +163,22 @@ final class AppSearchResultListTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            appInfoSummaryView.topAnchor.constraint(
+            appSearchInfoSummaryView.topAnchor.constraint(
                 equalTo: rootStackView.bottomAnchor,
                 constant: 18),
-            appInfoSummaryView.leadingAnchor.constraint(
+            appSearchInfoSummaryView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
                 constant: 18),
-            appInfoSummaryView.trailingAnchor.constraint(
+            appSearchInfoSummaryView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
                 constant: -18),
-            appInfoSummaryView.heightAnchor.constraint(
+            appSearchInfoSummaryView.heightAnchor.constraint(
                 equalToConstant: 20)
         ])
 
         NSLayoutConstraint.activate([
             appScreenshotView.topAnchor.constraint(
-                equalTo: appInfoSummaryView.bottomAnchor,
+                equalTo: appSearchInfoSummaryView.bottomAnchor,
                 constant: 18),
             appScreenshotView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor),
