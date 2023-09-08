@@ -107,11 +107,17 @@ final class AppDetailSummaryView: BaseView {
     }
 
     private func setupAppItemInfoView(_ appItem: AppSearchItemModel) {
-        let ratingView = makeRatingView(
-            rating: appItem.averageUserRating,
-            userRatingCount: appItem.userRatingCount.formattedNumber)
+        if appItem.averageUserRating > 0 {
+            let ratingView = makeRatingView(
+                rating: appItem.averageUserRating,
+                userRatingCount: appItem.userRatingCount.formattedNumber)
+            let ratingVerticalDivider = makeVerticalView()
 
-        let ageVerticalDivider = makeVerticalView()
+            [ratingView,
+             ratingVerticalDivider]
+                .forEach{ horizontalStackView.addArrangedSubview($0) }
+        }
+
         let ageView = makeContentAgeView(appItem.contentAdvisoryRating)
 
         let genreVerticalDivider = makeVerticalView()
@@ -123,9 +129,7 @@ final class AppDetailSummaryView: BaseView {
         let developerInfoVerticalDivider = makeVerticalView()
         let developerInfoView = makeDeveloperInfoView(appItem.sellerName)
 
-        [ratingView,
-         ageVerticalDivider,
-         ageView,
+        [ageView,
          genreVerticalDivider,
          genreView,
          developerInfoVerticalDivider,
