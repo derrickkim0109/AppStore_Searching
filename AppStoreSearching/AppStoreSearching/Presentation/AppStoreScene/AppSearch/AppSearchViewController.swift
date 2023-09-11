@@ -8,7 +8,16 @@
 import UIKit
 import Combine
 
+protocol AppSearchViewControllerDelegate: AnyObject {
+    func showDetailViewController(
+        at viewController: UIViewController,
+        of item: AppSearchItemModel
+    )
+}
+
 final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
+    weak var coordinator: AppSearchViewControllerDelegate?
+    
     private let appSearchView = AppSearchView()
     
     private var searchController: UISearchController?
@@ -93,6 +102,21 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
                 self?.appSearchView.applyDataSource(
                     data: recentKeywordList
                 )
+            }
+            .store(in: &cancellable)
+
+        viewModel.showDetailViewController
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] showDetailViewController in
+                guard let `self` = self else {
+                    return
+                }
+
+                if showDetailViewController == true {
+                    coordinator?.showDetailViewController(
+                        at: self,
+                        of: viewModel.searchedAppList[viewModel.selectedIndex])
+                }
             }
             .store(in: &cancellable)
     }

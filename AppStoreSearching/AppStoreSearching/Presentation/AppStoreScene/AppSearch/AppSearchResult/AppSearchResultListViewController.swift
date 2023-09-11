@@ -7,16 +7,9 @@
 
 import UIKit
 
-protocol AppSearchResultListViewControllerDelegate: AnyObject {
-    func showDetailViewController(
-        at viewController: UIViewController,
-        of item: AppSearchItemModel)
-}
-
 final class AppSearchResultListViewController: BaseViewController<AppSearchViewModel> {
     private let appSearchResultListView = AppSearchResultListView()
-    weak var coordinator: AppSearchResultListViewControllerDelegate?
-    
+
     override func setupDefault() {
         super.setupDefault()
         
@@ -116,10 +109,9 @@ extension AppSearchResultListViewController: UITableViewDelegate {
         tableView.deselectRow(
             at: indexPath,
             animated: false)
-        
-        coordinator?.showDetailViewController(
-            at: self,
-            of: viewModel.searchedAppList[indexPath.row])
+
+        viewModel.selectedIndex = indexPath.row
+        viewModel.showDetailViewController.send(true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

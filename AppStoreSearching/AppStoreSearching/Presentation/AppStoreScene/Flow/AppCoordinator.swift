@@ -41,6 +41,24 @@ final class AppCoordinator: Coordinator,
         }
     }
 
+    func showDetailViewController(
+        at viewController: UIViewController,
+        of item: AppSearchItemModel
+    ) {
+        let viewModel = AppDetailViewModel(
+            appItem: item
+        )
+        let appDetailViewController = AppDetailViewController(
+            viewModel: viewModel
+        )
+
+        viewController.navigationController?.navigationBar.prefersLargeTitles = false
+        viewController.navigationController?.pushViewController(
+            appDetailViewController,
+            animated: true
+        )
+    }
+
     private func tabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
 
@@ -49,7 +67,7 @@ final class AppCoordinator: Coordinator,
         searchNC.tabBarItem = UITabBarItem(
             title: "Search",
             image: UIImage(
-                named: "tabbar_search"
+                systemName: "magnifyingglass"
             ),
             tag: 1)
 

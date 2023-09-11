@@ -7,11 +7,15 @@
 
 import UIKit
 
-protocol SearchCoordinatorDelegate: AnyObject { }
+protocol SearchCoordinatorDelegate: AnyObject {
+    func showDetailViewController(
+        at viewController: UIViewController,
+        of item: AppSearchItemModel
+    )
+}
 
 final class SearchCoordinator: Coordinator,
-                         AppSearchResultListViewControllerDelegate,
-                         AppDetailViewControllerDelegate {
+                               AppSearchViewControllerDelegate {
     weak var parentCoordinator: SearchCoordinatorDelegate?
     
     var childCoordinators = [Coordinator]()
@@ -28,18 +32,9 @@ final class SearchCoordinator: Coordinator,
         at viewController: UIViewController,
         of item: AppSearchItemModel
     ) {
-        let viewModel = AppDetailViewModel(
-            appItem: item
-        )
-        let viewController = AppDetailViewController(
-            viewModel: viewModel
-        )
-
-        navigationController.navigationBar.prefersLargeTitles = false
-
-        navigationController.pushViewController(
-            viewController,
-            animated: true
+        parentCoordinator?.showDetailViewController(
+            at: viewController,
+            of: item
         )
     }
     
@@ -51,7 +46,7 @@ final class SearchCoordinator: Coordinator,
                 viewModel: viewModel
             )
         )
-        
+        viewController.coordinator = self
         return viewController
     }
     
@@ -59,14 +54,19 @@ final class SearchCoordinator: Coordinator,
         with viewController: UIViewController
     ) -> UINavigationController {
         
-        navigationController.pushViewController(
-            viewController,
+        navigationController.setViewControllers(
+            [viewController],
             animated: false
         )
-        
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.topItem?.title = "검색"
-        
+
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .black
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+
         return navigationController
     }
     
@@ -127,7 +127,6 @@ final class SearchCoordinator: Coordinator,
         let viewController = AppSearchResultListViewController(
             viewModel: viewModel
         )
-        viewController.coordinator = self
         return viewController
     }
 }

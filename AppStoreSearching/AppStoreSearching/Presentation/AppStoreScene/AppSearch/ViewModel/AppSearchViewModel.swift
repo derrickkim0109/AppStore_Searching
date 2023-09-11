@@ -15,7 +15,9 @@ final class AppSearchViewModel {
     @Published var isLoading: Bool = false
     @Published var showErrorAlert: Bool = false
     @Published var resultState: ResultState = .none
-    
+    var showDetailViewController = PassthroughSubject<Bool, Never>()
+
+    var selectedIndex: Int = 0
     var viewModelError: AppSearchError?
     var isInitialLoading: Bool = false
     var filteredRecentKeywords: [String] = []
