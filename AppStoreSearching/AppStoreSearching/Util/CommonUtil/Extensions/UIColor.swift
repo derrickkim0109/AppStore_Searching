@@ -1,5 +1,5 @@
 //
-//  UIColor+Extensions.swift
+//  UIColor.swift
 //  AppStoreSearching
 //
 //  Created by Derrick kim on 2023/03/18.

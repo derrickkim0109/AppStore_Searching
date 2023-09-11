@@ -8,8 +8,4 @@
 struct AppSearchModel {
     let resultCount: Int
     let results: [AppSearchItemModel]
-
-    func hasNext(perPage : Int? = 0) -> Bool {
-        return resultCount == perPage
-    }
 }

@@ -95,17 +95,6 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
                 )
             }
             .store(in: &cancellable)
-
-        viewModel.$isLoading
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isLoading in
-                if isLoading {
-                    
-                } else {
-                    
-                }
-            }
-            .store(in: &cancellable)
     }
     
     override func configureLayouts() {

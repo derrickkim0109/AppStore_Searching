@@ -12,18 +12,16 @@ final class AppSearchViewModel {
     @Published var keyword: String = ""
     @Published var searchedAppList: [AppSearchItemModel] = []
     @Published var recentKeywordList: [String] = []
-    @Published var viewModelError: AppSearchError?
-
     @Published var isLoading: Bool = false
-    @Published var isInitialLoading: Bool = false
     @Published var showErrorAlert: Bool = false
-
     @Published var resultState: ResultState = .none
+    
+    var viewModelError: AppSearchError?
+    var isInitialLoading: Bool = false
     var filteredRecentKeywords: [String] = []
 
     private var currentPage: Int = 0
     private let perPage: Int = 10
-    private var hasNext: Bool = false
     private let appSearchUseCase: AppSearchUseCaseInterface
     private let bag = AnyCancelTaskBag()
 
@@ -62,7 +60,6 @@ final class AppSearchViewModel {
             )
 
             self?.currentPage += 10
-            self?.hasNext = appSearchModel.hasNext(perPage: self?.perPage)
         }.store(in: bag)
     }
 
@@ -94,7 +91,6 @@ final class AppSearchViewModel {
     func resetProperties() {
         searchedAppList = []
         currentPage = 0
-        hasNext = false
         viewModelError = nil
     }
 

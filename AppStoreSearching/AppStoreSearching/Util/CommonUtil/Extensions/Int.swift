@@ -8,30 +8,28 @@
 import Foundation
 
 extension Int {
-    // 값이 축약된 "14만"과 "2.8만"으로 형태로 변환되기 때문에 "abbreviated"라는 단어를 사용
-    func convertToAbbreviatedString() -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
+    var formattedNumber: String {
+        if self < 1000 {
+            return String(self)
+        } else if self < 10000 {
+            let quotient = Double(self) / 1000
 
-        if self >= 100000 {
-            let value = self / 10000
+            let formatted = quotient.truncatingRemainder(dividingBy: 1) == 0 ?
+            String(Int(quotient)) : String(format: "%.1f", quotient).replacingOccurrences(of: ".0", with: "")
 
-            return "\(formatter.string(for: value) ?? "")만"
+            return formatted + "천"
+        } else if self < 100000 {
+            let quotient = Double(self) / 10000
 
-        } else if self >= 10000 {
-            let value = Double(self) / 10000
-            let roundedValue = (value * 10).rounded() / 10
+            let formatted = quotient.truncatingRemainder(dividingBy: 1) == 0 ?
+            String(Int(quotient)) : String(format: "%.1f", quotient).replacingOccurrences(of: ".0", with: "")
 
-            return "\(formatter.string(for: roundedValue) ?? "")만"
-
-        } else if self >= 1000 {
-            let value = Double(self) / 1000
-            let roundedValue = (value * 10).rounded() / 10
-
-            return "\(formatter.string(for: roundedValue) ?? "")천"
-
+            return formatted + "만"
         } else {
-            return "\(self)"
+            let quotient = Double(self) / 10000
+            let formatted = String(Int(quotient.rounded(.toNearestOrAwayFromZero)))
+
+            return formatted + "만"
         }
     }
 }

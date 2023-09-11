@@ -16,22 +16,22 @@ protocol AppSearchResultListViewControllerDelegate: AnyObject {
 final class AppSearchResultListViewController: BaseViewController<AppSearchViewModel> {
     private let appSearchResultListView = AppSearchResultListView()
     weak var coordinator: AppSearchResultListViewControllerDelegate?
-
+    
     override func setupDefault() {
         super.setupDefault()
-
+        
         appSearchResultListView.tableView.delegate = self
     }
-
+    
     override func addUIComponents() {
         super.addUIComponents()
-
+        
         view.addSubview(appSearchResultListView)
     }
-
+    
     override func configureLayouts() {
         super.configureLayouts()
-
+        
         NSLayoutConstraint.activate([
             appSearchResultListView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -43,10 +43,10 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
                 equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-
+    
     override func bind() {
         super.bind()
-
+        
         viewModel.$searchedAppList
             .receive(on: DispatchQueue.main)
             .sink { [weak self] item in
@@ -55,11 +55,12 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
                 )
             }
             .store(in: &cancellable)
-
+        
         viewModel.$showErrorAlert
             .receive(on: DispatchQueue.main)
             .sink { [weak self] showErrorAlert in
-                if showErrorAlert {
+                if showErrorAlert
+                    && self?.viewModel.searchedAppList.isEmpty == true {
                     AlertControllerBulider.Builder()
                         .setMessag(self?.viewModel.viewModelError?.rawValue ?? "")
                         .setConfrimText("확인")
@@ -68,29 +69,33 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
                 }
             }
             .store(in: &cancellable)
-
+        
         viewModel.$resultState
             .receive(on: DispatchQueue.main)
             .sink { [weak self] resultState in
                 guard let state = self?.viewModel.resultState else {
                     return
                 }
-
+                
                 switch state {
                 case .noResult:
-                    self?.appSearchResultListView.setupError(
-                        self?.viewModel.keyword ?? ""
-                    )
+                    if self?.viewModel.searchedAppList.isEmpty == true {
+                        self?.appSearchResultListView.setupError(
+                            self?.viewModel.keyword ?? ""
+                        )
+                    }
                 default:
                     self?.appSearchResultListView.hasWarningLabel(true)
                 }
             }
             .store(in: &cancellable)
-
+        
         viewModel.$isLoading
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
-                self?.appSearchResultListView.runLoadingIndicator(isLoading)
+                if self?.viewModel.isInitialLoading == true {
+                    self?.appSearchResultListView.runLoadingIndicator(isLoading)
+                }
             }
             .store(in: &cancellable)
     }
@@ -103,7 +108,7 @@ extension AppSearchResultListViewController: UITableViewDelegate {
     ) -> CGFloat {
         return 360.0
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
@@ -116,13 +121,13 @@ extension AppSearchResultListViewController: UITableViewDelegate {
             at: self,
             of: viewModel.searchedAppList[indexPath.row])
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let visibleHeight = scrollView.frame.size.height
-
-        if offsetY > contentHeight - visibleHeight {
+        
+        if offsetY > contentHeight - visibleHeight - 100 {
             DispatchQueue.global().async { [weak self] in
                 self?.viewModel.loadMoreData()
             }
