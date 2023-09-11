@@ -100,7 +100,7 @@
 		90E65DB82AA990120061FA6F /* AppDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DB72AA990120061FA6F /* AppDescriptionView.swift */; };
 		90E65DBA2AA991AC0061FA6F /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DB92AA991AC0061FA6F /* ShareButtonView.swift */; };
 		90E65DBD2AAB18C00061FA6F /* DividerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DBC2AAB18C00061FA6F /* DividerType.swift */; };
-		90E65DC12AAB835F0061FA6F /* ExpandableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DC02AAB835F0061FA6F /* ExpandableTextView.swift */; };
+		90E65DC12AAB835F0061FA6F /* ExpandableLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E65DC02AAB835F0061FA6F /* ExpandableLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,7 +204,7 @@
 		90E65DB72AA990120061FA6F /* AppDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionView.swift; sourceTree = "<group>"; };
 		90E65DB92AA991AC0061FA6F /* ShareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		90E65DBC2AAB18C00061FA6F /* DividerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerType.swift; sourceTree = "<group>"; };
-		90E65DC02AAB835F0061FA6F /* ExpandableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTextView.swift; sourceTree = "<group>"; };
+		90E65DC02AAB835F0061FA6F /* ExpandableLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -741,7 +741,7 @@
 			isa = PBXGroup;
 			children = (
 				90B2796729DA5CED006FB775 /* RoundedButtonView.swift */,
-				90E65DC02AAB835F0061FA6F /* ExpandableTextView.swift */,
+				90E65DC02AAB835F0061FA6F /* ExpandableLabelView.swift */,
 				90B2796829DA5CED006FB775 /* StarRatingView.swift */,
 				90E65DA92AA8BD660061FA6F /* StarRatingImageView.swift */,
 			);
@@ -939,7 +939,7 @@
 				90B2798D29DA5CED006FB775 /* SceneDelegate.swift in Sources */,
 				904DAD2B2A945300007BCC56 /* AppSearchViewModel.swift in Sources */,
 				904DAD222A934887007BCC56 /* RecentKeywordRepository.swift in Sources */,
-				90E65DC12AAB835F0061FA6F /* ExpandableTextView.swift in Sources */,
+				90E65DC12AAB835F0061FA6F /* ExpandableLabelView.swift in Sources */,
 				90E65DBD2AAB18C00061FA6F /* DividerType.swift in Sources */,
 				90B2798729DA5CED006FB775 /* AnyCancellableTask.swift in Sources */,
 				90E65DAA2AA8BD660061FA6F /* StarRatingImageView.swift in Sources */,
