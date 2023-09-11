@@ -23,6 +23,22 @@ final class AppDetailSummaryView: BaseView {
         type: .horizontal
     )
 
+    private lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                topUnderlineView,
+                horizontalStackView,
+                bottomUnderlineView
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        return stackView
+    }()
+
     private let horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,38 +56,18 @@ final class AppDetailSummaryView: BaseView {
     override func addUIComponents() {
         super.addUIComponents()
 
-        [topUnderlineView,
-         scrollView,
-         bottomUnderlineView]
-            .forEach { addSubview($0) }
-
-        scrollView.addSubview(horizontalStackView)
+        addSubview(scrollView)
+        scrollView.addSubview(verticalStackView)
     }
 
     override func configureLayouts() {
         super.configureLayouts()
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(
-                equalToConstant: 100)
-        ])
-
-        NSLayoutConstraint.activate([
-            topUnderlineView.topAnchor.constraint(
+            scrollView.topAnchor.constraint(
                 equalTo: topAnchor),
-            topUnderlineView.bottomAnchor.constraint(
-                equalTo: scrollView.topAnchor,
-                constant: -10),
-            topUnderlineView.leadingAnchor.constraint(
-                equalTo: leadingAnchor),
-            topUnderlineView.trailingAnchor.constraint(
-                equalTo: trailingAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
             scrollView.bottomAnchor.constraint(
-                equalTo: bottomUnderlineView.topAnchor,
-                constant: -10),
+                equalTo: bottomAnchor),
             scrollView.leadingAnchor.constraint(
                 equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(
@@ -79,26 +75,14 @@ final class AppDetailSummaryView: BaseView {
         ])
 
         NSLayoutConstraint.activate([
-            horizontalStackView.topAnchor.constraint(
+            verticalStackView.topAnchor.constraint(
                 equalTo: scrollView.topAnchor),
-            horizontalStackView.bottomAnchor.constraint(
+            verticalStackView.bottomAnchor.constraint(
                 equalTo: scrollView.bottomAnchor),
-            horizontalStackView.leadingAnchor.constraint(
+            verticalStackView.leadingAnchor.constraint(
                 equalTo: scrollView.leadingAnchor),
-            horizontalStackView.trailingAnchor.constraint(
-                equalTo: scrollView.trailingAnchor),
-
-            horizontalStackView.heightAnchor.constraint(
-                equalTo: scrollView.heightAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            bottomUnderlineView.bottomAnchor.constraint(
-                equalTo: bottomAnchor),
-            bottomUnderlineView.leadingAnchor.constraint(
-                equalTo: leadingAnchor),
-            bottomUnderlineView.trailingAnchor.constraint(
-                equalTo: trailingAnchor)
+            verticalStackView.trailingAnchor.constraint(
+                equalTo: scrollView.trailingAnchor)
         ])
     }
 

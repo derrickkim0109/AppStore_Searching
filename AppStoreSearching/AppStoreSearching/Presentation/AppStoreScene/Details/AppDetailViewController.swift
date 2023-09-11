@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol AppDetailViewControllerDelegate: AnyObject {}
-
 final class AppDetailViewController: BaseViewController<AppDetailViewModel> {
-    weak var coordinator: AppDetailViewControllerDelegate?
-
     private let appDetailView = AppDetailView()
 
     override func setupDefault() {

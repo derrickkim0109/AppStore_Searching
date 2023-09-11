@@ -85,11 +85,25 @@ final class AppDetailView: BaseView {
             rootStackView.widthAnchor.constraint(
                 equalTo: scrollView.widthAnchor)
         ])
+
+        NSLayoutConstraint.activate([
+            appDetailSummaryView.heightAnchor.constraint(
+                equalToConstant: 100)
+        ])
     }
 
     func configure(appItem: AppSearchItemModel) {
-        appHeaderView.configure(appItem: appItem)
-        appDetailSummaryView.configure(appItem: appItem)
+        appHeaderView.configure(
+            appItem: appItem
+        )
+        
+        appDetailSummaryView.configure(
+            appItem: appItem
+        )
+
+        appDetailReleaseNoteView.configure(
+            appItem: appItem
+        )
     }
 
     private func createScreenShotItemSection() -> NSCollectionLayoutSection {
