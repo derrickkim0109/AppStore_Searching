@@ -35,7 +35,6 @@ final class AppDetailViewController: BaseViewController<AppDetailViewModel> {
         ])
     }
 
-
     override func bind() {
         super.bind()
 

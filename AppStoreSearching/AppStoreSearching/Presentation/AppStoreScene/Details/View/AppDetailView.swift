@@ -105,43 +105,14 @@ final class AppDetailView: BaseView {
             appItem: appItem
         )
 
+        if appItem.getScreenShots() {
+            appDetailCarouselView.configure(
+                appItem: appItem
+            )
+        }
+
         appDescriptionView.configure(
             text: appItem.description
         )
-    }
-
-    private func createScreenShotItemSection() -> NSCollectionLayoutSection {
-        let sectionMargin: CGFloat = 0
-
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0))
-
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = .init(
-            top: sectionMargin,
-            leading: sectionMargin,
-            bottom: sectionMargin,
-            trailing: sectionMargin)
-
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(260),
-            heightDimension: .estimated(500))
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [item])
-
-        group.interItemSpacing = .fixed(10)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets = .init(
-            top: sectionMargin,
-            leading: sectionMargin,
-            bottom: sectionMargin,
-            trailing: sectionMargin)
-
-        return section
     }
 }
