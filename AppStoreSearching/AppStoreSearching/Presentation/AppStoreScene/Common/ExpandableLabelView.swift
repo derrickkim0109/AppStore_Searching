@@ -12,13 +12,14 @@ final class ExpandableLabelView: BaseView {
         let stackView = UIStackView(
             arrangedSubviews: [
                 contentLabel,
-                buttonContainerView
+                bottomUnderlineView
             ]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
+        stackView.spacing = 15
         return stackView
     }()
 
@@ -29,16 +30,9 @@ final class ExpandableLabelView: BaseView {
         return label
     }()
 
-    private let buttonContainerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     private let seeMoreButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.textAlignment = .right
         button.titleLabel?.font = UIFont.preferredFont(
             forTextStyle: .caption1
         )
@@ -48,7 +42,6 @@ final class ExpandableLabelView: BaseView {
             for: .normal
         )
 
-
         button.setTitleColor(
             .systemBlue,
             for:.normal
@@ -56,19 +49,19 @@ final class ExpandableLabelView: BaseView {
         return button
     }()
 
+    private lazy var bottomUnderlineView = makeDiverView(
+        type: .horizontal
+    )
+
     private var isExpanded : Bool = false {
         didSet {
-            buttonContainerView.isHidden = isExpanded
+            seeMoreButton.isHidden = isExpanded
 
             if isExpanded {
                 contentLabel.numberOfLines = 0
-            } else {
-                contentLabel.numberOfLines = 3
             }
         }
     }
-
-    private var heightAnchorConstraint : NSLayoutConstraint?
 
     override func setupDefault() {
         super.setupDefault()
@@ -84,7 +77,7 @@ final class ExpandableLabelView: BaseView {
         super.addUIComponents()
 
         addSubview(rootStackView)
-        buttonContainerView.addSubview(seeMoreButton)
+        addSubview(seeMoreButton)
     }
 
     override func configureLayouts() {
@@ -93,6 +86,8 @@ final class ExpandableLabelView: BaseView {
         NSLayoutConstraint.activate([
             rootStackView.topAnchor.constraint(
                 equalTo: topAnchor),
+            rootStackView.bottomAnchor.constraint(
+                equalTo: bottomAnchor),
             rootStackView.leadingAnchor.constraint(
                 equalTo: leadingAnchor),
             rootStackView.trailingAnchor.constraint(
@@ -100,18 +95,20 @@ final class ExpandableLabelView: BaseView {
         ])
 
         NSLayoutConstraint.activate([
-            bottomAnchor.constraint(
-                greaterThanOrEqualTo: rootStackView.bottomAnchor,
-                constant: 8)
+            bottomUnderlineView.widthAnchor.constraint(
+                equalTo: rootStackView.widthAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            seeMoreButton.topAnchor.constraint(
-                equalTo: buttonContainerView.topAnchor),
-            seeMoreButton.trailingAnchor.constraint(
-                equalTo: buttonContainerView.trailingAnchor),
             seeMoreButton.bottomAnchor.constraint(
-                equalTo: buttonContainerView.bottomAnchor)
+                equalTo: bottomAnchor,
+                constant: -15),
+            seeMoreButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor),
+            seeMoreButton.widthAnchor.constraint(
+                equalToConstant: 35),
+            seeMoreButton.heightAnchor.constraint(
+                equalToConstant: 15)
         ])
     }
 
@@ -119,7 +116,7 @@ final class ExpandableLabelView: BaseView {
         contentLabel.text = text
     }
 
-    @objc func handleSeeMoreButton() {
-        self.isExpanded.toggle()
+    @objc private func handleSeeMoreButton() {
+        self.isExpanded = true
     }
 }

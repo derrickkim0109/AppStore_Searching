@@ -28,7 +28,7 @@ final class AppDetailView: BaseView {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 20
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -40,7 +40,7 @@ final class AppDetailView: BaseView {
 
     private let appDetailCarouselView = AppDetailCarouselView()
 
-    private let appDescriptionView = AppDescriptionView()
+    private let appDescriptionView = ExpandableLabelView()
     
     private let appDetailInfoView = AppDetailInfoView()
 
@@ -103,6 +103,10 @@ final class AppDetailView: BaseView {
 
         appDetailReleaseNoteView.configure(
             appItem: appItem
+        )
+
+        appDescriptionView.configure(
+            text: appItem.description
         )
     }
 

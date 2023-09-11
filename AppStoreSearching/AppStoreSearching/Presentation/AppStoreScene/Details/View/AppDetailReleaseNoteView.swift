@@ -38,11 +38,7 @@ final class AppDetailReleaseNoteView: BaseView {
     }()
 
     private let expandableTextView = ExpandableLabelView()
-
-    private lazy var bottomUnderlineView = makeDiverView(
-        type: .horizontal
-    )
-
+    
     override func setupDefault() {
         super.setupDefault()
     }
@@ -53,8 +49,7 @@ final class AppDetailReleaseNoteView: BaseView {
         addSubview(rootStackView)
 
         [contentStackView,
-         expandableTextView,
-         bottomUnderlineView]
+         expandableTextView]
             .forEach { rootStackView.addArrangedSubview($0) }
     }
 
@@ -74,8 +69,6 @@ final class AppDetailReleaseNoteView: BaseView {
 
         NSLayoutConstraint.activate([
             expandableTextView.widthAnchor.constraint(
-                equalTo: rootStackView.widthAnchor),
-            bottomUnderlineView.widthAnchor.constraint(
                 equalTo: rootStackView.widthAnchor)
         ])
     }

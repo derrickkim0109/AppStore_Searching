@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CoverType: Hashable {
+enum CoverType {
     case iPhone
     case iPad
 }

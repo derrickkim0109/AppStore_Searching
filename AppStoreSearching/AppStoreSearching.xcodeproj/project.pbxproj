@@ -56,6 +56,7 @@
 		904DAD682A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD672A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift */; };
 		904DAD692A9489F7007BCC56 /* AppSearchItemResponseDTOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD672A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift */; };
 		904DAD6B2A94B270007BCC56 /* AppSearchResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD6A2A94B270007BCC56 /* AppSearchResultListView.swift */; };
+		9058ECE02AAEEBDF0013E6F0 /* AppDetailScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058ECDF2AAEEBDF0013E6F0 /* AppDetailScreenshotCollectionViewCell.swift */; };
 		90661A032AA0463100547FFC /* AppScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90661A022AA0463100547FFC /* AppScreenshotView.swift */; };
 		90B2797C29DA5CED006FB775 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2790D29DA5CED006FB775 /* UIViewController.swift */; };
 		90B2797D29DA5CED006FB775 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2790E29DA5CED006FB775 /* UIView.swift */; };
@@ -158,6 +159,7 @@
 		904DAD672A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemResponseDTOMock.swift; sourceTree = "<group>"; };
 		904DAD6A2A94B270007BCC56 /* AppSearchResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchResultListView.swift; sourceTree = "<group>"; };
 		90500FC929C53E4200F017FF /* AppStoreSearching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreSearching.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9058ECDF2AAEEBDF0013E6F0 /* AppDetailScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		90661A022AA0463100547FFC /* AppScreenshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotView.swift; sourceTree = "<group>"; };
 		908E9A4D29C9CF3400231ECD /* AppStoreSearchingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B2790D29DA5CED006FB775 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -498,6 +500,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9058ECDE2AAEEBCE0013E6F0 /* AppDetailCarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				90E65DB32AA984360061FA6F /* AppDetailCarouselView.swift */,
+				9058ECDF2AAEEBDF0013E6F0 /* AppDetailScreenshotCollectionViewCell.swift */,
+			);
+			path = AppDetailCarouselView;
+			sourceTree = "<group>";
+		};
 		90B2790A29DA5CED006FB775 /* AppStoreSearching */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,7 +683,7 @@
 				90E65DBB2AA991B60061FA6F /* AppHeaderView */,
 				90E65DAF2AA983F00061FA6F /* AppDetailSummaryView.swift */,
 				90E65DB12AA9840E0061FA6F /* AppDetailReleaseNoteView.swift */,
-				90E65DB32AA984360061FA6F /* AppDetailCarouselView.swift */,
+				9058ECDE2AAEEBCE0013E6F0 /* AppDetailCarouselView */,
 				90E65DB72AA990120061FA6F /* AppDescriptionView.swift */,
 				90E65DB52AA9844B0061FA6F /* AppDetailInfoView.swift */,
 			);
@@ -945,6 +956,7 @@
 				90E65DAA2AA8BD660061FA6F /* StarRatingImageView.swift in Sources */,
 				904DAD492A9481EE007BCC56 /* AppSearchView.swift in Sources */,
 				90B2798C29DA5CED006FB775 /* AppDelegate.swift in Sources */,
+				9058ECE02AAEEBDF0013E6F0 /* AppDetailScreenshotCollectionViewCell.swift in Sources */,
 				90B2798429DA5CED006FB775 /* ImageCacheManager.swift in Sources */,
 				90B2798529DA5CED006FB775 /* AnyCancelTaskBag.swift in Sources */,
 				90B279AF29DA5CED006FB775 /* AppSearchResultListTableViewCell.swift in Sources */,
@@ -1151,7 +1163,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1180,7 +1192,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
