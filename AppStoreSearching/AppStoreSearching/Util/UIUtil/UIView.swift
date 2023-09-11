@@ -48,7 +48,6 @@ extension UIView {
         )
 
         let imageView = CachedAsyncImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.configure(cachedInfo)
         imageView.setupBoarder(0.2)
 

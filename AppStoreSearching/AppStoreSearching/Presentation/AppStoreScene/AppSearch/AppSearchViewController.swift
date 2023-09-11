@@ -39,6 +39,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        viewModel.getRecentKeywordList()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     

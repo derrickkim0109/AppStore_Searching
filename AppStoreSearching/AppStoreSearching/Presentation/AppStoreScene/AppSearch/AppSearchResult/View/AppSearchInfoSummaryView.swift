@@ -160,8 +160,6 @@ final class AppSearchInfoSummaryView: BaseView {
     
     override func setupDefault() {
         super.setupDefault()
-        
-        backgroundColor = .clear
     }
     
     override func addUIComponents() {
