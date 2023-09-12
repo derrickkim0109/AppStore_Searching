@@ -45,11 +45,8 @@ final class AppCoordinator: Coordinator,
         at viewController: UIViewController,
         of item: AppSearchItemModel
     ) {
-        let viewModel = AppDetailViewModel(
-            appItem: item
-        )
         let appDetailViewController = AppDetailViewController(
-            viewModel: viewModel
+            appItem: item
         )
 
         viewController.navigationController?.navigationBar.prefersLargeTitles = false

@@ -39,7 +39,6 @@
 		904DAD3C2A94547B007BCC56 /* BaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD3B2A94547B007BCC56 /* BaseProtocol.swift */; };
 		904DAD3E2A945496007BCC56 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD3D2A945496007BCC56 /* BaseViewController.swift */; };
 		904DAD402A9454B2007BCC56 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD3F2A9454B2007BCC56 /* BaseView.swift */; };
-		904DAD422A9463B4007BCC56 /* AppDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD412A9463B4007BCC56 /* AppDetailViewModel.swift */; };
 		904DAD452A946572007BCC56 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD442A946572007BCC56 /* CachedAsyncImageView.swift */; };
 		904DAD472A946648007BCC56 /* CachedImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD462A946648007BCC56 /* CachedImageInfo.swift */; };
 		904DAD492A9481EE007BCC56 /* AppSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD482A9481EE007BCC56 /* AppSearchView.swift */; };
@@ -147,7 +146,6 @@
 		904DAD3B2A94547B007BCC56 /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
 		904DAD3D2A945496007BCC56 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		904DAD3F2A9454B2007BCC56 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		904DAD412A9463B4007BCC56 /* AppDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewModel.swift; sourceTree = "<group>"; };
 		904DAD442A946572007BCC56 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
 		904DAD462A946648007BCC56 /* CachedImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageInfo.swift; sourceTree = "<group>"; };
 		904DAD482A9481EE007BCC56 /* AppSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchView.swift; sourceTree = "<group>"; };
@@ -361,14 +359,6 @@
 				904DAD3F2A9454B2007BCC56 /* BaseView.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		904DAD432A9463B8007BCC56 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				904DAD412A9463B4007BCC56 /* AppDetailViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		904DAD4A2A948695007BCC56 /* DTOTests */ = {
@@ -669,7 +659,6 @@
 		90B2794929DA5CED006FB775 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				904DAD432A9463B8007BCC56 /* ViewModel */,
 				90B2794F29DA5CED006FB775 /* View */,
 				90B2794E29DA5CED006FB775 /* AppDetailViewController.swift */,
 			);
@@ -944,7 +933,6 @@
 				904DAD0F2A93313C007BCC56 /* AppLanguageCodeEntity.swift in Sources */,
 				904DAD072A9330D8007BCC56 /* AppSearchDataSource.swift in Sources */,
 				904DAD332A945356007BCC56 /* CoverType.swift in Sources */,
-				904DAD422A9463B4007BCC56 /* AppDetailViewModel.swift in Sources */,
 				9058ECE22AAF422E0013E6F0 /* CarouselView.swift in Sources */,
 				90B2799629DA5CED006FB775 /* NetworkSessionManager.swift in Sources */,
 				90B2798D29DA5CED006FB775 /* SceneDelegate.swift in Sources */,

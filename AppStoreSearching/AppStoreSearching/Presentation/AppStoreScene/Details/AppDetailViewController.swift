@@ -7,22 +7,43 @@
 
 import UIKit
 
-final class AppDetailViewController: BaseViewController<AppDetailViewModel> {
+final class AppDetailViewController: UIViewController {
     private let appDetailView = AppDetailView()
 
-    override func setupDefault() {
-        super.setupDefault()
+    private let appItem: AppSearchItemModel
+
+    init(
+        appItem: AppSearchItemModel
+    ) {
+        self.appItem = appItem
+
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
     }
 
-    override func addUIComponents() {
-        super.addUIComponents()
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        addUIComponents()
+        configureLayouts()
+
+        appDetailView.configure(
+            appItem: appItem
+        )
+    }
+
+    func addUIComponents() {
         view.addSubview(appDetailView)
     }
 
-    override func configureLayouts() {
-        super.configureLayouts()
-
+    func configureLayouts() {
         NSLayoutConstraint.activate([
             appDetailView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -33,11 +54,5 @@ final class AppDetailViewController: BaseViewController<AppDetailViewModel> {
             appDetailView.trailingAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-    }
-
-    override func bind() {
-        super.bind()
-
-        appDetailView.configure(appItem: viewModel.appItem)
     }
 }
