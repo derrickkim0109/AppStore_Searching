@@ -121,7 +121,7 @@ final class AppDetailView: BaseView {
             appItem: appItem
         )
 
-        if appItem.getScreenShots() {
+        if appItem.isVisibleScreenShots {
             appDetailCarouselView.configure(
                 appItem: appItem
             )

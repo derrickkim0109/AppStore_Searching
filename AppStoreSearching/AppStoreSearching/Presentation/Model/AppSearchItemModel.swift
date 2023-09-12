@@ -40,7 +40,7 @@ struct AppSearchItemModel : Hashable {
 }
 
 extension AppSearchItemModel {
-    func getScreenShots() -> Bool {
+    var isVisibleScreenShots: Bool {
         return screenshotUrls.count >= 3
     }
 
