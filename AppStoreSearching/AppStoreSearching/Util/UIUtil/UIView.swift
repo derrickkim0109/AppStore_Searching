@@ -88,7 +88,7 @@ extension UIView {
                x: 0,
                y: 0,
                width: 13,
-               height: 20
+               height: 15
            )
        )
        return ratingImageView
@@ -96,12 +96,13 @@ extension UIView {
 
     func makeUILabel(
         text: String,
-        font: UIFont
+        font: UIFont,
+        textAlignment: NSTextAlignment
     ) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = font
-        label.textAlignment = .center
+        label.textAlignment = textAlignment
         return label
     }
 

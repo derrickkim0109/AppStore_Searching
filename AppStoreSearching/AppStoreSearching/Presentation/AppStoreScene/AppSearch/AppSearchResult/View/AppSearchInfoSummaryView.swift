@@ -27,7 +27,7 @@ final class AppSearchInfoSummaryView: BaseView {
     private lazy var starRatingInfoStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
-                starRatingView,
+                starRatingContainerView,
                 userCountLabel
             ]
         )
@@ -38,13 +38,19 @@ final class AppSearchInfoSummaryView: BaseView {
         stackView.spacing = 6
         return stackView
     }()
-    
+
+    private let starRatingContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let starRatingView = StarRatingView()
     
     private let userCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .lightGray
+        label.textColor = .gray
         label.font = UIFont.systemFont(
             ofSize: 13
         )
@@ -77,7 +83,7 @@ final class AppSearchInfoSummaryView: BaseView {
                 )
         )
         
-        imageView.tintColor = .lightGray
+        imageView.tintColor = .gray
         imageView.image = UIImage(
             systemName: "person.crop.square"
         )
@@ -132,7 +138,7 @@ final class AppSearchInfoSummaryView: BaseView {
             )
         )
         
-        imageView.tintColor = .lightGray
+        imageView.tintColor = .gray
         imageView.setContentCompressionResistancePriority(
             .required,
             for: .horizontal
@@ -166,6 +172,7 @@ final class AppSearchInfoSummaryView: BaseView {
         super.addUIComponents()
         
         addSubview(rootStackView)
+        starRatingContainerView.addSubview(starRatingView)
     }
     
     override func configureLayouts() {
@@ -186,15 +193,22 @@ final class AppSearchInfoSummaryView: BaseView {
             starRatingInfoStackView.widthAnchor.constraint(
                 equalTo: widthAnchor,
                 multiplier: 0.33),
-            starRatingView.widthAnchor.constraint(
-                equalTo: starRatingInfoStackView.widthAnchor,
-                multiplier: 0.6),
             developerInfoStackView.widthAnchor.constraint(
                 equalTo: widthAnchor,
                 multiplier: 0.3),
             
             userCountLabel.centerYAnchor.constraint(
                 equalTo: starRatingView.centerYAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            starRatingView.topAnchor.constraint(
+                equalTo: starRatingContainerView.topAnchor,
+                constant: 3),
+            starRatingView.leadingAnchor.constraint(
+                equalTo: starRatingContainerView.leadingAnchor),
+            starRatingView.trailingAnchor.constraint(
+                equalTo: starRatingContainerView.trailingAnchor),
         ])
     }
     

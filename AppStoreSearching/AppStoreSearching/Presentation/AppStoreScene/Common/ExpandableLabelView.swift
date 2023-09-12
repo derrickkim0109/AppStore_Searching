@@ -19,7 +19,7 @@ final class ExpandableLabelView: BaseView {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
-        stackView.spacing = 15
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -30,23 +30,14 @@ final class ExpandableLabelView: BaseView {
         return label
     }()
 
-    private let seeMoreButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.preferredFont(
-            forTextStyle: .caption1
-        )
-
-        button.setTitle(
-            "더 보기",
-            for: .normal
-        )
-
-        button.setTitleColor(
-            .systemBlue,
-            for:.normal
-        )
-        return button
+    private let seeMoreLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "더보기"
+        label.textColor = .systemBlue
+        label.backgroundColor = .black
+        label.textAlignment = .right
+        return label
     }()
 
     private lazy var bottomUnderlineView = makeDiverView(
@@ -55,7 +46,7 @@ final class ExpandableLabelView: BaseView {
 
     private var isExpanded : Bool = false {
         didSet {
-            seeMoreButton.isHidden = isExpanded
+            seeMoreLabel.isHidden = isExpanded
 
             if isExpanded {
                 contentLabel.numberOfLines = 0
@@ -66,18 +57,20 @@ final class ExpandableLabelView: BaseView {
     override func setupDefault() {
         super.setupDefault()
 
-        seeMoreButton.addTarget(
-            self,
-            action:#selector(handleSeeMoreButton),
-            for:.touchUpInside
+        let tabGestureCancelReportButton = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapSeeMore(_:))
         )
+
+        seeMoreLabel.addGestureRecognizer(tabGestureCancelReportButton)
+        seeMoreLabel.isUserInteractionEnabled = true
     }
 
     override func addUIComponents() {
         super.addUIComponents()
 
         addSubview(rootStackView)
-        addSubview(seeMoreButton)
+        addSubview(seeMoreLabel)
     }
 
     override func configureLayouts() {
@@ -100,23 +93,22 @@ final class ExpandableLabelView: BaseView {
         ])
 
         NSLayoutConstraint.activate([
-            seeMoreButton.bottomAnchor.constraint(
+            seeMoreLabel.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -15),
-            seeMoreButton.trailingAnchor.constraint(
-                equalTo: trailingAnchor),
-            seeMoreButton.widthAnchor.constraint(
-                equalToConstant: 35),
-            seeMoreButton.heightAnchor.constraint(
-                equalToConstant: 15)
+            seeMoreLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor)
         ])
     }
 
     func configure(text: String) {
+        if !text.contains("\n") {
+            seeMoreLabel.isHidden = true
+        }
         contentLabel.text = text
     }
 
-    @objc private func handleSeeMoreButton() {
+    @objc private func didTapSeeMore(_ sender: UIGestureRecognizer) {
         self.isExpanded = true
     }
 }

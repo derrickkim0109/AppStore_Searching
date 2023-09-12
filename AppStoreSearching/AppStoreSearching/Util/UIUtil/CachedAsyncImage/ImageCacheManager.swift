@@ -42,7 +42,10 @@ final class ImageCacheManager {
                 throw NetworkError.unknownError
             }
 
-            let cacheResponse = CachedURLResponse(response: httpResponse, data: data)
+            let cacheResponse = CachedURLResponse(
+                response: httpResponse,
+                data: data
+            )
 
             DispatchQueue.main.async { [weak self] in
                 self?.urlCache.storeCachedResponse(cacheResponse, for: urlRequest)
@@ -52,7 +55,6 @@ final class ImageCacheManager {
         } catch {
             throw error
         }
-
     }
 
     private init() {
