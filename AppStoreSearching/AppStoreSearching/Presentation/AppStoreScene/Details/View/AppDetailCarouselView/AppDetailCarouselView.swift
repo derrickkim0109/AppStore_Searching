@@ -13,7 +13,8 @@ final class AppDetailCarouselView: BaseView {
             arrangedSubviews: [
                 makeTitleLabelView(),
                 iphoneStackView,
-                ipadStackView
+                ipadStackView,
+                iPhoneAndIPadSupportView
             ]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +82,8 @@ final class AppDetailCarouselView: BaseView {
         return carouselView
     }()
 
+    private lazy var iPhoneAndIPadSupportView = makeIPhoneAndIPadSupportView()
+
     private lazy var bottomUnderlineView = makeDiverView(
         type: .horizontal
     )
@@ -88,13 +91,23 @@ final class AppDetailCarouselView: BaseView {
     private var isExpanded: Bool = false {
         didSet {
             ipadStackView.isHidden = !isExpanded
-            iPadSupportView.isHidden = !isExpanded
+            iPhoneAndIPadSupportView.isHidden = isExpanded
             iPhoneSupportView.isHidden = !isExpanded
+            iPadSupportView.isHidden = !isExpanded
         }
     }
 
     override func setupDefault() {
         super.setupDefault()
+
+
+        let tabGestureCancelReportButton = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapSupportView(_:))
+        )
+
+        iPhoneAndIPadSupportView.addGestureRecognizer(tabGestureCancelReportButton)
+        iPhoneAndIPadSupportView.isUserInteractionEnabled = true
     }
 
     override func addUIComponents() {
@@ -102,7 +115,7 @@ final class AppDetailCarouselView: BaseView {
 
         [rootStackView,
          bottomUnderlineView]
-            .forEach {  addSubview($0) }
+            .forEach { addSubview($0) }
     }
 
     override func configureLayouts() {
@@ -150,11 +163,13 @@ final class AppDetailCarouselView: BaseView {
             data: appItem.ipadScreenshotUrls
         )
 
-        iPhoneSupportView.isHidden = appItem.ipadScreenshotUrls.isEmpty ? false : true
+        iPhoneSupportView.isHidden = showExpandableButton(
+            by: appItem.ipadScreenshotUrls
+        )
 
-        if showExpandableButton(by: appItem.ipadScreenshotUrls) {
-
-        }
+        iPhoneAndIPadSupportView.isHidden = !showExpandableButton(
+            by: appItem.ipadScreenshotUrls
+        )
     }
 
     private func makeTitleLabelView() -> UIView {
@@ -188,13 +203,7 @@ final class AppDetailCarouselView: BaseView {
         title: String,
         imageName: String
     ) -> UIView {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        imageView.tintColor = .white
-        imageView.image = UIImage(
-            systemName: imageName
-        )
+        let imageView = makeSupportImageView(imageName)
 
         let titleLabel = makeUILabel(
             text: title,
@@ -236,10 +245,71 @@ final class AppDetailCarouselView: BaseView {
         return containerView
     }
 
+    private func makeIPhoneAndIPadSupportView() -> UIView {
+        let iphoneImageView = makeSupportImageView("iphone")
+        let ipadImageView = makeSupportImageView("ipad")
+        let chevronImageView = makeSupportImageView("chevron.down")
+
+        let titleLabel = makeUILabel(
+            text: "iPhone및 iPad용 앱",
+            font: UIFont.systemFont(
+                ofSize: 12, weight: .bold
+            ),
+            textAlignment: .natural
+        )
+
+        let containerView = UIView()
+
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                iphoneImageView,
+                ipadImageView,
+                titleLabel
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 10
+
+        [stackView,
+         chevronImageView]
+            .forEach { containerView.addSubview($0) }
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(
+                equalTo: containerView.topAnchor),
+            stackView.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor),
+            stackView.leadingAnchor.constraint(
+                equalTo: containerView.leadingAnchor,
+                constant: 20),
+            stackView.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            chevronImageView.topAnchor.constraint(
+                equalTo: containerView.topAnchor),
+            chevronImageView.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor),
+            chevronImageView.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor,
+                constant: -20)
+        ])
+
+        return containerView
+    }
+
     private func showExpandableButton(
         by item: [String]
     ) -> Bool {
         return !isExpanded && !item.isEmpty
+    }
+
+    @objc private func didTapSupportView(_ sender: UIGestureRecognizer) {
+        isExpanded = true
     }
 
     private enum Const {

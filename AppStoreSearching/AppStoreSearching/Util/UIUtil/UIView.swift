@@ -145,4 +145,18 @@ extension UIView {
 
         return view
     }
+
+    func makeSupportImageView(
+        _ imageName: String
+    ) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        imageView.tintColor = .white
+        imageView.image = UIImage(
+            systemName: imageName
+        )
+
+        return imageView
+    }
 }
