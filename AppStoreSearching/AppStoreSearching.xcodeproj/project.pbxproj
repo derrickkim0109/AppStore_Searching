@@ -225,6 +225,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90219E752AB12C35004B6236 /* StarRating */ = {
+			isa = PBXGroup;
+			children = (
+				90B2796829DA5CED006FB775 /* StarRatingView.swift */,
+				90E65DA92AA8BD660061FA6F /* StarRatingImageView.swift */,
+			);
+			path = StarRating;
+			sourceTree = "<group>";
+		};
 		904DACF52A932504007BCC56 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,8 +750,7 @@
 			children = (
 				90B2796729DA5CED006FB775 /* RoundedButtonView.swift */,
 				90E65DC02AAB835F0061FA6F /* ExpandableLabelView.swift */,
-				90B2796829DA5CED006FB775 /* StarRatingView.swift */,
-				90E65DA92AA8BD660061FA6F /* StarRatingImageView.swift */,
+				90219E752AB12C35004B6236 /* StarRating */,
 				9058ECE12AAF422E0013E6F0 /* CarouselView.swift */,
 			);
 			path = Common;
