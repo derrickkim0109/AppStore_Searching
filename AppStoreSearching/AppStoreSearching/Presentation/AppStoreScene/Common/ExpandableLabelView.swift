@@ -95,8 +95,7 @@ final class ExpandableLabelView: BaseView {
         NSLayoutConstraint.activate([
             seeMoreLabel.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
-                constant: -10
-            ),
+                constant: -10),
             seeMoreLabel.trailingAnchor.constraint(
                 equalTo: trailingAnchor)
         ])
