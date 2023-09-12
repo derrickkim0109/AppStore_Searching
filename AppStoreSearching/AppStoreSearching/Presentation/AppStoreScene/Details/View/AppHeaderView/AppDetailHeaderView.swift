@@ -20,7 +20,7 @@ final class AppDetailHeaderView: BaseView {
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .fill
-        stackView.spacing = 10
+        stackView.spacing = 15
         return stackView
     }()
 
@@ -132,14 +132,16 @@ final class AppDetailHeaderView: BaseView {
             rootStackView.bottomAnchor.constraint(
                 equalTo: bottomAnchor),
             rootStackView.leadingAnchor.constraint(
-                equalTo: leadingAnchor),
+                equalTo: leadingAnchor,
+                constant: 10),
             rootStackView.trailingAnchor.constraint(
-                equalTo: trailingAnchor)
+                equalTo: trailingAnchor,
+                constant: -10)
         ])
 
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(
-                equalToConstant: 120),
+                equalToConstant: 100),
             iconImageView.heightAnchor.constraint(
                 equalTo: iconImageView.widthAnchor)
         ])

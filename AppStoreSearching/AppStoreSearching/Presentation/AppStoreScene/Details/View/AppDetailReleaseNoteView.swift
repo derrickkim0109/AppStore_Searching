@@ -24,6 +24,7 @@ final class AppDetailReleaseNoteView: BaseView {
         stackView.axis = .horizontal
         stackView.alignment = .top
         stackView.distribution = .fill
+        stackView.spacing = 0
         return stackView
     }()
 
@@ -62,12 +63,16 @@ final class AppDetailReleaseNoteView: BaseView {
             rootStackView.bottomAnchor.constraint(
                 equalTo: bottomAnchor),
             rootStackView.leadingAnchor.constraint(
-                equalTo: leadingAnchor),
+                equalTo: leadingAnchor,
+                constant: 10),
             rootStackView.trailingAnchor.constraint(
-                equalTo: trailingAnchor)
+                equalTo: trailingAnchor,
+                constant: -10)
         ])
 
         NSLayoutConstraint.activate([
+            contentStackView.widthAnchor.constraint(
+                equalTo: rootStackView.widthAnchor),
             expandableTextView.widthAnchor.constraint(
                 equalTo: rootStackView.widthAnchor)
         ])
@@ -78,16 +83,14 @@ final class AppDetailReleaseNoteView: BaseView {
     }
 
     private func setupReleaseNoteView(appItem: AppSearchItemModel) {
-        let dividerView = makeDiverView(
-            type: .horizontal
-        )
 
         let titleLabel = makeUILabel(
             text: "새로운 기능",
             font: UIFont.systemFont(
                 ofSize: 20,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
         titleLabel.textAlignment = .left
 
@@ -96,20 +99,17 @@ final class AppDetailReleaseNoteView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 14,
                 weight: .medium
-            )
+            ),
+            textAlignment: .center
         )
         versionLabel.textColor = .gray
         versionLabel.textAlignment = .left
 
         [titleLabel,
-        versionLabel]
+         versionLabel]
             .forEach { titleStackView.addArrangedSubview($0)}
 
-        let spacerView = makeSpacerView()
-
-        [titleStackView,
-         spacerView]
-            .forEach { contentStackView.addArrangedSubview($0) }
+        contentStackView.addArrangedSubview(titleStackView)
 
         if let lastReleasedDate = appItem.currentVersionReleaseDate.getLastReleasedDate() {
             let lastReleasedDateLabel = makeUILabel(
@@ -117,29 +117,18 @@ final class AppDetailReleaseNoteView: BaseView {
                 font: UIFont.systemFont(
                     ofSize: 15,
                     weight: .medium
-                )
+                ),
+                textAlignment: .center
             )
             lastReleasedDateLabel.textColor = .gray
-
+            lastReleasedDateLabel.setContentHuggingPriority(
+                .required,
+                for: .horizontal
+            )
 
             contentStackView.addArrangedSubview(lastReleasedDateLabel)
         }
 
         expandableTextView.configure(text: appItem.releaseNotes)
-
-        rootStackView.addArrangedSubview(dividerView)
-    }
-
-    private func makeSpacerView() -> UIView {
-        let spacer = UIView()
-        spacer.translatesAutoresizingMaskIntoConstraints = false
-
-        let widthConstraint = spacer.widthAnchor.constraint(greaterThanOrEqualToConstant: 240)
-
-        NSLayoutConstraint.activate([
-            widthConstraint
-        ])
-
-        return spacer
     }
 }

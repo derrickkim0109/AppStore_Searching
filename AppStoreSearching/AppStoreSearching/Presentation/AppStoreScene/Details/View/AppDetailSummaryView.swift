@@ -80,9 +80,11 @@ final class AppDetailSummaryView: BaseView {
             verticalStackView.bottomAnchor.constraint(
                 equalTo: scrollView.bottomAnchor),
             verticalStackView.leadingAnchor.constraint(
-                equalTo: scrollView.leadingAnchor),
+                equalTo: scrollView.leadingAnchor,
+                constant: 10),
             verticalStackView.trailingAnchor.constraint(
-                equalTo: scrollView.trailingAnchor)
+                equalTo: scrollView.trailingAnchor,
+                constant: -10)
         ])
     }
 
@@ -141,7 +143,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 12,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         let roundedRatingLabel = makeUILabel(
@@ -149,12 +152,13 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 18,
                 weight: .black
-            )
+            ),
+            textAlignment: .center
         )
 
         let starRatingView = StarRatingView()
         starRatingView.updatingViews(roundedRating)
-        starRatingView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        starRatingView.heightAnchor.constraint(equalToConstant: 15).isActive = true
 
         titleLabel.setContentHuggingPriority(
             .required,
@@ -182,7 +186,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 12,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         let ageLabel = makeUILabel(
@@ -190,7 +195,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 18,
                 weight: .black
-            )
+            ),
+            textAlignment: .center
         )
 
         let bottomLabel = makeUILabel(
@@ -198,7 +204,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 13,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         titleLabel.setContentHuggingPriority(
@@ -229,7 +236,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 12,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         let genreImageView = makeIconView(
@@ -241,7 +249,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 13,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         titleLabel.setContentHuggingPriority(
@@ -271,7 +280,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 12,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         let developerImageView = makeIconView(
@@ -283,7 +293,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 13,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         titleLabel.setContentHuggingPriority(
@@ -317,7 +328,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 12,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         let middleLabel = makeUILabel(
@@ -325,7 +337,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 18,
                 weight: .black
-            )
+            ),
+            textAlignment: .center
         )
 
         let bottomLabel = makeUILabel(
@@ -333,7 +346,8 @@ final class AppDetailSummaryView: BaseView {
             font: UIFont.systemFont(
                 ofSize: 13,
                 weight: .bold
-            )
+            ),
+            textAlignment: .center
         )
 
         titleLabel.setContentHuggingPriority(

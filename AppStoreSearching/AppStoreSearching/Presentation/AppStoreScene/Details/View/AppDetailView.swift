@@ -20,7 +20,7 @@ final class AppDetailView: BaseView {
                                appDetailSummaryView,
                                appDetailReleaseNoteView,
                                appDetailCarouselView,
-                               appDescriptionView,
+                               appDescriptionContainerView,
                                appDetailInfoView]
         )
         
@@ -28,7 +28,7 @@ final class AppDetailView: BaseView {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 10
+        stackView.spacing = 20
         return stackView
     }()
 
@@ -44,7 +44,6 @@ final class AppDetailView: BaseView {
     
     private let appDetailInfoView = AppDetailInfoView()
 
-
     override func setupDefault() {
         super.setupDefault()
     }
@@ -54,6 +53,7 @@ final class AppDetailView: BaseView {
 
         addSubview(scrollView)
         scrollView.addSubview(rootStackView)
+        appDescriptionContainerView.addSubview(appDescriptionView)
     }
 
     override func configureLayouts() {
@@ -65,11 +65,9 @@ final class AppDetailView: BaseView {
             scrollView.bottomAnchor.constraint(
                 equalTo: bottomAnchor),
             scrollView.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 10),
+                equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -10)
+                equalTo: trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([

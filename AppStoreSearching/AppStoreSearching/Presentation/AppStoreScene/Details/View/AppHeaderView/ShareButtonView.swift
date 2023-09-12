@@ -8,17 +8,13 @@
 import UIKit
 
 final class ShareButtonView: BaseView {
-    private let button: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(
-            UIImage(
-                systemName: "square.and.arrow.up"
-            ),
-            for: .normal
+    private let shareImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(
+            systemName: "square.and.arrow.up"
         )
-        button.tintColor = .systemBlue
-        return button
+        return imageView
     }()
 
     private var urlString: String?
@@ -26,30 +22,35 @@ final class ShareButtonView: BaseView {
     override func setupDefault() {
         super.setupDefault()
 
-        button.addTarget(
-            self,
-            action: #selector(didTapShareButton(_:)),
-            for: .touchUpInside)
+        let tabGestureCancelReportButton = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapShareImageView(_:)))
+
+        shareImageView.addGestureRecognizer(tabGestureCancelReportButton)
+        shareImageView.isUserInteractionEnabled = true
     }
 
     override func addUIComponents() {
         super.addUIComponents()
 
-        addSubview(button)
+        addSubview(shareImageView)
     }
 
     override func configureLayouts() {
         super.configureLayouts()
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(
+            shareImageView.topAnchor.constraint(
                 equalTo: topAnchor),
-            button.bottomAnchor.constraint(
+            shareImageView.bottomAnchor.constraint(
                 equalTo: bottomAnchor),
-            button.leadingAnchor.constraint(
+            shareImageView.leadingAnchor.constraint(
                 equalTo: leadingAnchor),
-            button.trailingAnchor.constraint(
-                equalTo: trailingAnchor)
+            shareImageView.trailingAnchor.constraint(
+                equalTo: trailingAnchor),
+
+            shareImageView.heightAnchor.constraint(
+                equalToConstant: 20)
         ])
     }
 
@@ -57,7 +58,7 @@ final class ShareButtonView: BaseView {
         urlString = appItem.trackViewUrl
     }
 
-    @objc private func didTapShareButton(_ sender: UIButton) {
+    @objc private func didTapShareImageView(_ sender: UIGestureRecognizer) {
         guard let urlStr = urlString,
               let shareURL = URL(string: urlStr) else {
             return
