@@ -40,6 +40,11 @@ final class AppDetailView: BaseView {
 
     private let appDetailCarouselView = AppDetailCarouselView()
 
+    private let appDescriptionContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private let appDescriptionView = ExpandableLabelView()
     
     private let appDetailInfoView = AppDetailInfoView()
@@ -87,6 +92,19 @@ final class AppDetailView: BaseView {
         NSLayoutConstraint.activate([
             appDetailSummaryView.heightAnchor.constraint(
                 equalToConstant: 100)
+        ])
+
+        NSLayoutConstraint.activate([
+            appDescriptionView.topAnchor.constraint(
+                equalTo: appDescriptionContainerView.topAnchor),
+            appDescriptionView.bottomAnchor.constraint(
+                equalTo: appDescriptionContainerView.bottomAnchor),
+            appDescriptionView.leadingAnchor.constraint(
+                equalTo: appDescriptionContainerView.leadingAnchor,
+                constant: 15),
+            appDescriptionView.trailingAnchor.constraint(
+                equalTo: appDescriptionContainerView.trailingAnchor,
+                constant: -15)
         ])
     }
 
