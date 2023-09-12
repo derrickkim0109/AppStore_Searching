@@ -27,7 +27,7 @@ final class StarRatingImageView: UIView {
         return imageView
     }()
 
-    private let defaultImageWidth: CGFloat = 15
+    private let defaultImageWidth: CGFloat = 20
     private let defaultImageHeight: CGFloat = 20
 
     override init(frame: CGRect) {
