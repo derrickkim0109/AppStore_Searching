@@ -49,4 +49,18 @@ extension AppSearchItemModel {
             rawValue: genres.first ?? ""
         )?.imageName ?? ""
     }
+
+    func toAppInfoModel() -> [AppInfoModel] {
+        let languages = languages.map { $0.getKorean() }
+        let compatibilityInfo = isCompatible ? "이 iPhone에서 작동" : "호환되지 않음"
+
+        return [
+            AppInfoModel(info: [sellerName], type: .provider),
+            AppInfoModel(info: [fileSizeBytes.getMB()], type: .size),
+            AppInfoModel(info: [genres.first ?? ""], type: .category),
+            AppInfoModel(info: [compatibilityInfo, minimumOsVersion], type: .compatibility),
+            AppInfoModel(info: languages, type: .language),
+            AppInfoModel(info: [contentAdvisoryRating], type: .contentAdvisoryRating)
+        ]
+    }
 }

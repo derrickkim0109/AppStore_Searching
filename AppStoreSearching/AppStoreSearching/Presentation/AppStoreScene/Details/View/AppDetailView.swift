@@ -16,12 +16,14 @@ final class AppDetailView: BaseView {
 
     private lazy var rootStackView: UIStackView = {
         let stackView = UIStackView(
-            arrangedSubviews: [appHeaderView,
-                               appDetailSummaryView,
-                               appDetailReleaseNoteView,
-                               appDetailCarouselView,
-                               appDescriptionContainerView,
-                               appDetailInfoView]
+            arrangedSubviews: [
+                appHeaderView,
+                appDetailSummaryView,
+                appDetailReleaseNoteView,
+                appDetailCarouselView,
+                appDescriptionContainerView,
+                appDetailInfoView
+            ]
         )
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +98,9 @@ final class AppDetailView: BaseView {
 
         NSLayoutConstraint.activate([
             appDetailSummaryView.heightAnchor.constraint(
-                equalToConstant: 100)
+                equalToConstant: 100),
+            appDetailInfoView.heightAnchor.constraint(
+                equalToConstant: 400)
         ])
 
         NSLayoutConstraint.activate([
@@ -146,6 +150,10 @@ final class AppDetailView: BaseView {
 
         appDescriptionView.configure(
             text: appItem.description
+        )
+
+        appDetailInfoView.configure(
+            appItem: appItem
         )
     }
 }
