@@ -132,7 +132,10 @@ final class AppDetailInfoView: BaseView {
             (cell,
              indexPath,
              item) in
-            cell.configure(appInfo: item)
+
+            cell.configure(
+                appInfo: item
+            )
         }
 
         return UICollectionViewDiffableDataSource<Section, AppInfoModel>(

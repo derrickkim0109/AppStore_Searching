@@ -91,22 +91,26 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            infoStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             accessoryImageView.widthAnchor.constraint(
                 equalToConstant: 20),
             accessoryImageView.heightAnchor.constraint(
                 equalToConstant: 20),
+            infoStackView.centerYAnchor.constraint(
+                equalTo: contentView.centerYAnchor),
             infoStackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
-                constant: -inset),
+                constant: -inset)
+        ])
 
+        NSLayoutConstraint.activate([
             bottomUnderlineView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor, constant: inset
-            ),
+                equalTo: contentView.leadingAnchor,
+                constant: inset),
             bottomUnderlineView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor),
             bottomUnderlineView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor, constant: -inset)
+                equalTo: contentView.trailingAnchor,
+                constant: -inset)
         ])
     }
 }
