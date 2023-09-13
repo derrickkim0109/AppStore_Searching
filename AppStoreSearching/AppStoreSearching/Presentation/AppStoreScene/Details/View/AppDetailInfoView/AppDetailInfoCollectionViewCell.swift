@@ -17,7 +17,7 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
         label.textColor = .gray
         return label
     }()
-    
+
     private lazy var infoStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -30,17 +30,17 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 5
         return stackView
     }()
-    
+
     private let infoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(
             ofSize: 14,
             weight: .bold
         )
-        
+
         return label
     }()
-    
+
     private let accessoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,35 +48,35 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
         imageView.tintColor = UIColor.lightGray
         return imageView
     }()
-    
+
     private lazy var bottomUnderlineView = makeDiverView(
         type: .horizontal
     )
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         addUIComponents()
         configureLayouts()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         configure(appInfo: nil)
     }
-    
+
     private func addUIComponents() {
         [titleLabel,
          infoStackView,
          bottomUnderlineView]
             .forEach{ contentView.addSubview($0) }
     }
-    
+
     private func configureLayouts() {
         let inset = CGFloat(10)
         NSLayoutConstraint.activate([
@@ -89,7 +89,7 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
             titleLabel.trailingAnchor.constraint(
                 equalTo: accessoryImageView.leadingAnchor, constant: -inset),
         ])
-        
+
         NSLayoutConstraint.activate([
             infoStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             accessoryImageView.widthAnchor.constraint(
@@ -99,7 +99,7 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
             infoStackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
                 constant: -inset),
-            
+
             bottomUnderlineView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor, constant: inset
             ),
@@ -114,12 +114,12 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
 extension AppDetailInfoCollectionViewCell {
     func configure(appInfo: AppInfoModel?) {
         titleLabel.text = appInfo?.type.rawValue
-        
+
         accessoryImageView.isHidden = (appInfo?.type == .compatibility
                                        || appInfo?.type == .language) ? false : true
         let languageCount = appInfo?.info.count ?? 0
         let lanaguageInfo = "\(appInfo?.info.first ?? "") 외 \(languageCount - 1)개"
-        
+
         infoLabel.text = appInfo?.type == .language ? lanaguageInfo : appInfo?.info.first
     }
 }
