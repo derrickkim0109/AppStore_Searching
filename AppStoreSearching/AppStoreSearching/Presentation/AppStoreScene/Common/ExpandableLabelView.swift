@@ -57,12 +57,12 @@ final class ExpandableLabelView: BaseView {
     override func setupDefault() {
         super.setupDefault()
 
-        let tabGestureCancelReportButton = UITapGestureRecognizer(
+        let tabGestureSeeMoreLabel = UITapGestureRecognizer(
             target: self,
             action: #selector(didTapSeeMore(_:))
         )
 
-        seeMoreLabel.addGestureRecognizer(tabGestureCancelReportButton)
+        seeMoreLabel.addGestureRecognizer(tabGestureSeeMoreLabel)
         seeMoreLabel.isUserInteractionEnabled = true
     }
 

@@ -22,11 +22,11 @@ final class ShareButtonView: BaseView {
     override func setupDefault() {
         super.setupDefault()
 
-        let tabGestureCancelReportButton = UITapGestureRecognizer(
+        let tabGestureShareImageView = UITapGestureRecognizer(
             target: self,
             action: #selector(didTapShareImageView(_:)))
 
-        shareImageView.addGestureRecognizer(tabGestureCancelReportButton)
+        shareImageView.addGestureRecognizer(tabGestureShareImageView)
         shareImageView.isUserInteractionEnabled = true
     }
 

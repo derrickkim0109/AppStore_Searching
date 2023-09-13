@@ -96,12 +96,12 @@ final class AppDetailCarouselView: BaseView {
     override func setupDefault() {
         super.setupDefault()
 
-        let tabGestureCancelReportButton = UITapGestureRecognizer(
+        let tabGestureSupportView = UITapGestureRecognizer(
             target: self,
             action: #selector(didTapSupportView(_:))
         )
 
-        iPhoneAndIPadSupportView.addGestureRecognizer(tabGestureCancelReportButton)
+        iPhoneAndIPadSupportView.addGestureRecognizer(tabGestureSupportView)
         iPhoneAndIPadSupportView.isUserInteractionEnabled = true
     }
 
