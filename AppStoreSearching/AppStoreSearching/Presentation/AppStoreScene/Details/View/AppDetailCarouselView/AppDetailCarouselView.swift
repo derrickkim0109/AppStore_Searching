@@ -84,10 +84,6 @@ final class AppDetailCarouselView: BaseView {
 
     private lazy var iPhoneAndIPadSupportView = makeIPhoneAndIPadSupportView()
 
-    private lazy var bottomUnderlineView = makeDiverView(
-        type: .horizontal
-    )
-
     private var isExpanded: Bool = false {
         didSet {
             ipadStackView.isHidden = !isExpanded
@@ -113,9 +109,11 @@ final class AppDetailCarouselView: BaseView {
     override func addUIComponents() {
         super.addUIComponents()
 
-        [rootStackView,
-         bottomUnderlineView]
-            .forEach { addSubview($0) }
+//        [rootStackView,
+//         bottomUnderlineView]
+//            .forEach { addSubview($0) }
+
+        addSubview(rootStackView)
     }
 
     override func configureLayouts() {
@@ -131,19 +129,7 @@ final class AppDetailCarouselView: BaseView {
             rootStackView.trailingAnchor.constraint(
                 equalTo: trailingAnchor)
         ])
-
-        NSLayoutConstraint.activate([
-            bottomUnderlineView.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: 10),
-            bottomUnderlineView.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 15),
-            bottomUnderlineView.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -15)
-        ])
-
+        
         NSLayoutConstraint.activate([
             iphoneCarouselView.heightAnchor.constraint(
                 equalToConstant: 500),

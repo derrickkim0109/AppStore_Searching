@@ -40,6 +40,10 @@ final class AppDetailView: BaseView {
 
     private let appDetailCarouselView = AppDetailCarouselView()
 
+    private lazy var topUnderlineView = makeDiverView(
+        type: .horizontal
+    )
+
     private let appDescriptionContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +62,7 @@ final class AppDetailView: BaseView {
 
         addSubview(scrollView)
         scrollView.addSubview(rootStackView)
+        appDescriptionContainerView.addSubview(topUnderlineView)
         appDescriptionContainerView.addSubview(appDescriptionView)
     }
 
@@ -95,8 +100,20 @@ final class AppDetailView: BaseView {
         ])
 
         NSLayoutConstraint.activate([
-            appDescriptionView.topAnchor.constraint(
+            topUnderlineView.topAnchor.constraint(
                 equalTo: appDescriptionContainerView.topAnchor),
+            topUnderlineView.leadingAnchor.constraint(
+                equalTo: appDescriptionContainerView.leadingAnchor,
+                constant: 15),
+            topUnderlineView.trailingAnchor.constraint(
+                equalTo: appDescriptionContainerView.trailingAnchor,
+                constant: -15)
+        ])
+
+        NSLayoutConstraint.activate([
+            appDescriptionView.topAnchor.constraint(
+                equalTo: topUnderlineView.bottomAnchor,
+                constant: 20),
             appDescriptionView.bottomAnchor.constraint(
                 equalTo: appDescriptionContainerView.bottomAnchor),
             appDescriptionView.leadingAnchor.constraint(

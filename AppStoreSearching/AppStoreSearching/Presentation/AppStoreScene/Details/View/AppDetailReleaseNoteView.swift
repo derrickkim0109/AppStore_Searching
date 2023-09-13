@@ -83,7 +83,6 @@ final class AppDetailReleaseNoteView: BaseView {
     }
 
     private func setupReleaseNoteView(appItem: AppSearchItemModel) {
-
         let titleLabel = makeUILabel(
             text: "새로운 기능",
             font: UIFont.systemFont(
