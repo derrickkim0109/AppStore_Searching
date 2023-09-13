@@ -13,13 +13,16 @@
 
 ## 📺 프로젝트 실행화면
 
-|메인화면|최근검색어|검색중|
+|메인화면|검색중|검색결과|
 |--|--|--|
-|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/e9ce7bfa-90a1-4432-a5e0-737ccfc7474a" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/65b10c5c-5ca3-494f-850c-c8dc7d683ca7" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/8f3ed0cf-5bed-4fff-842e-38fc4422bacf" width="250">|
+|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/e9ce7bfa-90a1-4432-a5e0-737ccfc7474a" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/8f3ed0cf-5bed-4fff-842e-38fc4422bacf" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/f36e94f7-30de-4937-b104-a1db91f635e9" width="250">|
 
-|검색결과|Pagenation|받기버튼|
+|Pagenation|상세화면|받기버튼|
 |--|--|--|
-|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/f36e94f7-30de-4937-b104-a1db91f635e9" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/33f3a668-61ae-43e9-8ef0-b5039d7c03f2" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/3e643e26-4f83-4b84-9218-9692b5d5e980" width="250">|
+|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/33f3a668-61ae-43e9-8ef0-b5039d7c03f2" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/ad66d20b-bd2e-48c1-aeb1-017c04024cd5" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/3e643e26-4f83-4b84-9218-9692b5d5e980" width="250">|
+
+
+
 
 
 
