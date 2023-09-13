@@ -106,6 +106,33 @@ extension UIView {
         return label
     }
 
+    func makeTitleLabelView(_ text: String) -> UIView {
+       let containerView = UIView()
+       let label = UILabel()
+       label.translatesAutoresizingMaskIntoConstraints = false
+       label.text = text
+       label.font = UIFont.systemFont(
+           ofSize: 20,
+           weight: .bold
+       )
+
+       containerView.addSubview(label)
+
+       NSLayoutConstraint.activate([
+           label.topAnchor.constraint(
+               equalTo: containerView.topAnchor),
+           label.bottomAnchor.constraint(
+               equalTo: containerView.bottomAnchor),
+           label.leadingAnchor.constraint(
+               equalTo: containerView.leadingAnchor,
+               constant: 15),
+           label.trailingAnchor.constraint(
+               equalTo: containerView.trailingAnchor)
+       ])
+
+       return containerView
+   }
+
     func makeVerticalView() -> UIView {
         let containerView = UIView()
         let verticalDivider = makeDiverView(type: .vertical)
