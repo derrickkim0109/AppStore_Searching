@@ -11,7 +11,7 @@ final class AppDetailCarouselView: BaseView {
     private lazy var rootStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
-                makeTitleLabelView(),
+                makeTitleLabelView("미리보기"),
                 iphoneStackView,
                 ipadStackView,
                 iPhoneAndIPadSupportView
@@ -96,7 +96,6 @@ final class AppDetailCarouselView: BaseView {
     override func setupDefault() {
         super.setupDefault()
 
-
         let tabGestureCancelReportButton = UITapGestureRecognizer(
             target: self,
             action: #selector(didTapSupportView(_:))
@@ -108,10 +107,6 @@ final class AppDetailCarouselView: BaseView {
 
     override func addUIComponents() {
         super.addUIComponents()
-
-//        [rootStackView,
-//         bottomUnderlineView]
-//            .forEach { addSubview($0) }
 
         addSubview(rootStackView)
     }
@@ -156,33 +151,6 @@ final class AppDetailCarouselView: BaseView {
         iPhoneAndIPadSupportView.isHidden = !showExpandableButton(
             by: appItem.ipadScreenshotUrls
         )
-    }
-
-    private func makeTitleLabelView() -> UIView {
-        let containerView = UIView()
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "미리보기"
-        label.font = UIFont.systemFont(
-            ofSize: 20,
-            weight: .bold
-        )
-
-        containerView.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(
-                equalTo: containerView.topAnchor),
-            label.bottomAnchor.constraint(
-                equalTo: containerView.bottomAnchor),
-            label.leadingAnchor.constraint(
-                equalTo: containerView.leadingAnchor,
-                constant: 15),
-            label.trailingAnchor.constraint(
-                equalTo: containerView.trailingAnchor)
-        ])
-
-        return containerView
     }
 
     private func makeSupportedView(
