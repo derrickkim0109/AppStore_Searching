@@ -37,7 +37,6 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
             ofSize: 14,
             weight: .bold
         )
-
         return label
     }()
 
@@ -81,13 +80,17 @@ final class AppDetailInfoCollectionViewCell: UICollectionViewCell {
         let inset = CGFloat(10)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor, constant: inset),
+                equalTo: contentView.leadingAnchor,
+                constant: inset),
             titleLabel.topAnchor.constraint(
-                equalTo: contentView.topAnchor, constant: inset),
+                equalTo: contentView.topAnchor,
+                constant: inset),
             titleLabel.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor, constant: -inset),
+                equalTo: contentView.bottomAnchor,
+                constant: -inset),
             titleLabel.trailingAnchor.constraint(
-                equalTo: accessoryImageView.leadingAnchor, constant: -inset),
+                equalTo: accessoryImageView.leadingAnchor,
+                constant: -inset),
         ])
 
         NSLayoutConstraint.activate([
@@ -122,9 +125,9 @@ extension AppDetailInfoCollectionViewCell {
         accessoryImageView.isHidden = (appInfo?.type == .compatibility
                                        || appInfo?.type == .language) ? false : true
         let languageCount = appInfo?.info.count ?? 0
-        let lanaguageInfo = "\(appInfo?.info.first ?? "") 외 \(languageCount - 1)개"
+        let languageInfo = "\(appInfo?.info.first ?? "") 외 \(languageCount - 1)개"
 
-        infoLabel.text = appInfo?.type == .language ? lanaguageInfo : appInfo?.info.first
+        infoLabel.text = appInfo?.type == .language ? languageInfo : appInfo?.info.first
     }
 }
 

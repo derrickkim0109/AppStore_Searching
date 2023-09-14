@@ -42,8 +42,6 @@ final class CachedAsyncImageView: BaseView {
 
     override func setupDefault() {
         super.setupDefault()
-
-        backgroundColor = .black
     }
 
     override func addUIComponents() {

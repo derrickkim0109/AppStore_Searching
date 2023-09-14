@@ -1,5 +1,5 @@
 //
-//  AlertControllerBulider.swift
+//  AlertController.swift
 //  AppStoreSearching
 //
 //  Created by Derrick kim on 2023/03/18.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AlertControllerBulider {
+struct AlertController {
     private let params: BuilderParams
 
     init(params: BuilderParams) {
@@ -97,13 +97,13 @@ struct AlertControllerBulider {
                 return self
             }
 
-        func setMessag(
+        func setMessage(
             _ message: String) -> Builder {
                 params.message = message
                 return self
             }
 
-        func setConfrimText(
+        func setConfirmText(
             _ confirmText: String?) -> Builder {
                 params.confirmText = confirmText
                 return self
@@ -139,8 +139,8 @@ struct AlertControllerBulider {
                 return self
             }
 
-        func build() -> AlertControllerBulider {
-            return AlertControllerBulider(
+        func build() -> AlertController {
+            return AlertController(
                 params: params)
         }
     }

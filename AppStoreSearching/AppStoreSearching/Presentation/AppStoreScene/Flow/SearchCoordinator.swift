@@ -61,12 +61,6 @@ final class SearchCoordinator: Coordinator,
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.topItem?.title = "검색"
 
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .black
-        navigationController.navigationBar.standardAppearance = appearance
-        navigationController.navigationBar.compactAppearance = appearance
-        navigationController.navigationBar.scrollEdgeAppearance = appearance
-
         return navigationController
     }
     

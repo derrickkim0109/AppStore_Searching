@@ -31,7 +31,7 @@ final class SearchResultContainerViewController: ContentStateViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind()
+        setupDefault()
     }
 
     func handle(
@@ -45,7 +45,7 @@ final class SearchResultContainerViewController: ContentStateViewController {
         }
     }
 
-    private func bind() {
+    private func setupDefault() {
         view.backgroundColor = .systemBackground
     }
 }

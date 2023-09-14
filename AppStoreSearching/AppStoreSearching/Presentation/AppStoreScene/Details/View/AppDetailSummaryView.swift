@@ -124,7 +124,7 @@ final class AppDetailSummaryView: BaseView {
 
         if !appItem.languages.isEmpty {
             let verticalDivider = makeVerticalView()
-            let languageView = makeLangaugeView(appItem.languages)
+            let languageView = makeLanguageView(appItem.languages)
 
             [verticalDivider,
              languageView]
@@ -315,7 +315,7 @@ final class AppDetailSummaryView: BaseView {
         return developerInfoStackView
     }
 
-    private func makeLangaugeView(
+    private func makeLanguageView(
         _ languages: [AppLanguageModel]
     ) -> UIStackView {
         let languageStackView = makeAppItemInfoStackView()

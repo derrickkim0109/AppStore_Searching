@@ -35,7 +35,6 @@ final class ExpandableLabelView: BaseView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "더보기"
         label.textColor = .systemBlue
-        label.backgroundColor = .black
         label.textAlignment = .right
         return label
     }()

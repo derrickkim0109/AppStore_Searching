@@ -114,12 +114,12 @@ final class CarouselView: BaseView {
                 indexPath,
                 item
             ) in
-            guard let corverType = self?.type else {
+            guard let type = self?.type else {
                 return
             }
 
             var cornerRadius: CGFloat = 0.0
-            switch corverType {
+            switch type {
             case .iPhone: cornerRadius = 18
             case .iPad:   cornerRadius = 10
             }

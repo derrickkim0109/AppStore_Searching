@@ -13,7 +13,7 @@ class BaseView: UIView, BaseViewProtocol {
     required init() {
         super.init(frame: .zero)
 
-        backgroundColor = .black
+        backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
         setupDefault()
         addUIComponents()

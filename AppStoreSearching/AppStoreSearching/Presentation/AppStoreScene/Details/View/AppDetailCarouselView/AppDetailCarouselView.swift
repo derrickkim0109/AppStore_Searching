@@ -12,8 +12,8 @@ final class AppDetailCarouselView: BaseView {
         let stackView = UIStackView(
             arrangedSubviews: [
                 makeTitleLabelView("미리보기"),
-                iphoneStackView,
-                ipadStackView,
+                iPhoneStackView,
+                iPadStackView,
                 iPhoneAndIPadSupportView
             ]
         )
@@ -25,10 +25,10 @@ final class AppDetailCarouselView: BaseView {
         return stackView
     }()
 
-    private lazy var iphoneStackView: UIStackView = {
+    private lazy var iPhoneStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
-                iphoneCarouselView,
+                iPhoneCarouselView,
                 iPhoneSupportView
             ]
         )
@@ -39,7 +39,7 @@ final class AppDetailCarouselView: BaseView {
         return stackView
     }()
 
-    private lazy var iphoneCarouselView: CarouselView = {
+    private lazy var iPhoneCarouselView: CarouselView = {
         let carouselView = CarouselView(
             itemSize: Const.iPhoneItemSize,
             itemSpacing: Const.itemSpacing,
@@ -53,10 +53,10 @@ final class AppDetailCarouselView: BaseView {
         imageName: "iphone"
     )
 
-    private lazy var ipadStackView: UIStackView = {
+    private lazy var iPadStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
-                ipadCarouselView,
+                iPadCarouselView,
                 iPadSupportView
             ]
         )
@@ -73,7 +73,7 @@ final class AppDetailCarouselView: BaseView {
         imageName: "ipad"
     )
 
-    private lazy var ipadCarouselView: CarouselView = {
+    private lazy var iPadCarouselView: CarouselView = {
         let carouselView = CarouselView(
             itemSize: Const.iPadItemSize,
             itemSpacing: Const.itemSpacing,
@@ -86,7 +86,7 @@ final class AppDetailCarouselView: BaseView {
 
     private var isExpanded: Bool = false {
         didSet {
-            ipadStackView.isHidden = !isExpanded
+            iPadStackView.isHidden = !isExpanded
             iPhoneAndIPadSupportView.isHidden = isExpanded
             iPhoneSupportView.isHidden = !isExpanded
             iPadSupportView.isHidden = !isExpanded
@@ -126,20 +126,20 @@ final class AppDetailCarouselView: BaseView {
         ])
         
         NSLayoutConstraint.activate([
-            iphoneCarouselView.heightAnchor.constraint(
+            iPhoneCarouselView.heightAnchor.constraint(
                 equalToConstant: 500),
-            ipadCarouselView.heightAnchor.constraint(
+            iPadCarouselView.heightAnchor.constraint(
                 equalToConstant: 350)
         ])
     }
 
     func configure(appItem: AppSearchItemModel) {
-        iphoneCarouselView.applyDataSource(
+        iPhoneCarouselView.applyDataSource(
             type: .iPhone,
             data: appItem.screenshotUrls
         )
 
-        ipadCarouselView.applyDataSource(
+        iPadCarouselView.applyDataSource(
             type: .iPad,
             data: appItem.ipadScreenshotUrls
         )

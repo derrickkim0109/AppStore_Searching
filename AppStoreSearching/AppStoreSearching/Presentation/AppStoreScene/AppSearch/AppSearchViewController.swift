@@ -46,7 +46,6 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
     override func setupDefault() {
         super.setupDefault()
         
-        view.backgroundColor = .systemBackground
         appSearchView.tableView.delegate = self
         setSearchController()
     }
@@ -171,7 +170,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
     private enum Const {
         static let zero: CGFloat = 0
         static let fifteen = 15.0
-        static let twentythree = 23.0
+        static let twentyThree = 23.0
         static let placeHolder = "게임, 앱, 스토리 등"
         static let cancel = "취소"
         static let cancelKey = "cancelButtonText"
@@ -246,8 +245,7 @@ extension AppSearchViewController: UITableViewDelegate {
                 y: Const.zero,
                 width: width,
                 height: height))
-        headerView.backgroundColor = .systemBackground
-        
+
         let label = UILabel(
             frame: CGRect(
                 x: Const.fifteen,
@@ -260,9 +258,8 @@ extension AppSearchViewController: UITableViewDelegate {
         label.text = Const.recentTerm
         label.textColor = UIColor.baseTextColor
         label.textAlignment = .left
-        label.backgroundColor = .systemBackground
         label.font = UIFont.boldSystemFont(
-            ofSize: Const.twentythree
+            ofSize: Const.twentyThree
         )
         
         headerView.addSubview(label)

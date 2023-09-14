@@ -9,10 +9,10 @@ import UIKit
 
 extension UIDevice {
     var modelName: String {
-#if targetEnvironment(simulator)
+        #if targetEnvironment(simulator)
         let identifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"]!
         
-#else
+        #else
         var systemInfo = utsname()
         
         uname(&systemInfo)
@@ -35,7 +35,7 @@ extension UIDevice {
                 )
             }
         
-#endif
+        #endif
         switch identifier {
         case "iPhone3,1", "iPhone3,2", "iPhone3,3":           return "iPhone 4"
         case "iPhone4,1":                                     return "iPhone 4s"

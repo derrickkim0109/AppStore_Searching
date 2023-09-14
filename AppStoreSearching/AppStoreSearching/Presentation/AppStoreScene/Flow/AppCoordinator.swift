@@ -30,17 +30,6 @@ final class AppCoordinator: Coordinator,
         return UINavigationController()
     }
 
-    func childDidFinish(_ child: Coordinator) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(
-                    at: index
-                )
-                break
-            }
-        }
-    }
-
     func showDetailViewController(
         at viewController: UIViewController,
         of item: AppSearchItemModel

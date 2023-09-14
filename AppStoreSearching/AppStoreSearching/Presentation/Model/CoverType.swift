@@ -11,9 +11,3 @@ enum CoverType {
     case iPhone
     case iPad
 }
-
-extension CoverType {
-    public var id: Self {
-        self
-    }
-}

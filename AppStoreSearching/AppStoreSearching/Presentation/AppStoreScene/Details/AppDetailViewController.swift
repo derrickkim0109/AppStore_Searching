@@ -31,6 +31,7 @@ final class AppDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupDefault()
         addUIComponents()
         configureLayouts()
 
@@ -39,11 +40,15 @@ final class AppDetailViewController: UIViewController {
         )
     }
 
-    func addUIComponents() {
+    private func setupDefault() {
+        view.backgroundColor = .systemBackground
+    }
+
+    private func addUIComponents() {
         view.addSubview(appDetailView)
     }
 
-    func configureLayouts() {
+    private func configureLayouts() {
         NSLayoutConstraint.activate([
             appDetailView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor),

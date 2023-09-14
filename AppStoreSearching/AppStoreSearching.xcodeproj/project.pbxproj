@@ -55,10 +55,6 @@
 		904DAD452A946572007BCC56 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD442A946572007BCC56 /* CachedAsyncImageView.swift */; };
 		904DAD472A946648007BCC56 /* CachedImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD462A946648007BCC56 /* CachedImageInfo.swift */; };
 		904DAD492A9481EE007BCC56 /* AppSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD482A9481EE007BCC56 /* AppSearchView.swift */; };
-		904DAD592A948858007BCC56 /* AppSearchItemModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD582A948858007BCC56 /* AppSearchItemModelMock.swift */; };
-		904DAD5C2A9488F0007BCC56 /* AppSearchModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD5B2A9488F0007BCC56 /* AppSearchModelMock.swift */; };
-		904DAD5F2A948947007BCC56 /* AppSearchEntityMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD5E2A948947007BCC56 /* AppSearchEntityMock.swift */; };
-		904DAD622A948980007BCC56 /* AppSearchItemEntityMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD612A948980007BCC56 /* AppSearchItemEntityMock.swift */; };
 		904DAD652A9489C9007BCC56 /* AppSearchResponseDTOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD642A9489C9007BCC56 /* AppSearchResponseDTOMock.swift */; };
 		904DAD682A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD672A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift */; };
 		904DAD6B2A94B270007BCC56 /* AppSearchResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DAD6A2A94B270007BCC56 /* AppSearchResultListView.swift */; };
@@ -73,7 +69,7 @@
 		90B2798429DA5CED006FB775 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2791929DA5CED006FB775 /* ImageCacheManager.swift */; };
 		90B2798529DA5CED006FB775 /* AnyCancelTaskBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2791A29DA5CED006FB775 /* AnyCancelTaskBag.swift */; };
 		90B2798729DA5CED006FB775 /* AnyCancellableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2791C29DA5CED006FB775 /* AnyCancellableTask.swift */; };
-		90B2798829DA5CED006FB775 /* AlertControllerBulider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2791D29DA5CED006FB775 /* AlertControllerBulider.swift */; };
+		90B2798829DA5CED006FB775 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2791D29DA5CED006FB775 /* AlertController.swift */; };
 		90B2798C29DA5CED006FB775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2792329DA5CED006FB775 /* AppDelegate.swift */; };
 		90B2798D29DA5CED006FB775 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2792429DA5CED006FB775 /* SceneDelegate.swift */; };
 		90B2798F29DA5CED006FB775 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2792829DA5CED006FB775 /* NetworkService.swift */; };
@@ -167,10 +163,6 @@
 		904DAD442A946572007BCC56 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
 		904DAD462A946648007BCC56 /* CachedImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageInfo.swift; sourceTree = "<group>"; };
 		904DAD482A9481EE007BCC56 /* AppSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchView.swift; sourceTree = "<group>"; };
-		904DAD582A948858007BCC56 /* AppSearchItemModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemModelMock.swift; sourceTree = "<group>"; };
-		904DAD5B2A9488F0007BCC56 /* AppSearchModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchModelMock.swift; sourceTree = "<group>"; };
-		904DAD5E2A948947007BCC56 /* AppSearchEntityMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchEntityMock.swift; sourceTree = "<group>"; };
-		904DAD612A948980007BCC56 /* AppSearchItemEntityMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemEntityMock.swift; sourceTree = "<group>"; };
 		904DAD642A9489C9007BCC56 /* AppSearchResponseDTOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchResponseDTOMock.swift; sourceTree = "<group>"; };
 		904DAD672A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemResponseDTOMock.swift; sourceTree = "<group>"; };
 		904DAD6A2A94B270007BCC56 /* AppSearchResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchResultListView.swift; sourceTree = "<group>"; };
@@ -188,7 +180,7 @@
 		90B2791929DA5CED006FB775 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		90B2791A29DA5CED006FB775 /* AnyCancelTaskBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCancelTaskBag.swift; sourceTree = "<group>"; };
 		90B2791C29DA5CED006FB775 /* AnyCancellableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCancellableTask.swift; sourceTree = "<group>"; };
-		90B2791D29DA5CED006FB775 /* AlertControllerBulider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerBulider.swift; sourceTree = "<group>"; };
+		90B2791D29DA5CED006FB775 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		90B2792329DA5CED006FB775 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90B2792429DA5CED006FB775 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		90B2792829DA5CED006FB775 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -356,7 +348,7 @@
 			children = (
 				904DAD3A2A945463007BCC56 /* Base */,
 				90B2791829DA5CED006FB775 /* CachedAsyncImage */,
-				90B2791D29DA5CED006FB775 /* AlertControllerBulider.swift */,
+				90B2791D29DA5CED006FB775 /* AlertController.swift */,
 				90B2797929DA5CED006FB775 /* ContentStateViewController.swift */,
 				90B2797829DA5CED006FB775 /* ReusableCells.swift */,
 				90B2790E29DA5CED006FB775 /* UIView.swift */,
@@ -447,8 +439,6 @@
 		904DAD542A9487D6007BCC56 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				904DAD572A9487FD007BCC56 /* PresentationLayer */,
-				904DAD562A9487F9007BCC56 /* DomainLayer */,
 				904DAD552A9487E2007BCC56 /* DataLayer */,
 			);
 			path = Model;
@@ -461,24 +451,6 @@
 				904DAD672A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift */,
 			);
 			path = DataLayer;
-			sourceTree = "<group>";
-		};
-		904DAD562A9487F9007BCC56 /* DomainLayer */ = {
-			isa = PBXGroup;
-			children = (
-				904DAD5E2A948947007BCC56 /* AppSearchEntityMock.swift */,
-				904DAD612A948980007BCC56 /* AppSearchItemEntityMock.swift */,
-			);
-			path = DomainLayer;
-			sourceTree = "<group>";
-		};
-		904DAD572A9487FD007BCC56 /* PresentationLayer */ = {
-			isa = PBXGroup;
-			children = (
-				904DAD582A948858007BCC56 /* AppSearchItemModelMock.swift */,
-				904DAD5B2A9488F0007BCC56 /* AppSearchModelMock.swift */,
-			);
-			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 		90500FC029C53E4200F017FF = {
@@ -902,7 +874,7 @@
 				904DAD0B2A93310B007BCC56 /* AppSearchItemResponseDTO.swift in Sources */,
 				90B279BA29DA5CED006FB775 /* AppCoordinator.swift in Sources */,
 				90B2799829DA5CED006FB775 /* NetworkError.swift in Sources */,
-				90B2798829DA5CED006FB775 /* AlertControllerBulider.swift in Sources */,
+				90B2798829DA5CED006FB775 /* AlertController.swift in Sources */,
 				90B2799929DA5CED006FB775 /* AppSearchRepository.swift in Sources */,
 				904DAD132A93317A007BCC56 /* Int.swift in Sources */,
 				90B279B629DA5CED006FB775 /* RecentKeywordListViewController.swift in Sources */,
@@ -982,11 +954,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				904DAD592A948858007BCC56 /* AppSearchItemModelMock.swift in Sources */,
 				90219E942AB1E69E004B6236 /* AppSearchDTOObjectMother.swift in Sources */,
 				90219E852AB18F10004B6236 /* MockNetworkService.swift in Sources */,
 				90219E922AB1E623004B6236 /* AppSearchModelObjectMother.swift in Sources */,
-				904DAD622A948980007BCC56 /* AppSearchItemEntityMock.swift in Sources */,
 				904DAD652A9489C9007BCC56 /* AppSearchResponseDTOMock.swift in Sources */,
 				90219E982AB2B075004B6236 /* MockRecentKeywordRepository.swift in Sources */,
 				90219E902AB1E538004B6236 /* RecentKeywordObjectMother.swift in Sources */,
@@ -995,8 +965,6 @@
 				90219E8D2AB1904D004B6236 /* AppSearchEntityObjectMother.swift in Sources */,
 				90219E872AB18F6C004B6236 /* Scenario.swift in Sources */,
 				90219E9A2AB2B150004B6236 /* MockAppSearchUseCase.swift in Sources */,
-				904DAD5C2A9488F0007BCC56 /* AppSearchModelMock.swift in Sources */,
-				904DAD5F2A948947007BCC56 /* AppSearchEntityMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

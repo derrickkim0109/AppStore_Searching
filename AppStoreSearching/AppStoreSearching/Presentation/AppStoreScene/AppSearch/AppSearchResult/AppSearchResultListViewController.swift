@@ -54,9 +54,9 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
             .sink { [weak self] showErrorAlert in
                 if showErrorAlert
                     && self?.viewModel.searchedAppList.isEmpty == true {
-                    AlertControllerBulider.Builder()
-                        .setMessag(self?.viewModel.viewModelError?.rawValue ?? "")
-                        .setConfrimText("확인")
+                    AlertController.Builder()
+                        .setMessage(self?.viewModel.viewModelError?.rawValue ?? "")
+                        .setConfirmText("확인")
                         .build()
                         .present()
                 }

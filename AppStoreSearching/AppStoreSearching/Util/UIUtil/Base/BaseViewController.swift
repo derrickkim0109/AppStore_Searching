@@ -26,6 +26,8 @@ class BaseViewController<T>: UIViewController, BaseViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .systemBackground
+
         setupDefault()
         addUIComponents()
         configureLayouts()

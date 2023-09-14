@@ -33,15 +33,15 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(
-            named: Const.searchIcon
+            systemName: Const.searchIcon
         )
+        imageView.tintColor = .gray
         return imageView
     }()
     
     private let recentKeywordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
         label.font = UIFont.systemFont(
             ofSize: 20
         )
@@ -143,7 +143,7 @@ final class RecentAppSearchTableViewCell: UITableViewCell {
         static let ten = 10.0
         static let fifteen = 15.0
         static let sixteen = 16.0
-        static let searchIcon = "magnifyingGlass"
+        static let searchIcon = "magnifyingglass"
     }
 }
 
