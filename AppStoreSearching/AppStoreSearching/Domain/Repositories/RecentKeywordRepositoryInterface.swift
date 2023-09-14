@@ -8,6 +8,6 @@
 protocol RecentKeywordRepositoryInterface {
     func getRecentKeywordList() -> [String]
     func add(
-        recentKeyword: String
+        keyword: String
     )
 }

@@ -38,7 +38,7 @@ final class AppSearchUseCase : AppSearchUseCaseInterface {
         }
 
         recentKeywordRepository.add(
-            recentKeyword: keyword
+            keyword: keyword
         )
 
         let offset = getOffset(

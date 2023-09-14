@@ -20,7 +20,9 @@ final class RecentKeywordRepository: RecentKeywordRepositoryInterface {
         return recentKeywordStorage.getRecentKeywordList()
     }
 
-    func add(recentKeyword: String) {
-        recentKeywordStorage.addRecentKeyword(keyword: recentKeyword)
+    func add(keyword: String) {
+        recentKeywordStorage.addRecentKeyword(
+            keyword: keyword
+        )
     }
 }
