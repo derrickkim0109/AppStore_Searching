@@ -5,6 +5,8 @@
 //  Created by Derrick kim on 2023/08/22.
 //
 
+@testable import AppStoreSearching
+
 extension AppSearchItemResponseDTO {
     static let completeDataMock = AppSearchItemResponseDTO(
         screenshotUrls: mockScreenShotUrls,

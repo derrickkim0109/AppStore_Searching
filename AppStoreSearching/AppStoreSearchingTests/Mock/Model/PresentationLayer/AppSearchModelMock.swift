@@ -5,7 +5,7 @@
 //  Created by Derrick kim on 2023/08/22.
 //
 
-import Foundation
+@testable import AppStoreSearching
 
 extension AppSearchModel {
     static let mock = AppSearchModel(

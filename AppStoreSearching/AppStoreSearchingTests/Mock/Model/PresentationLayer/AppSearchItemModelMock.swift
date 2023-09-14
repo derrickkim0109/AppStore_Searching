@@ -5,6 +5,8 @@
 //  Created by Derrick kim on 2023/08/22.
 //
 
+@testable import AppStoreSearching
+
 extension AppSearchItemModel {
     static let mock = AppSearchItemModel(
         screenshotUrls: ["https://is5-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/ba/bd/56/babd56b3-f364-3e46-3cc2-d89e60fa7034/69c855e1-ed42-434b-95ea-197709f7eb82_ios_5.5_01.png/392x696bb.png", "https://is4-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/80/11/81/801181f0-c238-7274-9603-514dfaf22ee4/23cd5522-2d10-468d-9fcc-d0b5f6e2bf69_ios_5.5_02.png/392x696bb.png", "https://is3-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/c0/a0/51/c0a0515e-6d6a-1207-65c7-66903326da95/c2fd2cfa-8839-471a-a450-13f42a9df45e_ios_5.5_03.png/392x696bb.png", "https://is4-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/83/a6/5d/83a65d4c-0350-1224-ac81-89d6206b4a7f/aaf679cc-3d33-481d-b4dd-8387cffbe794_ios_5.5_04.png/392x696bb.png", "https://is5-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/54/1d/39/541d393d-2324-1452-85da-116c126d2f52/4f1d1e34-b52a-4957-8c53-2dfc8287dc3b_ios_5.5_05.png/392x696bb.png", "https://is3-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/e9/f0/6b/e9f06ba8-19bc-7220-3db8-626d33c26469/dda46a6e-a125-42cc-95b9-b6f23b0cb7c0_ios_5.5_06.png/392x696bb.png", "https://is2-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/68/9c/6e/689c6e0b-2bf7-9685-caeb-c218fe44fc78/3a4d4b4d-5586-49e1-b171-298c0808836d_ios_5.5_07.png/392x696bb.png", "https://is2-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/a5/7c/0d/a57c0de9-f845-c03b-b68c-f471af6b97c0/724db1cd-54d5-4865-b44a-6d439cc4c7d1_ios_5.5_08.png/392x696bb.png", "https://is4-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/e4/5f/df/e45fdfeb-7903-0195-a9a1-218a15a43efc/c843e8ab-e721-4ba2-9eaf-9566630db3a6_ios_5.5_09.png/392x696bb.png"],
