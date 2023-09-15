@@ -179,7 +179,7 @@ extension UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        imageView.tintColor = .white
+        imageView.tintColor = .gray
         imageView.image = UIImage(
             systemName: imageName
         )
