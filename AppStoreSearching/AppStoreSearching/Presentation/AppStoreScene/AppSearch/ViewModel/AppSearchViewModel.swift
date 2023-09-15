@@ -22,7 +22,7 @@ final class AppSearchViewModel {
     var isInitialLoading: Bool = false
     var filteredRecentKeywords: [String] = []
 
-    private var currentPage: Int = 0
+    var currentPage: Int = 0
     private let perPage: Int = 10
     private let appSearchUseCase: AppSearchUseCaseInterface
     private let bag = AnyCancelTaskBag()

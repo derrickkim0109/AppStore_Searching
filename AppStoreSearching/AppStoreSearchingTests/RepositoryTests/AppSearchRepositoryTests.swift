@@ -12,8 +12,6 @@ final class AppSearchRepositoryTests: XCTestCase {
     var mockAppSearchDataSource: MockAppSearchDataSource!
     var repository: AppSearchRepositoryInterface!
 
-    private let bag = AnyCancelTaskBag()
-
     override func setUpWithError() throws {
         super.setUp()
 

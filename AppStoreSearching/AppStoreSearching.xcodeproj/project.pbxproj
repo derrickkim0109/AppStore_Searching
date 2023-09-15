@@ -10,6 +10,8 @@
 		9013E95C2AB37CCF00438BA6 /* AppSearchItemModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013E95B2AB37CCF00438BA6 /* AppSearchItemModelMock.swift */; };
 		9013E95F2AB4017C00438BA6 /* AppSearchItemEntityMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013E95E2AB4017C00438BA6 /* AppSearchItemEntityMock.swift */; };
 		9013E9612AB4061A00438BA6 /* AppSearchItemDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013E9602AB4061A00438BA6 /* AppSearchItemDTOTests.swift */; };
+		9013E9652AB41B1200438BA6 /* NetworkSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013E9642AB41B1200438BA6 /* NetworkSessionManagerTests.swift */; };
+		9013E9672AB41B2100438BA6 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013E9662AB41B2100438BA6 /* NetworkServiceTests.swift */; };
 		90219E802AB18526004B6236 /* AppDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219E7E2AB18526004B6236 /* AppDetailInfoView.swift */; };
 		90219E812AB18526004B6236 /* AppDetailInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219E7F2AB18526004B6236 /* AppDetailInfoCollectionViewCell.swift */; };
 		90219E832AB18535004B6236 /* AppInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219E822AB18535004B6236 /* AppInfoModel.swift */; };
@@ -24,6 +26,7 @@
 		90219E982AB2B075004B6236 /* MockRecentKeywordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219E972AB2B075004B6236 /* MockRecentKeywordRepository.swift */; };
 		90219E9A2AB2B150004B6236 /* MockAppSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219E992AB2B150004B6236 /* MockAppSearchUseCase.swift */; };
 		90219EA22AB356AA004B6236 /* AppSearchDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219EA12AB356AA004B6236 /* AppSearchDTOTests.swift */; };
+		90219EA42AB35B06004B6236 /* MockNetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90219EA32AB35B06004B6236 /* MockNetworkSessionManager.swift */; };
 		903771892AA2A5590003AF55 /* AppSearchInfoSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903771882AA2A5590003AF55 /* AppSearchInfoSummaryView.swift */; };
 		904DACFB2A932A9C007BCC56 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DACFA2A932A9C007BCC56 /* Encodable.swift */; };
 		904DACFD2A932B3A007BCC56 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904DACFC2A932B3A007BCC56 /* Dictionary.swift */; };
@@ -65,6 +68,10 @@
 		9058ECE02AAEEBDF0013E6F0 /* AppDetailCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058ECDF2AAEEBDF0013E6F0 /* AppDetailCarouselCollectionViewCell.swift */; };
 		9058ECE22AAF422E0013E6F0 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058ECE12AAF422E0013E6F0 /* CarouselView.swift */; };
 		90661A032AA0463100547FFC /* AppScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90661A022AA0463100547FFC /* AppScreenshotView.swift */; };
+		90A0999E2AB429F4009DBC3A /* AppSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0999D2AB429F4009DBC3A /* AppSearchRepositoryTests.swift */; };
+		90A099A02AB429FE009DBC3A /* AppSearchUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0999F2AB429FE009DBC3A /* AppSearchUseCaseTests.swift */; };
+		90A099A82AB434EA009DBC3A /* MockAppSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A099A72AB434EA009DBC3A /* MockAppSearchDataSource.swift */; };
+		90A099AA2AB442C1009DBC3A /* AppSearchDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A099A92AB442C1009DBC3A /* AppSearchDataSourceTests.swift */; };
 		90B2797C29DA5CED006FB775 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2790D29DA5CED006FB775 /* UIViewController.swift */; };
 		90B2797D29DA5CED006FB775 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2790E29DA5CED006FB775 /* UIView.swift */; };
 		90B2797F29DA5CED006FB775 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2791029DA5CED006FB775 /* UIColor.swift */; };
