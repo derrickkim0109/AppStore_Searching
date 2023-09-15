@@ -22,7 +22,8 @@ struct AppSearchItemEntity {
     let contentAdvisoryRating: String
     let averageUserRating: Double
     let trackViewUrl: String
-    let description, bundleId: String
+    let description: String
+    let bundleId: String
     let isCompatible: Bool
     let releaseDate: String
     let sellerName: String

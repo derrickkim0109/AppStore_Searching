@@ -79,27 +79,44 @@ extension AppSearchItemResponseDTO {
         }
 
         if let indexOfKO = languageCodes.firstIndex(of: "KO") {
-            let ko = languageCodes.remove(at: indexOfKO)
-            languageCodes.insert(ko, at: 0)
+            let korean = languageCodes.remove(
+                at: indexOfKO
+            )
+
+            languageCodes.insert(
+                korean,
+                at: 0
+            )
 
             if let indexOfEN = languageCodes.firstIndex(of: "EN") {
-                let en = languageCodes.remove(at: indexOfEN)
-                languageCodes.insert(en, at: 1)
+                let english = languageCodes.remove(
+                    at: indexOfEN
+                )
+
+                languageCodes.insert(
+                    english,
+                    at: 1
+                )
             }
 
         } else if let indexOfEN = languageCodes.firstIndex(of: "EN") {
-            let en = languageCodes
+            let english = languageCodes
                 .remove(
                     at: indexOfEN
                 )
-            languageCodes.insert(en, at: 0)
-        }
 
-        return languageCodes.compactMap { code in
-            return AppLanguageCodeEntity(
-                rawValue: code
+            languageCodes.insert(
+                english,
+                at: 0
             )
         }
+
+        return languageCodes
+            .compactMap { code in
+                return AppLanguageCodeEntity(
+                    rawValue: code
+                )
+            }
     }
 
     func isCompatibleToDevice(

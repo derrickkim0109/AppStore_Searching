@@ -34,8 +34,8 @@ final class AppSearchDTOTests: XCTestCase {
         let entity = completeDataDTO.toEntity()
 
         // then
-        XCTAssertEqual(expectation.resultCount, entity.resultCount)
-        XCTAssertEqual(expectation.results.first?.artistId, entity.results.first?.artistId)
+        XCTAssertEqual(entity.resultCount, expectation.resultCount)
+        XCTAssertEqual(entity.results.first?.artistId, expectation.results.first?.artistId)
     }
 
     func test_DTO_데이터가_nil값으로_들어올_경우_Default값이_Entity로_변환한다() {
@@ -46,7 +46,8 @@ final class AppSearchDTOTests: XCTestCase {
         let entity = insufficientDataDTO.toEntity()
 
         // then
-        XCTAssertEqual(expectation.resultCount, entity.resultCount)
-        XCTAssertEqual(expectation.results.first?.artistId, entity.results.first?.artistId)
+
+        XCTAssertEqual(entity.resultCount, expectation.resultCount)
+        XCTAssertEqual(entity.results.first?.artistId, expectation.results.first?.artistId)
     }
 }

@@ -38,4 +38,12 @@ struct AppSearchDTOObjectMother {
     static func getInsufficientAppSearchItemResponseDTO() -> AppSearchItemResponseDTO {
         return AppSearchItemResponseDTO.insufficientDataMock
     }
+
+    static func getAppSearchItemResponseDTO(
+        _ languages: [String]
+    ) -> AppSearchItemResponseDTO {
+        return AppSearchItemResponseDTO.stub(
+            languages: languages
+        )
+    }
 }
