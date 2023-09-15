@@ -34,7 +34,6 @@ final class AppSearchDTOTests: XCTestCase {
         let entity = completeDataDTO.toEntity()
 
         // then
-        XCTAssertTrue(type(of: entity) == AppSearchEntity.self)
         XCTAssertEqual(expectation.resultCount, entity.resultCount)
         XCTAssertEqual(expectation.results.first?.artistId, entity.results.first?.artistId)
     }
@@ -45,8 +44,8 @@ final class AppSearchDTOTests: XCTestCase {
 
         // when
         let entity = insufficientDataDTO.toEntity()
+
         // then
-        XCTAssertTrue(type(of: entity) == AppSearchEntity.self)
         XCTAssertEqual(expectation.resultCount, entity.resultCount)
         XCTAssertEqual(expectation.results.first?.artistId, entity.results.first?.artistId)
     }
