@@ -10,10 +10,8 @@
 struct AppSearchDTOObjectMother {
     static func getAppSearchResponseDTOWithCompleteData() -> AppSearchResponseDTO {
         return AppSearchResponseDTO(
-            resultCount: 1,
-            results: [
-                getAppSearchItemResponseDTOWithCompleteData()
-            ]
+            resultCount: 10,
+            results: getAppSearchItemResponseDTOWithCompleteData()
         )
     }
 
@@ -21,16 +19,23 @@ struct AppSearchDTOObjectMother {
         return AppSearchResponseDTO(
             resultCount: 1,
             results: [
-                getAppSearchItemResponseDTOWithInsufficientData()
+                getInsufficientAppSearchItemResponseDTO()
             ]
         )
     }
 
-    static func getAppSearchItemResponseDTOWithCompleteData() -> AppSearchItemResponseDTO {
+    static func getAppSearchItemResponseDTOWithCompleteData(
+        count: Int = 10
+    ) -> [AppSearchItemResponseDTO] {
+        return (0..<count)
+            .map { _ in getCompletedAppSearchItemResponseDTO() }
+    }
+
+    static func getCompletedAppSearchItemResponseDTO() -> AppSearchItemResponseDTO {
         return AppSearchItemResponseDTO.completeDataMock
     }
 
-    static func getAppSearchItemResponseDTOWithInsufficientData() -> AppSearchItemResponseDTO {
+    static func getInsufficientAppSearchItemResponseDTO() -> AppSearchItemResponseDTO {
         return AppSearchItemResponseDTO.insufficientDataMock
     }
 }

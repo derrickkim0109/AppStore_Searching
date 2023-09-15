@@ -27,8 +27,8 @@ struct AppSearchEntityObjectMother {
 
     static func getAppSearchEntityWithInsufficientData() -> AppSearchEntity {
         return AppSearchEntity(
-            resultCount: 5,
-            results: getAppSearchItemEntityListWithCompleteData(count: 5)
+            resultCount: 1,
+            results: [getInsufficientAppSearchItemEntity()]
         )
     }
 
@@ -36,10 +36,14 @@ struct AppSearchEntityObjectMother {
         count: Int = 10
     ) -> [AppSearchItemEntity] {
         return (0..<count)
-            .map { _ in getAppSearchItemModelWithCompleteData() }
+            .map { _ in getCompletedAppSearchItemEntity() }
     }
 
-    static func getAppSearchItemModelWithCompleteData() -> AppSearchItemEntity {
-        return AppSearchItemEntity.mock
+    static func getCompletedAppSearchItemEntity() -> AppSearchItemEntity {
+        return AppSearchItemEntity.completeDataMock
+    }
+
+    static func getInsufficientAppSearchItemEntity() -> AppSearchItemEntity {
+        return AppSearchItemEntity.insufficientDataMock
     }
 }
