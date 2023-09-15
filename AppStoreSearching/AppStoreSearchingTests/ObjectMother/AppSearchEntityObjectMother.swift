@@ -25,6 +25,7 @@ struct AppSearchEntityObjectMother {
         )
     }
 
+    // 10개의 resultCount가 되야한다.
     static func getAppSearchEntityWithInsufficientData() -> AppSearchEntity {
         return AppSearchEntity(
             resultCount: 1,
