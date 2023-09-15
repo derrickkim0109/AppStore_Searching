@@ -123,6 +123,8 @@
 		9013E95B2AB37CCF00438BA6 /* AppSearchItemModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemModelMock.swift; sourceTree = "<group>"; };
 		9013E95E2AB4017C00438BA6 /* AppSearchItemEntityMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemEntityMock.swift; sourceTree = "<group>"; };
 		9013E9602AB4061A00438BA6 /* AppSearchItemDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchItemDTOTests.swift; sourceTree = "<group>"; };
+		9013E9642AB41B1200438BA6 /* NetworkSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerTests.swift; sourceTree = "<group>"; };
+		9013E9662AB41B2100438BA6 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		90219E7E2AB18526004B6236 /* AppDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailInfoView.swift; sourceTree = "<group>"; };
 		90219E7F2AB18526004B6236 /* AppDetailInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		90219E822AB18535004B6236 /* AppInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoModel.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		90219E972AB2B075004B6236 /* MockRecentKeywordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecentKeywordRepository.swift; sourceTree = "<group>"; };
 		90219E992AB2B150004B6236 /* MockAppSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppSearchUseCase.swift; sourceTree = "<group>"; };
 		90219EA12AB356AA004B6236 /* AppSearchDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchDTOTests.swift; sourceTree = "<group>"; };
+		90219EA32AB35B06004B6236 /* MockNetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkSessionManager.swift; sourceTree = "<group>"; };
 		903771882AA2A5590003AF55 /* AppSearchInfoSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchInfoSummaryView.swift; sourceTree = "<group>"; };
 		904DACFA2A932A9C007BCC56 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		904DACFC2A932B3A007BCC56 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -179,6 +182,10 @@
 		9058ECE12AAF422E0013E6F0 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		90661A022AA0463100547FFC /* AppScreenshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotView.swift; sourceTree = "<group>"; };
 		908E9A4D29C9CF3400231ECD /* AppStoreSearchingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A0999D2AB429F4009DBC3A /* AppSearchRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchRepositoryTests.swift; sourceTree = "<group>"; };
+		90A0999F2AB429FE009DBC3A /* AppSearchUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchUseCaseTests.swift; sourceTree = "<group>"; };
+		90A099A72AB434EA009DBC3A /* MockAppSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppSearchDataSource.swift; sourceTree = "<group>"; };
+		90A099A92AB442C1009DBC3A /* AppSearchDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchDataSourceTests.swift; sourceTree = "<group>"; };
 		90B2790D29DA5CED006FB775 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		90B2790E29DA5CED006FB775 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		90B2791029DA5CED006FB775 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -294,6 +301,32 @@
 				9013E9602AB4061A00438BA6 /* AppSearchItemDTOTests.swift */,
 			);
 			path = DTOTests;
+			sourceTree = "<group>";
+		};
+		90219E9D2AB2B291004B6236 /* RepositoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				90A0999D2AB429F4009DBC3A /* AppSearchRepositoryTests.swift */,
+			);
+			path = RepositoryTests;
+			sourceTree = "<group>";
+		};
+		90219E9F2AB2B291004B6236 /* DataSourceTests */ = {
+			isa = PBXGroup;
+			children = (
+				9013E9642AB41B1200438BA6 /* NetworkSessionManagerTests.swift */,
+				9013E9662AB41B2100438BA6 /* NetworkServiceTests.swift */,
+				90A099A92AB442C1009DBC3A /* AppSearchDataSourceTests.swift */,
+			);
+			path = DataSourceTests;
+			sourceTree = "<group>";
+		};
+		90219EA02AB2B291004B6236 /* UseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				90A0999F2AB429FE009DBC3A /* AppSearchUseCaseTests.swift */,
+			);
+			path = UseCaseTests;
 			sourceTree = "<group>";
 		};
 		904DACF52A932504007BCC56 /* DTO */ = {
@@ -447,7 +480,9 @@
 		904DAD512A9487AB007BCC56 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				90A099A72AB434EA009DBC3A /* MockAppSearchDataSource.swift */,
 				90219E842AB18F10004B6236 /* MockNetworkService.swift */,
+				90219EA32AB35B06004B6236 /* MockNetworkSessionManager.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -786,6 +821,9 @@
 				90219E8B2AB19044004B6236 /* ObjectMother */,
 				904DAD4B2A94869D007BCC56 /* Mock */,
 				90219E9C2AB2B285004B6236 /* DTOTests */,
+				90219E9F2AB2B291004B6236 /* DataSourceTests */,
+				90219E9D2AB2B291004B6236 /* RepositoryTests */,
+				90219EA02AB2B291004B6236 /* UseCaseTests */,
 			);
 			path = AppStoreSearchingTests;
 			sourceTree = "<group>";
@@ -991,20 +1029,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				90219E942AB1E69E004B6236 /* AppSearchDTOObjectMother.swift in Sources */,
+				90A0999E2AB429F4009DBC3A /* AppSearchRepositoryTests.swift in Sources */,
 				90219E852AB18F10004B6236 /* MockNetworkService.swift in Sources */,
 				90219EA22AB356AA004B6236 /* AppSearchDTOTests.swift in Sources */,
 				90219E922AB1E623004B6236 /* AppSearchModelObjectMother.swift in Sources */,
 				904DAD652A9489C9007BCC56 /* AppSearchResponseDTOMock.swift in Sources */,
 				9013E95F2AB4017C00438BA6 /* AppSearchItemEntityMock.swift in Sources */,
 				9013E9612AB4061A00438BA6 /* AppSearchItemDTOTests.swift in Sources */,
+				90219EA42AB35B06004B6236 /* MockNetworkSessionManager.swift in Sources */,
+				90A099A02AB429FE009DBC3A /* AppSearchUseCaseTests.swift in Sources */,
 				90219E982AB2B075004B6236 /* MockRecentKeywordRepository.swift in Sources */,
 				90219E902AB1E538004B6236 /* RecentKeywordObjectMother.swift in Sources */,
 				904DAD682A9489F4007BCC56 /* AppSearchItemResponseDTOMock.swift in Sources */,
 				90219E962AB2B009004B6236 /* MockAppSearchRepository.swift in Sources */,
 				90219E8D2AB1904D004B6236 /* AppSearchEntityObjectMother.swift in Sources */,
+				90A099A82AB434EA009DBC3A /* MockAppSearchDataSource.swift in Sources */,
 				90219E872AB18F6C004B6236 /* Scenario.swift in Sources */,
 				90219E9A2AB2B150004B6236 /* MockAppSearchUseCase.swift in Sources */,
 				9013E95C2AB37CCF00438BA6 /* AppSearchItemModelMock.swift in Sources */,
+				9013E9672AB41B2100438BA6 /* NetworkServiceTests.swift in Sources */,
+				90A099AA2AB442C1009DBC3A /* AppSearchDataSourceTests.swift in Sources */,
+				9013E9652AB41B1200438BA6 /* NetworkSessionManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
