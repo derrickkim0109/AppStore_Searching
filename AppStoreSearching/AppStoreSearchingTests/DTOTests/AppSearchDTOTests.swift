@@ -46,7 +46,6 @@ final class AppSearchDTOTests: XCTestCase {
         let entity = insufficientDataDTO.toEntity()
 
         // then
-
         XCTAssertEqual(entity.resultCount, expectation.resultCount)
         XCTAssertEqual(entity.results.first?.artistId, expectation.results.first?.artistId)
     }

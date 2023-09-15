@@ -14,10 +14,10 @@ protocol AppSearchDataSourceInterface {
 }
 
 final class AppSearchDataSource : AppSearchDataSourceInterface {
-    private let networkService: NetworkService
+    private let networkService: NetworkServiceInterface
     
     init(
-        networkService: NetworkService
+        networkService: NetworkServiceInterface
     ) {
         self.networkService = networkService
     }
