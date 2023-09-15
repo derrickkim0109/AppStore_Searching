@@ -14,10 +14,10 @@ protocol NetworkServiceInterface {
 }
 
 final class NetworkService: NetworkServiceInterface {
-    private let sessionManager: NetworkSessionManagerInterfase
+    private let sessionManager: NetworkSessionManagerInterface
 
     init(
-        sessionManager: NetworkSessionManagerInterfase = NetworkSessionManager.shared
+        sessionManager: NetworkSessionManagerInterface = NetworkSessionManager.shared
     ) {
         self.sessionManager = sessionManager
     }
