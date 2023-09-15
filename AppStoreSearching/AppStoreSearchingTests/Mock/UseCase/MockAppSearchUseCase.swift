@@ -19,7 +19,12 @@ final class MockAppSearchUseCase: AppSearchUseCaseInterface {
     ) async throws -> AppStoreSearching.AppSearchEntity {
         switch scenario {
         case .success: return appSearchEntity
-        case .failure: throw AppSearchError.failToSearchApp
+        case .failure:
+            guard keyword.validateKeyword() else {
+                throw AppSearchError.invalidKeyword
+            }
+
+            throw AppSearchError.failToSearchApp
         }
     }
 
