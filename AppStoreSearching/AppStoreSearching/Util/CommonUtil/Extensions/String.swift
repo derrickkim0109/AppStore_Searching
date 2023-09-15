@@ -60,9 +60,11 @@ extension String {
     }
 
     // 한글 1~10자까지만 허용
+    //
     func validateKeyword() -> Bool {
         return NSPredicate(
             format: "SELF MATCHES %@",
-            "[가-힣\\s]{1,10}$").evaluate(with: self)
+            "[가-힣\\s]{1,10}$"
+        ).evaluate(with: self)
     }
 }

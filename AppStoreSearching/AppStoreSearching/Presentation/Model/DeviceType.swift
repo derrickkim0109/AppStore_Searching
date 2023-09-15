@@ -1,5 +1,5 @@
 //
-//  CoverType.swift
+//  DeviceType.swift
 //  AppStoreSearching
 //
 //  Created by Derrick kim on 2023/08/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CoverType {
+enum DeviceType {
     case iPhone
     case iPad
 }

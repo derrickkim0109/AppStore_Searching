@@ -8,8 +8,8 @@
 import UIKit
 
 final class CarouselView: BaseView {
-    typealias DataSource = UICollectionViewDiffableDataSource<CoverType, String>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<CoverType, String>
+    typealias DataSource = UICollectionViewDiffableDataSource<DeviceType, String>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<DeviceType, String>
 
     private lazy var carouselCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
@@ -47,12 +47,12 @@ final class CarouselView: BaseView {
     private lazy var dataSource = configureIPhoneDataSource()
     private let itemSize: CGSize
     private let itemSpacing: CGFloat
-    private let type: CoverType
+    private let type: DeviceType
 
     init(
         itemSize: CGSize,
         itemSpacing: CGFloat,
-        type: CoverType
+        type: DeviceType
     ) {
         self.itemSize = itemSize
         self.itemSpacing = itemSpacing
@@ -92,7 +92,7 @@ final class CarouselView: BaseView {
     }
 
     func applyDataSource(
-        type: CoverType,
+        type: DeviceType,
         data: [String]
     ) {
         var snapshot = Snapshot()
@@ -130,7 +130,7 @@ final class CarouselView: BaseView {
             )
         }
 
-        return UICollectionViewDiffableDataSource<CoverType, String>(
+        return UICollectionViewDiffableDataSource<DeviceType, String>(
             collectionView: carouselCollectionView
         ) {
             (collectionView,

@@ -8,7 +8,8 @@
 import UIKit
 
 struct AppSearchItemResponseDTO: Decodable {
-    let screenshotUrls, ipadScreenshotUrls: [String]?
+    let screenshotUrls: [String]?
+    let ipadScreenshotUrls: [String]?
     let artworkUrl60: String?
     let artworkUrl512: String?
     let artworkUrl100: String?
