@@ -9,12 +9,13 @@ import Foundation
 import Combine
 
 final class AppSearchViewModel {
-    @Published var keyword: String = ""
-    @Published var searchedAppList: [AppSearchItemModel] = []
-    @Published var recentKeywordList: [String] = []
-    @Published var isLoading: Bool = false
-    @Published var showErrorAlert: Bool = false
-    @Published var resultState: ResultState = .none
+    var keyword = CurrentValueSubject<String, Never>("")
+    var searchedAppList = CurrentValueSubject<[AppSearchItemModel], Never>([])
+    var recentKeywordList = CurrentValueSubject<[String], Never>([])
+    var isLoading = CurrentValueSubject<Bool, Never>(false)
+    var showErrorAlert = CurrentValueSubject<Bool, Never>(false)
+    var resultState = CurrentValueSubject<ResultState, Never>(.none)
+
     var showDetailViewController = PassthroughSubject<Bool, Never>()
 
     var selectedIndex: Int = 0
@@ -44,21 +45,21 @@ final class AppSearchViewModel {
             let appSearchModel = AppSearchModelMapper.toPresentationModel(entity: appSearchEntity)
 
             guard !appSearchModel.results.isEmpty else {
-                self?.resultState = .noResult
+                self?.resultState.value = .noResult
                 return
             }
 
             self?.resetLoadingState()
 
-            self?.resultState = .hasResult
+            self?.resultState.value = .hasResult
 
             let filterData = appSearchModel.results
                 .filter{ [weak self] newItem in
-                    self?.searchedAppList.contains { $0.artistId == newItem.artistId } == false
+                    self?.searchedAppList.value.contains { $0.artistId == newItem.artistId } == false
                 }
 
-            self?.searchedAppList.append(
-                contentsOf: self?.searchedAppList.isEmpty == true ? appSearchModel.results : filterData
+            self?.searchedAppList.value.append(
+                contentsOf: self?.searchedAppList.value.isEmpty == true ? appSearchModel.results : filterData
             )
 
             self?.currentPage += 10
@@ -67,7 +68,7 @@ final class AppSearchViewModel {
 
     func getRecentKeywordList() {
         let repository = appSearchUseCase.getRecentKeywordList()
-        recentKeywordList = repository.isEmpty ? [Const.recentKeywordEmpty] : repository
+        recentKeywordList.value = repository.isEmpty ? [Const.recentKeywordEmpty] : repository
     }
 
     func filterRecentKeywords(
@@ -75,7 +76,7 @@ final class AppSearchViewModel {
     ) -> [String] {
         guard !keyword.isEmpty else { return [] }
 
-        let result = recentKeywordList.filter {
+        let result = recentKeywordList.value.filter {
             return $0
                 .lowercased()
                 .contains(keyword.lowercased())
@@ -91,13 +92,13 @@ final class AppSearchViewModel {
     }
     
     func resetProperties() {
-        searchedAppList = []
+        searchedAppList.value = []
         currentPage = 0
         viewModelError = nil
     }
 
     func loadMoreData() {
-        searchApp(by: keyword)
+        searchApp(by: keyword.value)
     }
 
     private func getAppSearchEntity(
@@ -124,8 +125,8 @@ final class AppSearchViewModel {
             return
         }
 
-        resultState = .noResult
-        showErrorAlert = true
+        resultState.value = .noResult
+        showErrorAlert.value = true
         viewModelError = error
     }
 
@@ -134,11 +135,11 @@ final class AppSearchViewModel {
             return isInitialLoading = true
         }
 
-        isLoading = true
+        isLoading.value = true
     }
     
     private func resetLoadingState() {
-        isLoading = false
+        isLoading.value = false
         isInitialLoading = false
     }
 

@@ -127,7 +127,7 @@ extension RecentKeywordListViewController: UITableViewDelegate {
             animated: false
         )
         
-        viewModel.resultState = .hasResult
-        viewModel.keyword = item
+        viewModel.resultState.value = .hasResult
+        viewModel.keyword.value = item
     }
 }

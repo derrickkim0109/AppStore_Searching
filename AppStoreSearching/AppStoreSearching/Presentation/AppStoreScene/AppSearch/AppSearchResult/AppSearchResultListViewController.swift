@@ -40,7 +40,7 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
     override func bind() {
         super.bind()
         
-        viewModel.$searchedAppList
+        viewModel.searchedAppList
             .receive(on: DispatchQueue.main)
             .sink { [weak self] item in
                 self?.appSearchResultListView.applyDataSource(
@@ -49,11 +49,11 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
             }
             .store(in: &cancellable)
         
-        viewModel.$showErrorAlert
+        viewModel.showErrorAlert
             .receive(on: DispatchQueue.main)
             .sink { [weak self] showErrorAlert in
                 if showErrorAlert
-                    && self?.viewModel.searchedAppList.isEmpty == true {
+                    && self?.viewModel.searchedAppList.value.isEmpty == true {
                     AlertController.Builder()
                         .setMessage(self?.viewModel.viewModelError?.rawValue ?? "")
                         .setConfirmText("확인")
@@ -63,18 +63,18 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
             }
             .store(in: &cancellable)
         
-        viewModel.$resultState
+        viewModel.resultState
             .receive(on: DispatchQueue.main)
             .sink { [weak self] resultState in
                 guard let state = self?.viewModel.resultState else {
                     return
                 }
                 
-                switch state {
+                switch state.value {
                 case .noResult:
-                    if self?.viewModel.searchedAppList.isEmpty == true {
+                    if self?.viewModel.searchedAppList.value.isEmpty == true {
                         self?.appSearchResultListView.setupError(
-                            self?.viewModel.keyword ?? ""
+                            self?.viewModel.keyword.value ?? ""
                         )
                     }
                 default:
@@ -83,7 +83,7 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
             }
             .store(in: &cancellable)
         
-        viewModel.$isLoading
+        viewModel.isLoading
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 if self?.viewModel.isInitialLoading == true {

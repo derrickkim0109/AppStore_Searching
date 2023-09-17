@@ -59,7 +59,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
     override func bind() {
         super.bind()
         
-        viewModel.$keyword
+        viewModel.keyword
             .receive(on: DispatchQueue.main)
             .sink { [weak self] keyword in
                 guard let `self` = self else {
@@ -69,7 +69,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
                 viewModel.getRecentKeywordList()
                 viewModel.resetProperties()
 
-                switch viewModel.resultState {
+                switch viewModel.resultState.value {
                 case .hasResult:
                     viewModel.searchApp(by: keyword)
                     
@@ -96,7 +96,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
             }
             .store(in: &cancellable)
         
-        viewModel.$recentKeywordList
+        viewModel.recentKeywordList
             .receive(on: DispatchQueue.main)
             .sink { [weak self] recentKeywordList in
                 self?.appSearchView.applyDataSource(
@@ -115,7 +115,7 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
                 if showDetailViewController == true {
                     coordinator?.showDetailViewController(
                         at: self,
-                        of: viewModel.searchedAppList[viewModel.selectedIndex])
+                        of: viewModel.searchedAppList.value[viewModel.selectedIndex])
                 }
             }
             .store(in: &cancellable)
@@ -163,8 +163,8 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
         _ keyword: String,
         _ state: ResultState
     ) {
-        viewModel.resultState = state
-        viewModel.keyword = keyword
+        viewModel.resultState.value = state
+        viewModel.keyword.value = keyword
     }
     
     private enum Const {
@@ -214,15 +214,15 @@ extension AppSearchViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        let keyword = viewModel.recentKeywordList[indexPath.row]
+        let keyword = viewModel.recentKeywordList.value[indexPath.row]
         
         tableView.deselectRow(
             at: indexPath,
             animated: false
         )
         
-        viewModel.resultState = .hasResult
-        viewModel.keyword = keyword
+        viewModel.resultState.value = .hasResult
+        viewModel.keyword.value = keyword
     }
     
     func tableView(
