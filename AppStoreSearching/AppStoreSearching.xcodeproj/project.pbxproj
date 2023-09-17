@@ -70,6 +70,7 @@
 		90661A032AA0463100547FFC /* AppScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90661A022AA0463100547FFC /* AppScreenshotView.swift */; };
 		90A0999E2AB429F4009DBC3A /* AppSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0999D2AB429F4009DBC3A /* AppSearchRepositoryTests.swift */; };
 		90A099A02AB429FE009DBC3A /* AppSearchUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0999F2AB429FE009DBC3A /* AppSearchUseCaseTests.swift */; };
+		90A099A62AB42A59009DBC3A /* AppSearchItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A099A52AB42A59009DBC3A /* AppSearchItemModelTests.swift */; };
 		90A099A82AB434EA009DBC3A /* MockAppSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A099A72AB434EA009DBC3A /* MockAppSearchDataSource.swift */; };
 		90A099AA2AB442C1009DBC3A /* AppSearchDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A099A92AB442C1009DBC3A /* AppSearchDataSourceTests.swift */; };
 		90B2797C29DA5CED006FB775 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2790D29DA5CED006FB775 /* UIViewController.swift */; };
@@ -316,6 +317,14 @@
 				90A0999D2AB429F4009DBC3A /* AppSearchRepositoryTests.swift */,
 			);
 			path = RepositoryTests;
+			sourceTree = "<group>";
+		};
+		90219E9E2AB2B291004B6236 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				90A099A52AB42A59009DBC3A /* AppSearchItemModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 		90219E9F2AB2B291004B6236 /* DataSourceTests */ = {
@@ -831,6 +840,7 @@
 				90219E9F2AB2B291004B6236 /* DataSourceTests */,
 				90219E9D2AB2B291004B6236 /* RepositoryTests */,
 				90219EA02AB2B291004B6236 /* UseCaseTests */,
+				90219E9E2AB2B291004B6236 /* ViewModelTests */,
 			);
 			path = AppStoreSearchingTests;
 			sourceTree = "<group>";
@@ -1051,6 +1061,7 @@
 				90219E962AB2B009004B6236 /* MockAppSearchRepository.swift in Sources */,
 				90219E8D2AB1904D004B6236 /* AppSearchEntityObjectMother.swift in Sources */,
 				90A099A82AB434EA009DBC3A /* MockAppSearchDataSource.swift in Sources */,
+				90A099A62AB42A59009DBC3A /* AppSearchItemModelTests.swift in Sources */,
 				90219E872AB18F6C004B6236 /* Scenario.swift in Sources */,
 				90219E9A2AB2B150004B6236 /* MockAppSearchUseCase.swift in Sources */,
 				9013E95C2AB37CCF00438BA6 /* AppSearchItemModelMock.swift in Sources */,
