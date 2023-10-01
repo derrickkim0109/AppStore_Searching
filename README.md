@@ -32,6 +32,23 @@
 - Combine
 - Unit Test
 
+## 🗺️ Naviagtion 설계
+
+### Coordinator Pattern
+
+> Code-based UI는 여러 개의 Tab이 있을 때 각 화면에서 발생하는 Navigation Flow를 파악하기 힘들다는 문제가 있습니다. <br>
+> 이를 해결하기 위해 각 ViewController들을 더 효율적으로 관리할 수 있는 Coordinator Pattern을 적용했습니다. <br>
+> 각 Tab 별로 화면 전환에 대한 코드를 관리할 수 있으면 더 유연하고 유지보수하기 좋은 구조를 만들 수 있다고 생각했습니다.
+
+### 화면 이동 설계
+
+<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/93656286-4404-4805-900c-a801eb526dd5" width="400" height="300">
+
+#### 특징
+
+- 각 Coodinator를 통해 시작하는 ViewController를 관리하여 화면 전환을 관리하고, NavigationController의 설정을 한곳에서 처리하기 용이합니다.
+- 의존성 주입이 복잡해질 부분을 대비하기 위해 DI Container를 추가적으로 구현하여 의존성에 관한 내용을 분리했습니다.
+
 ### Layers
 
 - **Domain Layer** = Entities + Use Cases + Repositories Interfaces
