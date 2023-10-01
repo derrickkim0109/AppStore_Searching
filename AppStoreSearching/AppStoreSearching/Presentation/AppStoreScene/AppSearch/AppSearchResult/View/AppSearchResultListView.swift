@@ -50,7 +50,6 @@ final class AppSearchResultListView: BaseView {
     private let warningLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
         label.text = "결과 없음"
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .title1)

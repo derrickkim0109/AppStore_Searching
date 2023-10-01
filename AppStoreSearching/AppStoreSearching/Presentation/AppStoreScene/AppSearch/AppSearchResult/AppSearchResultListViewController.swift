@@ -7,7 +7,16 @@
 
 import UIKit
 
+protocol AppSearchResultListViewControllerDelegate: AnyObject {
+    func presentErrorAlert(
+        title: String?,
+        message: String?,
+        handler: (() -> Void)?
+    )
+}
+
 final class AppSearchResultListViewController: BaseViewController<AppSearchViewModel> {
+    weak var coordinator: AppSearchResultListViewControllerDelegate?
     private let appSearchResultListView = AppSearchResultListView()
 
     override func setupDefault() {
@@ -54,11 +63,10 @@ final class AppSearchResultListViewController: BaseViewController<AppSearchViewM
             .sink { [weak self] showErrorAlert in
                 if showErrorAlert
                     && self?.viewModel.searchedAppList.value.isEmpty == true {
-                    AlertController.Builder()
-                        .setMessage(self?.viewModel.viewModelError?.rawValue ?? "")
-                        .setConfirmText("확인")
-                        .build()
-                        .present()
+                    self?.coordinator?.presentErrorAlert(
+                        title: "알림",
+                        message: self?.viewModel.viewModelError?.rawValue ?? "",
+                        handler: nil)
                 }
             }
             .store(in: &cancellable)

@@ -9,9 +9,8 @@ import UIKit
 import Combine
 
 protocol AppSearchViewControllerDelegate: AnyObject {
-    func showDetailViewController(
-        at viewController: UIViewController,
-        of item: AppSearchItemModel
+    func connectAppDetailFlow(
+        appItem: AppSearchItemModel
     )
 }
 
@@ -113,9 +112,9 @@ final class AppSearchViewController: BaseViewController<AppSearchViewModel> {
                 }
 
                 if showDetailViewController == true {
-                    coordinator?.showDetailViewController(
-                        at: self,
-                        of: viewModel.searchedAppList.value[viewModel.selectedIndex])
+                    coordinator?.connectAppDetailFlow(
+                        appItem: viewModel.searchedAppList.value[viewModel.selectedIndex]
+                    )
                 }
             }
             .store(in: &cancellable)
