@@ -15,12 +15,11 @@
 
 |메인화면|검색중|검색결과|
 |--|--|--|
-|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/e9ce7bfa-90a1-4432-a5e0-737ccfc7474a" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/8f3ed0cf-5bed-4fff-842e-38fc4422bacf" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/f471cfbd-b667-4871-a78b-37a99b327e9c" width="250">|
+|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/4e6334d5-6a3f-4808-8d8f-9dac56513a1e" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/0c24830f-d14d-484e-90f5-c15e382b4c10" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/426e720a-f9b9-46c2-97c3-fee93a20c4b8" width="250">|
 
 |Pagenation|상세화면|받기버튼|
 |--|--|--|
-|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/33f3a668-61ae-43e9-8ef0-b5039d7c03f2" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/ad66d20b-bd2e-48c1-aeb1-017c04024cd5" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/3e643e26-4f83-4b84-9218-9692b5d5e980" width="250">|
-
+|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/5fd0713f-24ff-43b0-8825-82626d7bb5f4" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/67812b63-72c2-446b-b7a7-fe6d32a6f1c2" width="250">|<img src="https://github.com/derrickkim0109/AppStore_Searching/assets/59466342/d5027fc3-0a49-4647-aee2-a172290d7e3d" width="250">|
 
 ---
 
