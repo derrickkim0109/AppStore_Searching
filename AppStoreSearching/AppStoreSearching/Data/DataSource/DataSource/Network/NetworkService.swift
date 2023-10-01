@@ -28,7 +28,6 @@ final class NetworkService: NetworkServiceInterface {
     ) async throws -> T where N.Response == T {
         do {
             let urlRequest = try endpoint.makeURLRequest()
-
             let data = try await sessionManager.request(urlRequest)
             return try await decode(from: data)
         } catch (let error) {
